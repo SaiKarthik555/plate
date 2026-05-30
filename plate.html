@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Plate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F6F1E7;--p2:#FDFBF4;--card:#fff;--ink:#21231E;--muted:#70685A;--line:#E6DFD0;--gr:#1F8A52;--grd:#12623A;--grs:#E3F2E8;--re:#D13B26;--red:#9E2D1A;--res:#FBE5DE;--go:#C98F22;--gos:#F5ECD3;--sh:0 1px 3px rgba(33,35,30,.04),0 6px 20px rgba(33,35,30,.07);--r:16px}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:"Hanken Grotesk",sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;font-size:16px}
+body{background-image:radial-gradient(circle at 10% 6%,rgba(201,143,34,.08),transparent 38%),radial-gradient(circle at 90% 2%,rgba(31,138,82,.07),transparent 36%);padding-bottom:80px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+header{padding:22px 0 0;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:baseline;gap:10px;margin-right:auto}
+.brand h1{font-family:"Fraunces",serif;font-size:34px;font-weight:600;letter-spacing:-.5px}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--gr);display:inline-block;transform:translateY(-2px);margin-left:2px}
+.brand small{font-family:"Fraunces",serif;font-style:italic;color:var(--muted);font-size:14px}
+.daynav{display:flex;align-items:center;gap:10px}
+.navbtn{background:var(--card);border:1px solid var(--line);width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;color:var(--ink);display:grid;place-items:center;box-shadow:var(--sh);transition:.14s}
+.navbtn:hover{background:var(--ink);color:var(--p2)}
+.dateblock{text-align:center;min-width:162px}
+.dmain{font-family:"Fraunces",serif;font-size:18px;font-weight:600}
+.drel{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-top:2px}
+.datepick-wrap{display:flex;align-items:center;gap:7px}
+.datepick-wrap label{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.3px;text-transform:uppercase}
+input[type=date]#datePicker{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:8px 11px;font-size:14px;font-family:"Hanken Grotesk",sans-serif;color:var(--ink);cursor:pointer;box-shadow:var(--sh);outline:none}
+input[type=date]#datePicker:focus{border-color:var(--ink)}
+.tabs{display:flex;gap:4px;margin:18px 0 22px;border-bottom:2px solid var(--line)}
+.tab{background:none;border:none;font-family:inherit;font-size:15px;font-weight:600;color:var(--muted);cursor:pointer;padding:10px 18px;border-bottom:3px solid transparent;margin-bottom:-2px;transition:.16s}
+.tab:hover{color:var(--ink)}.tab.active{color:var(--ink);border-bottom-color:var(--ink)}
+.view{display:none}.view.on{display:block}
+.layout{display:grid;grid-template-columns:1fr 290px;gap:24px;align-items:start}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;box-shadow:var(--sh)}
+.stat .lbl{font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;display:flex;align-items:center;gap:7px}
+.stat .num{font-family:"Fraunces",serif;font-size:58px;font-weight:600;line-height:1;margin:6px 0 4px}
+.stat .sub{font-size:15px;color:var(--muted)}
+.goalrow{display:flex;align-items:center;gap:7px;margin-top:8px}
+.goalrow span{font-size:12px;color:var(--muted)}
+.goalrow button{border:1px solid var(--line);background:var(--paper);width:22px;height:22px;border-radius:6px;cursor:pointer;font-size:13px;color:var(--ink);display:grid;place-items:center}
+.stat.protein{border-top:4px solid var(--gr)}.stat.protein .lbl{color:var(--grd)}
+.stat.junk{border-top:4px solid var(--re)}.stat.junk .lbl{color:var(--red)}
+.pulse{animation:pulseA 1.5s ease-in-out infinite}
+@keyframes pulseA{0%,100%{box-shadow:var(--sh)}50%{box-shadow:0 0 0 5px var(--res),var(--sh)}}
+.banner{border-radius:13px;padding:13px 16px;font-size:15px;font-weight:500;display:flex;align-items:center;gap:10px;margin-top:16px}
+.banner.warn{background:var(--res);color:var(--red);border:1px solid #f0c2b4}
+.banner.nudge{background:var(--gos);color:#7a5a10;border:1px solid #e8d29a}
+.banner.good{background:var(--grs);color:var(--grd);border:1px solid #bee3cc}
+.addwrap{margin-top:20px}
+.addrow{display:flex;gap:10px}
+.addrow input{flex:1;border:1px solid var(--line);background:var(--card);border-radius:13px;padding:14px 16px;font-size:16px;font-family:inherit;color:var(--ink);box-shadow:var(--sh)}
+.addrow input:focus{outline:none;border-color:var(--ink)}
+.gobtn{background:var(--ink);color:var(--p2);border:none;border-radius:13px;padding:0 22px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;transition:.14s}
+.gobtn:hover{background:#000;transform:translateY(-1px)}
+.chooser{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:16px 18px;margin-top:10px;box-shadow:var(--sh);animation:drop .18s ease}
+@keyframes drop{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+.chooser-title{font-size:15px;margin-bottom:12px;color:var(--muted)}
+.chooser-title b{font-family:"Fraunces",serif;color:var(--ink);font-size:17px}
+.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.choices button,.meal-choices button{border:1.5px solid var(--line);background:var(--paper);border-radius:11px;padding:12px 8px;cursor:pointer;font-family:inherit;font-size:14px;font-weight:600;color:var(--ink);transition:.14s;display:flex;flex-direction:column;align-items:center;gap:5px}
+.choices button .emo,.meal-choices button .emo{font-size:20px}
+.choices button:hover{transform:translateY(-2px)}
+.cp:hover{border-color:var(--gr)!important;background:var(--grs)!important;color:var(--grd)!important}
+.cj:hover{border-color:var(--re)!important;background:var(--res)!important;color:var(--red)!important}
+.cn:hover{border-color:var(--muted)!important;background:#edebe3!important}
+.meal-choices{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.meal-choices button{flex-direction:row;justify-content:flex-start;padding:11px 14px}
+.meal-choices button:hover{border-color:var(--ink);background:var(--card)}
+.misc-input-wrap{margin-top:10px;display:flex;gap:8px}
+.misc-input-wrap input{flex:1;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:10px 13px;font-size:14px;font-family:inherit;color:var(--ink)}
+.misc-input-wrap input:focus{outline:none;border-color:var(--ink)}
+.misc-input-wrap button{background:var(--ink);color:var(--p2);border:none;border-radius:10px;padding:0 16px;font-weight:700;cursor:pointer;font-family:inherit;font-size:14px}
+.list{margin-top:18px;display:flex;flex-direction:column;gap:8px}
+.empty{text-align:center;color:var(--muted);padding:32px 0;font-style:italic;font-family:"Fraunces",serif;font-size:17px}
+.item{background:var(--card);border:1px solid var(--line);border-left-width:5px;border-radius:12px;padding:13px 15px;display:flex;align-items:center;gap:10px;box-shadow:var(--sh);animation:drop .18s ease;transition:opacity .15s,transform .15s}
+.item.dragging{opacity:.45;transform:scale(.97)}.item.drag-over{border-top:3px solid var(--ink)}
+.drag-handle{cursor:grab;color:var(--muted);font-size:16px;opacity:.4;flex-shrink:0;user-select:none;padding:0 2px;line-height:1}
+.drag-handle:hover{opacity:.9}
+.item .ico{font-size:17px;flex-shrink:0}
+.item .name{flex:1;font-size:16px;font-weight:500}
+.item .meal-tag{font-size:12px;font-weight:600;padding:3px 10px;border-radius:20px;background:var(--paper);color:var(--muted);border:1px solid var(--line);flex-shrink:0}
+.item .type-tag{font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:3px 10px;border-radius:20px;flex-shrink:0}
+.item .del{border:none;background:none;cursor:pointer;color:var(--muted);font-size:18px;opacity:.3;transition:.13s;padding:2px;flex-shrink:0}
+.item:hover .del{opacity:1}
+.item.protein{border-left-color:var(--gr)}.item.protein .type-tag{background:var(--grs);color:var(--grd)}
+.item.junk{border-left-color:var(--re);background:linear-gradient(90deg,var(--res),var(--card) 55%)}
+.item.junk .type-tag{background:var(--re);color:#fff}
+.item.normal{border-left-color:var(--line)}.item.normal .type-tag{background:#eeeae0;color:var(--muted)}
+.movsec{margin-top:40px;padding-top:30px;border-top:1px solid var(--line)}
+.moverbar{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}
+.moverbar h2{font-family:"Fraunces",serif;font-size:23px;font-weight:600;letter-spacing:-.2px}
+.moverbar .lead{color:var(--muted);font-size:14px;margin-top:3px}
+.urge{background:linear-gradient(135deg,var(--go),#a06c10);color:#fff;border:none;border-radius:12px;padding:13px 20px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 5px 14px rgba(192,125,20,.28);transition:.18s;display:flex;align-items:center;gap:7px;white-space:nowrap}
+.urge:hover{transform:translateY(-2px) scale(1.02)}
+.moaddrow{display:flex;gap:9px;margin-top:14px;flex-wrap:wrap;align-items:center}
+.moaddrow input{border:1px solid var(--line);background:var(--card);border-radius:11px;padding:11px 14px;font-size:14px;font-family:inherit;color:var(--ink);box-shadow:var(--sh)}
+.moaddrow input.url{flex:2;min-width:170px}.moaddrow input.cap{flex:1;min-width:120px}
+.moaddrow .addbtn,.uploadbtn{border-radius:11px;padding:11px 16px;font-weight:700;cursor:pointer;font-family:inherit;font-size:14px;white-space:nowrap;transition:.14s}
+.moaddrow .addbtn{background:var(--ink);color:var(--p2);border:none}
+.uploadbtn{background:var(--paper);border:1px solid var(--line);color:var(--ink);display:flex;align-items:center;gap:6px;box-shadow:var(--sh)}
+.uploadbtn:hover{background:var(--card);border-color:var(--muted)}
+#fileInput{display:none}
+.mogrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:12px;margin-top:14px}
+.mocard{position:relative;border-radius:13px;overflow:hidden;border:1px solid var(--line);background:var(--card);box-shadow:var(--sh);aspect-ratio:4/5;cursor:pointer}
+.mocard img{width:100%;height:100%;object-fit:cover;display:block;transition:.2s}
+.mocard:hover img{transform:scale(1.04)}
+.mocard .cap2{position:absolute;left:0;right:0;bottom:0;padding:16px 10px 9px;background:linear-gradient(transparent,rgba(0,0,0,.74));color:#fff;font-size:13px;font-weight:600;font-family:"Fraunces",serif;font-style:italic}
+.mocard .mx{position:absolute;top:7px;right:7px;background:rgba(0,0,0,.5);color:#fff;border:none;width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:14px;opacity:0;transition:.13s;display:grid;place-items:center}
+.mocard:hover .mx{opacity:1}
+.moempty{border:2px dashed var(--line);border-radius:13px;padding:26px;text-align:center;color:var(--muted);font-style:italic;font-family:"Fraunces",serif;margin-top:14px;font-size:15px}
+.sidebar{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--sh);position:sticky;top:16px;max-height:calc(100vh - 40px);overflow:hidden;display:flex;flex-direction:column}
+.sidebar h3{font-family:"Fraunces",serif;font-size:18px;font-weight:600;display:flex;align-items:center;gap:9px;margin-bottom:16px;flex-shrink:0}
+.alarm-badge{background:var(--res);color:var(--red);font-family:"Hanken Grotesk";font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px}
+.minibars{display:flex;align-items:flex-end;gap:6px;height:88px;flex-shrink:0}
+.mbc{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end}
+.mbc .bar{width:100%;border-radius:4px 4px 0 0;min-height:2px;transition:.4s;background:var(--re)}
+.mbc .lbl{font-size:10px;color:var(--muted);font-weight:600}
+.mbc.td .lbl{color:var(--ink);font-weight:800}.mbc.td .bar{background:var(--red)}
+.chartlbl{font-size:11px;color:var(--muted);margin:6px 0 16px;flex-shrink:0}
+.sid-divider{font-size:11.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;flex-shrink:0}
+.jhlist{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding-right:3px}
+.jhlist::-webkit-scrollbar{width:3px}
+.jhlist::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+.jhday{border-left:3px solid var(--re);padding:8px 11px;border-radius:0 9px 9px 0;background:var(--res)}
+.jhday .jdate{font-size:12px;font-weight:700;color:var(--red)}
+.jhday .jitems{margin-top:5px;display:flex;flex-direction:column;gap:3px}
+.jhday .ji{font-size:13px;color:var(--ink);display:flex;align-items:center;gap:5px}
+.jh-empty{text-align:center;color:var(--grd);font-size:13.5px;font-family:"Fraunces",serif;font-style:italic;padding:16px 10px;background:var(--grs);border-radius:10px;flex-shrink:0}
+.hist-layout{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.hist-col h2{font-family:"Fraunces",serif;font-size:24px;font-weight:600;margin-bottom:6px}
+.hist-col .subdesc{font-size:14px;color:var(--muted);margin-bottom:18px}
+.hist-chart-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--sh);margin-bottom:20px}
+.hist-chart-card h4{font-size:12.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.hist-bars{display:flex;align-items:flex-end;gap:8px;height:100px;margin-bottom:6px}
+.hbc{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end}
+.hbc .bar{width:100%;border-radius:4px 4px 0 0;min-height:2px;transition:.4s}
+.hbc .lbl{font-size:10px;color:var(--muted);font-weight:600}
+.hbc.td .lbl{color:var(--ink);font-weight:800}
+.hist-legend{font-size:12.5px;color:var(--muted);margin-top:8px}
+.hist-streaks{display:flex;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.hist-streak{flex:1;min-width:130px;border-radius:13px;padding:16px 18px}
+.hist-streak .big{font-family:"Fraunces",serif;font-size:42px;font-weight:600;line-height:1}
+.hist-streak .cap{font-size:13px;color:var(--muted);margin-top:4px}
+.pstreak{background:var(--grs)}.pstreak .big{color:var(--grd)}
+.jstreak{background:var(--res)}.jstreak .big{color:var(--red)}
+.jstreak-clean{background:var(--grs)}.jstreak-clean .big{color:var(--grd)}
+.hist-list{display:flex;flex-direction:column;gap:12px;max-height:540px;overflow-y:auto;padding-right:4px}
+.hist-list::-webkit-scrollbar{width:4px}
+.hist-list::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+.hist-day{background:var(--card);border:1px solid var(--line);border-radius:13px;overflow:hidden;box-shadow:var(--sh)}
+.hist-day-head{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.hist-day-head .date{font-size:14px;font-weight:700;font-family:"Fraunces",serif}
+.hist-day-head .cnt{font-size:12.5px;font-weight:700;padding:3px 10px;border-radius:20px}
+.cnt-p{background:var(--grs);color:var(--grd)}.cnt-j{background:var(--res);color:var(--red)}
+.hist-day-items{padding:10px 16px;display:flex;flex-direction:column;gap:6px}
+.hist-item{display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:500;padding:7px 10px;border-radius:8px}
+.hist-item.pi{background:var(--grs)}.hist-item.ji{background:var(--res)}
+.hist-item .mlbl{font-size:11.5px;color:var(--muted);background:rgba(255,255,255,.7);padding:2px 9px;border-radius:20px;margin-left:auto;flex-shrink:0}
+.hist-empty{text-align:center;color:var(--muted);font-family:"Fraunces",serif;font-style:italic;padding:40px;font-size:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--r)}
+.overlay{position:fixed;inset:0;background:rgba(18,19,16,.95);z-index:50;display:none;flex-direction:column;padding:20px;backdrop-filter:blur(6px)}
+.overlay.on{display:flex;animation:fdin .22s ease}
+@keyframes fdin{from{opacity:0}to{opacity:1}}
+.ov-top{display:flex;justify-content:space-between;align-items:center;color:#fff;margin-bottom:10px}
+.ov-top h3{font-family:"Fraunces",serif;font-size:20px;font-style:italic;font-weight:500}
+.ov-close{background:rgba(255,255,255,.14);border:none;color:#fff;border-radius:50%;width:38px;height:38px;font-size:20px;cursor:pointer;display:grid;place-items:center}
+.ov-stage{flex:1;display:grid;place-items:center;overflow:hidden}
+.ov-stage img{max-width:100%;max-height:76vh;border-radius:14px;object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.ov-cap{color:rgba(255,255,255,.78);text-align:center;font-family:"Fraunces",serif;font-size:18px;margin-top:12px;font-style:italic}
+.ov-nav{display:flex;justify-content:center;gap:12px;margin-top:12px}
+.ov-nav button{background:rgba(255,255,255,.14);border:none;color:#fff;border-radius:28px;padding:10px 20px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:.14s}
+.ov-nav button:hover{background:rgba(255,255,255,.28)}
+.ov-count{color:rgba(255,255,255,.42);text-align:center;margin-top:8px;font-size:12px}
+footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;font-family:"Fraunces",serif;font-style:italic}
+@media(max-width:820px){.layout{grid-template-columns:1fr}.sidebar{position:static;max-height:none}.hist-layout{grid-template-columns:1fr}}
+@media(max-width:520px){.stats{grid-template-columns:1fr}.wrap{padding:0 14px}.brand h1{font-size:28px}}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="brand"><h1>Plate<span class="dot"></span></h1><small>protein up, junk down</small></div>
+  <div class="daynav" id="daynavWrap">
+    <button class="navbtn" id="prev">&#8249;</button>
+    <div class="dateblock"><div class="dmain" id="dateMain"></div><div class="drel" id="dateRel"></div></div>
+    <button class="navbtn" id="next">&#8250;</button>
+  </div>
+  <div class="datepick-wrap" id="datepickWrap">
+    <label>Jump to</label><input type="date" id="datePicker"/>
+  </div>
+</header>
+<div class="tabs">
+  <button class="tab active" data-view="today">Today</button>
+  <button class="tab" data-view="history">History</button>
+</div>
+<div class="view on" id="view-today">
+  <div class="layout">
+    <div class="main">
+      <div class="stats">
+        <div class="stat protein" id="proteinCard">
+          <div class="lbl">&#128170; Protein</div>
+          <div class="num" id="proteinNum">0</div>
+          <div class="sub" id="proteinSub">items today</div>
+          <div class="goalrow"><span>Daily goal:</span><button id="gDown">&#8722;</button><b id="goalNum" style="font-size:14px">3</b><button id="gUp">+</button></div>
+        </div>
+        <div class="stat junk" id="junkCard">
+          <div class="lbl">&#127828; Junk</div>
+          <div class="num" id="junkNum">0</div>
+          <div class="sub" id="junkSub">items today</div>
+        </div>
+      </div>
+      <div id="banner"></div>
+      <div class="addwrap">
+        <div class="addrow"><input id="foodInput" placeholder="What did you eat? e.g. eggs, chips, grilled chicken..." autocomplete="off"/><button class="gobtn" id="addBtn">Add</button></div>
+        <div id="chooser"></div>
+      </div>
+      <div class="list" id="list"></div>
+      <div class="movsec">
+        <div class="moverbar">
+          <div><h2>&#10024; Motivation board</h2><div class="lead">Open when you feel the urge. Add a URL or upload from device.</div></div>
+          <button class="urge" id="urgeBtn">&#128548; Feeling the urge?</button>
+        </div>
+        <div class="moaddrow">
+          <input class="url" id="moUrl" placeholder="Paste an image URL..." autocomplete="off"/>
+          <input class="cap" id="moCap" placeholder="Caption (optional)" autocomplete="off"/>
+          <button class="addbtn" id="moAddBtn">Add URL</button>
+          <button class="uploadbtn" id="uploadBtn">&#128241; From device</button>
+          <input type="file" id="fileInput" accept="image/*" multiple/>
+        </div>
+        <div id="moContent"></div>
+      </div>
+    </div>
+    <aside class="sidebar">
+      <h3>&#128680; Junk Radar <span class="alarm-badge" id="junkBadge">0 this week</span></h3>
+      <div class="minibars" id="minibars"></div>
+      <div class="chartlbl">Junk per day &mdash; last 7 days</div>
+      <div class="sid-divider">All junk days</div>
+      <div class="jhlist" id="jhlist"></div>
+    </aside>
+  </div>
+</div>
+<div class="view" id="view-history">
+  <div class="hist-layout">
+    <div class="hist-col" id="proteinHistCol"></div>
+    <div class="hist-col" id="junkHistCol"></div>
+  </div>
+</div>
+<footer>Plate &middot; saves automatically &middot; drag items to reorder</footer>
+</div>
+<div class="overlay" id="overlay">
+  <div class="ov-top"><h3>Remember why you started.</h3><button class="ov-close" id="ovClose">&#215;</button></div>
+  <div class="ov-stage"><img id="ovImg" alt=""/></div>
+  <div class="ov-cap" id="ovCap"></div>
+  <div class="ov-nav"><button id="ovPrev">&#8249; Prev</button><button id="ovNext">Next &#8250;</button></div>
+  <div class="ov-count" id="ovCount"></div>
+</div>
+<script>
+// ─── SUPABASE CONFIG ── paste your values from supabase.com > Settings > API ───
+const SUPABASE_URL = 'https://zinrrmlbnqtpzxcxjpic.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InppbnJybWxibnF0cHp4Y3hqcGljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAxMjgzNzgsImV4cCI6MjA5NTcwNDM3OH0.1DQI6CEPnSWeEsCE4yRWkArWB53MB46FJNx0zfY5q5g';
+// ─────────────────────────────────────────────────────────────────────────────
+
+const _db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+async function _dbGet(key){
+  try{const{data}=await _db.from('plate_storage').select('value').eq('key',key).maybeSingle();return data?{value:data.value}:null;}catch(e){return null;}
+}
+async function _dbSet(key,value){
+  try{await _db.from('plate_storage').upsert({key,value,updated_at:new Date().toISOString()});}catch(e){console.error('save failed',e);}
+}
+async function _dbDel(key){
+  try{await _db.from('plate_storage').delete().eq('key',key);}catch(e){}
+}
+
+const SKEY='plate-v3';
+const imgCache={};
+let state={logs:{},motivation:[],settings:{proteinTarget:3},memory:{}};
+
+async function loadState(){
+  const r=await _dbGet(SKEY);
+  if(r&&r.value){try{const d=JSON.parse(r.value);state={...state,...d,settings:{...state.settings,...(d.settings||{})}};}catch(e){}}
+  for(const m of state.motivation){
+    if(m.stored&&!imgCache[m.id]){const ri=await _dbGet('pimg-'+m.id);if(ri&&ri.value)imgCache[m.id]=ri.value;}
+  }
+}
+let saveT=null;
+function save(){clearTimeout(saveT);saveT=setTimeout(()=>_dbSet(SKEY,JSON.stringify(state)),400);}
+async function saveImg(id,data){await _dbSet('pimg-'+id,data);}
+async function delImg(id){await _dbDel('pimg-'+id);delete imgCache[id];}
+let current=new Date();
+const zp=n=>String(n).padStart(2,'0');
+const fmtKey=d=>d.getFullYear()+'-'+zp(d.getMonth()+1)+'-'+zp(d.getDate());
+const todayKey=()=>fmtKey(new Date());
+function relLabel(d){
+  const a=fmtKey(d),t=todayKey();if(a===t)return'Today';
+  const y=new Date();y.setDate(y.getDate()-1);if(a===fmtKey(y))return'Yesterday';
+  const diff=Math.round((new Date(t)-new Date(a))/864e5);
+  if(diff>0&&diff<=6)return diff+' days ago';if(diff<0)return Math.abs(diff)+' days from now';
+  return d.toLocaleDateString(undefined,{weekday:'long'});
+}
+function prettyDate(k){
+  const[y,m,d]=k.split('-').map(Number);const dt=new Date(y,m-1,d);
+  const t=todayKey();const yk=new Date();yk.setDate(yk.getDate()-1);
+  if(k===t)return'Today';if(k===fmtKey(yk))return'Yesterday';
+  return dt.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric'});
+}
+const $=id=>document.getElementById(id);
+function dayLog(key){return state.logs[key]||[];}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function uid(){return Date.now()+''+Math.random().toString(36).slice(2,5);}
+let pendingName='',pendingType='';
+function addItem(name,type,meal,mealLabel){
+  const key=fmtKey(current);if(!state.logs[key])state.logs[key]=[];
+  const maxOrd=state.logs[key].reduce((m,x)=>Math.max(m,x.order||0),0);
+  state.logs[key].push({id:uid(),name,type,meal,mealLabel:mealLabel||meal,ts:Date.now(),order:maxOrd+1});
+  state.memory[name.trim().toLowerCase()]=type;save();renderAll();
+}
+function tryAdd(){
+  const inp=$('foodInput');const name=inp.value.trim();if(!name)return;
+  pendingName=name;const guess=state.memory[name.toLowerCase()];
+  $('chooser').innerHTML='<div class="chooser"><div class="chooser-title">What is <b>'+esc(name)+'</b>?'+(guess?' <span style="font-size:12px;color:var(--muted)">(last: '+guess+')</span>':'')+'</div>'
+    +'<div class="choices">'
+    +'<button class="cp" data-t="protein"><span class="emo">&#x1F4AA;</span>Protein</button>'
+    +'<button class="cj" data-t="junk"><span class="emo">&#x1F354;</span>Junk</button>'
+    +'<button class="cn" data-t="normal"><span class="emo">&#x1F37D;&#xFE0F;</span>Just food</button>'
+    +'</div></div>';
+  $('chooser').querySelectorAll('button[data-t]').forEach(b=>{b.onclick=()=>{pendingType=b.dataset.t;showMealPicker();};});
+}
+function showMealPicker(){
+  $('chooser').innerHTML='<div class="chooser"><div class="chooser-title">When did you have <b>'+esc(pendingName)+'</b>?</div>'
+    +'<div class="meal-choices">'
+    +'<button data-m="breakfast"><span class="emo">&#x1F305;</span> Breakfast</button>'
+    +'<button data-m="lunch"><span class="emo">&#x2600;&#xFE0F;</span> Lunch</button>'
+    +'<button data-m="dinner"><span class="emo">&#x1F319;</span> Dinner</button>'
+    +'<button data-m="misc"><span class="emo">&#x270F;&#xFE0F;</span> Misc / custom</button>'
+    +'</div><div id="miscWrap" style="display:none" class="misc-input-wrap">'
+    +'<input id="miscInput" placeholder="e.g. morning drink, afternoon snack..." autocomplete="off"/>'
+    +'<button id="miscSave">Add</button></div></div>';
+  $('chooser').querySelectorAll('button[data-m]').forEach(b=>{
+    b.onclick=()=>{
+      const m=b.dataset.m;
+      if(m==='misc'){
+        $('miscWrap').style.display='flex';$('miscInput').focus();
+        $('chooser').querySelectorAll('button[data-m]').forEach(x=>{x.onclick=null;});
+        const doMisc=()=>{const lbl=$('miscInput').value.trim()||'Misc';finishAdd('misc',lbl);};
+        $('miscSave').onclick=doMisc;
+        $('miscInput').addEventListener('keydown',e=>{if(e.key==='Enter')doMisc();});
+      } else {
+        finishAdd(m,{breakfast:'Breakfast',lunch:'Lunch',dinner:'Dinner'}[m]||m);
+      }
+    };
+  });
+}
+function finishAdd(meal,mealLabel){addItem(pendingName,pendingType,meal,mealLabel);$('foodInput').value='';$('chooser').innerHTML='';$('foodInput').focus();pendingName='';pendingType='';}
+function delItem(id){const key=fmtKey(current);state.logs[key]=(state.logs[key]||[]).filter(i=>i.id!==id);save();renderAll();}
+function renderHeader(){
+  $('dateMain').textContent=current.toLocaleDateString(undefined,{month:'long',day:'numeric',year:'numeric'});
+  $('dateRel').textContent=relLabel(current);$('datePicker').value=fmtKey(current);
+}
+function renderStats(){
+  const items=dayLog(fmtKey(current));
+  const p=items.filter(i=>i.type==='protein').length,j=items.filter(i=>i.type==='junk').length,target=state.settings.proteinTarget;
+  $('proteinNum').textContent=p;$('junkNum').textContent=j;$('goalNum').textContent=target;
+  $('proteinSub').textContent=p>=target?'goal hit! \uD83C\uDF89':String(target-p)+' more to hit goal';
+  $('junkSub').textContent=j===0?'clean so far \u2728':j===1?'1 slip today':j+' slips today';
+  $('junkCard').classList.toggle('pulse',j>=3);
+  const b=$('banner');b.className='';b.textContent='';
+  if(j>=3){b.className='banner warn';b.textContent='\u26A0\uFE0F  '+j+' junk items today \u2014 open motivation board.';}
+  else if(p<target&&(p+j)>0){b.className='banner nudge';b.textContent='\uD83E\uDD5A Protein light \u2014 '+(target-p)+' more to hit goal.';}
+  else if(p>=target&&j===0&&items.length>0){b.className='banner good';b.textContent='\u2705 Goal hit, zero junk. Strong day.';}
+}
+let dragSrcId=null;
+function renderList(){
+  const items=[...dayLog(fmtKey(current))].sort((a,b)=>(a.order||0)-(b.order||0));
+  const el=$('list');
+  if(!items.length){el.innerHTML='<div class="empty">Nothing logged yet. Add your first item above.</div>';return;}
+  const ico={protein:'&#x1F4AA;',junk:'&#x1F354;',normal:'&#x1F37D;&#xFE0F;'};
+  const tag={protein:'Protein',junk:'Junk',normal:'Food'};
+  el.innerHTML=items.map(i=>'<div class="item '+i.type+'" draggable="true" data-id="'+i.id+'">'
+    +'<span class="drag-handle" title="Drag to reorder">\u22EE\u22EE</span>'
+    +'<span class="ico">'+ico[i.type]+'</span>'
+    +'<span class="name">'+esc(i.name)+'</span>'
+    +'<span class="meal-tag">'+esc(i.mealLabel||i.meal||'')+'</span>'
+    +'<span class="type-tag">'+tag[i.type]+'</span>'
+    +'<button class="del" data-id="'+i.id+'">\u00D7</button></div>').join('');
+  el.querySelectorAll('.del').forEach(b=>b.onclick=e=>{e.stopPropagation();delItem(b.dataset.id);});
+  setupDrag(el,fmtKey(current));
+}
+function setupDrag(el,key){
+  el.querySelectorAll('.item[data-id]').forEach(row=>{
+    row.addEventListener('dragstart',e=>{dragSrcId=row.dataset.id;setTimeout(()=>row.classList.add('dragging'),0);e.dataTransfer.effectAllowed='move';});
+    row.addEventListener('dragend',()=>{row.classList.remove('dragging');el.querySelectorAll('.item').forEach(r=>r.classList.remove('drag-over'));});
+    row.addEventListener('dragover',e=>{e.preventDefault();if(row.dataset.id===dragSrcId)return;el.querySelectorAll('.item').forEach(r=>r.classList.remove('drag-over'));row.classList.add('drag-over');});
+    row.addEventListener('drop',e=>{e.preventDefault();if(!dragSrcId||row.dataset.id===dragSrcId)return;const logs=state.logs[key]||[];const si=logs.findIndex(x=>x.id===dragSrcId),di=logs.findIndex(x=>x.id===row.dataset.id);if(si<0||di<0)return;const[mv]=logs.splice(si,1);logs.splice(di,0,mv);logs.forEach((x,i)=>x.order=i+1);state.logs[key]=logs;save();renderList();});
+  });
+}
+function renderSidebar(){
+  const days7=[];for(let i=6;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);days7.push(d);}
+  const jd=days7.map(d=>({d,j:dayLog(fmtKey(d)).filter(x=>x.type==='junk').length}));
+  const maxJ=Math.max(1,...jd.map(x=>x.j));
+  $('junkBadge').textContent=jd.reduce((s,x)=>s+x.j,0)+' this week';
+  $('minibars').innerHTML=jd.map(x=>{const isT=fmtKey(x.d)===todayKey();const h=Math.max(0,Math.round(x.j/maxJ*100));return'<div class="mbc'+(isT?' td':'')+'"><div class="bar" style="height:'+h+'%"></div><div class="lbl">'+x.d.toLocaleDateString(undefined,{weekday:'short'}).slice(0,2)+'</div></div>';}).join('');
+  const junkDays=Object.entries(state.logs).map(([k,items])=>({k,items:items.filter(x=>x.type==='junk')})).filter(x=>x.items.length>0).sort((a,b)=>b.k.localeCompare(a.k));
+  if(!junkDays.length){$('jhlist').innerHTML='<div class="jh-empty">\uD83C\uDF89 No junk logged yet! Keep it up.</div>';return;}
+  $('jhlist').innerHTML=junkDays.map(x=>'<div class="jhday"><div class="jdate">'+prettyDate(x.k)+' \u00B7 '+x.items.length+' item'+(x.items.length>1?'s':'')+'</div><div class="jitems">'+x.items.map(i=>'<div class="ji">'+esc(i.name)+'</div>').join('')+'</div></div>').join('');
+}
+function renderHistory(){
+  const allDays=Object.entries(state.logs).sort((a,b)=>b[0].localeCompare(a[0]));
+  const days7=[];for(let i=6;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);days7.push(d);}
+  const pDays=allDays.map(([k,items])=>({k,items:items.filter(x=>x.type==='protein')})).filter(x=>x.items.length>0);
+  const pd7=days7.map(d=>({d,p:dayLog(fmtKey(d)).filter(x=>x.type==='protein').length}));
+  const maxP=Math.max(1,...pd7.map(x=>x.p));
+  const totalPW=pd7.reduce((s,x)=>s+x.p,0);
+  let pStreak=0;for(let i=0;i<60;i++){const d=new Date();d.setDate(d.getDate()-i);if(dayLog(fmtKey(d)).filter(x=>x.type==='protein').length>=state.settings.proteinTarget)pStreak++;else break;}
+  const totalP=Object.values(state.logs).flat().filter(x=>x.type==='protein').length;
+  const pChart='<div class="hist-bars">'+pd7.map(x=>{const isT=fmtKey(x.d)===todayKey();const h=Math.max(0,Math.round(x.p/maxP*100));return'<div class="hbc'+(isT?' td':'')+'"><div class="bar" style="height:'+h+'%;background:var(--gr)"></div><div class="lbl">'+x.d.toLocaleDateString(undefined,{weekday:'short'}).slice(0,2)+'</div></div>';}).join('')+'</div>';
+  const pHTML='<h2 style="color:var(--grd)">&#x1F4AA; Protein History</h2><div class="subdesc">Your full protein log &mdash; every item, every day.</div>'
+    +'<div class="hist-chart-card"><h4>Last 7 days</h4>'+pChart+'<div class="hist-legend">'+totalPW+' protein items this week</div></div>'
+    +'<div class="hist-streaks"><div class="hist-streak pstreak"><div class="big">'+pStreak+'</div><div class="cap">day goal streak</div></div><div class="hist-streak pstreak" style="background:var(--gos)"><div class="big" style="color:#8a6418">'+totalP+'</div><div class="cap">all-time total</div></div></div>'
+    +(pDays.length===0?'<div class="hist-empty">No protein items logged yet.</div>':
+    '<div class="hist-list">'+pDays.map(d=>'<div class="hist-day"><div class="hist-day-head"><span class="date">'+prettyDate(d.k)+'</span><span class="cnt cnt-p">'+d.items.length+' item'+(d.items.length>1?'s':'')+'</span></div><div class="hist-day-items">'+d.items.sort((a,b)=>(a.order||0)-(b.order||0)).map(i=>'<div class="hist-item pi">&#x1F4AA; <span>'+esc(i.name)+'</span>'+(i.mealLabel?'<span class="mlbl">'+esc(i.mealLabel)+'</span>':'')+'</div>').join('')+'</div></div>').join('')+'</div>');
+  const jDays=allDays.map(([k,items])=>({k,items:items.filter(x=>x.type==='junk')})).filter(x=>x.items.length>0);
+  const jd7=days7.map(d=>({d,j:dayLog(fmtKey(d)).filter(x=>x.type==='junk').length}));
+  const maxJJ=Math.max(1,...jd7.map(x=>x.j));
+  const totalJW=jd7.reduce((s,x)=>s+x.j,0);
+  let jClean=0;for(let i=0;i<90;i++){const d=new Date();d.setDate(d.getDate()-i);if(dayLog(fmtKey(d)).some(x=>x.type==='junk'))break;jClean++;}
+  const totalJ=Object.values(state.logs).flat().filter(x=>x.type==='junk').length;
+  const jChart='<div class="hist-bars">'+jd7.map(x=>{const isT=fmtKey(x.d)===todayKey();const h=Math.max(0,Math.round(x.j/maxJJ*100));return'<div class="hbc'+(isT?' td':'')+'"><div class="bar" style="height:'+h+'%;background:var(--re)"></div><div class="lbl">'+x.d.toLocaleDateString(undefined,{weekday:'short'}).slice(0,2)+'</div></div>';}).join('')+'</div>';
+  const jHTML='<h2 style="color:var(--red)">&#x1F354; Junk History</h2><div class="subdesc">Every junk item logged &mdash; see the patterns clearly.</div>'
+    +'<div class="hist-chart-card"><h4>Last 7 days</h4>'+jChart+'<div class="hist-legend">'+totalJW+' junk items this week</div></div>'
+    +'<div class="hist-streaks"><div class="hist-streak jstreak-clean"><div class="big">'+jClean+'</div><div class="cap">days clean of junk</div></div><div class="hist-streak jstreak"><div class="big">'+totalJ+'</div><div class="cap">all-time total</div></div></div>'
+    +(jDays.length===0?'<div class="hist-empty">\uD83C\uDF89 No junk logged yet!</div>':
+    '<div class="hist-list">'+jDays.map(d=>'<div class="hist-day"><div class="hist-day-head"><span class="date">'+prettyDate(d.k)+'</span><span class="cnt cnt-j">'+d.items.length+' item'+(d.items.length>1?'s':'')+'</span></div><div class="hist-day-items">'+d.items.sort((a,b)=>(a.order||0)-(b.order||0)).map(i=>'<div class="hist-item ji">&#x1F354; <span>'+esc(i.name)+'</span>'+(i.mealLabel?'<span class="mlbl">'+esc(i.mealLabel)+'</span>':'')+'</div>').join('')+'</div></div>').join('')+'</div>');
+  $('proteinHistCol').innerHTML=pHTML;$('junkHistCol').innerHTML=jHTML;
+}
+function imgSrc(m){return m.stored?(imgCache[m.id]||''):m.url;}
+function renderMotivation(){
+  const el=$('moContent');
+  if(!state.motivation.length){el.innerHTML='<div class="moempty">Nothing here yet. Add a photo that keeps you going.</div>';return;}
+  el.innerHTML='<div class="mogrid">'+state.motivation.map(m=>'<div class="mocard" data-id="'+m.id+'"><img src="'+esc(imgSrc(m))+'" alt="" loading="lazy" onerror="this.style.opacity=\'.15\'"><button class="mx" data-id="'+m.id+'">\u00D7</button>'+(m.caption?'<div class="cap2">'+esc(m.caption)+'</div>':'')+'</div>').join('')+'</div>';
+  el.querySelectorAll('.mx').forEach(b=>{b.onclick=async e=>{e.stopPropagation();const m=state.motivation.find(x=>x.id===b.dataset.id);if(m&&m.stored)await delImg(m.id);state.motivation=state.motivation.filter(x=>x.id!==b.dataset.id);save();renderMotivation();};});
+  el.querySelectorAll('.mocard').forEach(card=>{card.onclick=e=>{if(e.target.classList.contains('mx'))return;ovIdx=state.motivation.findIndex(m=>m.id===card.dataset.id);if(ovIdx<0)ovIdx=0;showOverlay();$('overlay').classList.add('on');};});
+}
+function compressImage(file,cb){
+  const MAX=900,img=new Image(),url=URL.createObjectURL(file);
+  img.onload=()=>{let{width:w,height:h}=img;if(w>MAX||h>MAX){if(w>h){h=Math.round(h*MAX/w);w=MAX;}else{w=Math.round(w*MAX/h);h=MAX;}}const cv=document.createElement('canvas');cv.width=w;cv.height=h;cv.getContext('2d').drawImage(img,0,0,w,h);URL.revokeObjectURL(url);cb(cv.toDataURL('image/jpeg',.73));};
+  img.onerror=()=>URL.revokeObjectURL(url);img.src=url;
+}
+function handleFiles(files){Array.from(files).forEach(f=>{if(!f.type.startsWith('image/'))return;const cap=prompt('Caption? (Enter to skip)','')?.trim()||'';compressImage(f,async data=>{const id=uid();imgCache[id]=data;state.motivation.push({id,stored:true,caption:cap});save();await saveImg(id,data);renderMotivation();});});}
+let ovIdx=0;
+function showOverlay(){const m=state.motivation[ovIdx];if(!m)return;$('ovImg').src=imgSrc(m);$('ovCap').textContent=m.caption||'';$('ovCount').textContent=(ovIdx+1)+' / '+state.motivation.length;}
+function openOverlay(){if(!state.motivation.length){alert('Add a motivation image first!');return;}ovIdx=0;showOverlay();$('overlay').classList.add('on');}
+function ovStep(n){ovIdx=(ovIdx+n+state.motivation.length)%state.motivation.length;showOverlay();}
+let currentView='today';
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.onclick=()=>{
+    currentView=tab.dataset.view;
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));$('view-'+currentView).classList.add('on');
+    const isToday=currentView==='today';
+    $('daynavWrap').style.display=isToday?'flex':'none';$('datepickWrap').style.display=isToday?'flex':'none';
+    if(currentView==='history')renderHistory();
+  };
+});
+function renderAll(){renderHeader();renderStats();renderList();renderSidebar();renderMotivation();if(currentView==='history')renderHistory();}
+$('addBtn').onclick=tryAdd;
+$('foodInput').addEventListener('keydown',e=>{if(e.key==='Enter')tryAdd();});
+$('prev').onclick=()=>{current.setDate(current.getDate()-1);renderAll();};
+$('next').onclick=()=>{current.setDate(current.getDate()+1);renderAll();};
+$('datePicker').onchange=e=>{if(e.target.value){const[y,m,d]=e.target.value.split('-').map(Number);current=new Date(y,m-1,d);renderAll();}};
+$('gUp').onclick=e=>{e.stopPropagation();state.settings.proteinTarget++;save();renderStats();};
+$('gDown').onclick=e=>{e.stopPropagation();state.settings.proteinTarget=Math.max(1,state.settings.proteinTarget-1);save();renderStats();};
+$('moAddBtn').onclick=()=>{const url=$('moUrl').value.trim();if(!url)return;state.motivation.push({id:uid(),url,caption:$('moCap').value.trim(),stored:false});$('moUrl').value='';$('moCap').value='';save();renderMotivation();};
+$('moUrl').addEventListener('keydown',e=>{if(e.key==='Enter')$('moAddBtn').click();});
+$('uploadBtn').onclick=()=>$('fileInput').click();
+$('fileInput').onchange=e=>{handleFiles(e.target.files);e.target.value='';};
+$('urgeBtn').onclick=openOverlay;
+$('ovClose').onclick=()=>$('overlay').classList.remove('on');
+$('ovPrev').onclick=()=>ovStep(-1);$('ovNext').onclick=()=>ovStep(1);
+document.addEventListener('keydown',e=>{if($('overlay').classList.contains('on')){if(e.key==='Escape')$('overlay').classList.remove('on');if(e.key==='ArrowRight')ovStep(1);if(e.key==='ArrowLeft')ovStep(-1);}});
+(async()=>{
+  // Check table exists on first load
+  const testRes = await _db.from('plate_storage').select('key').limit(1);
+  if(testRes.error && testRes.error.code==='42P01'){
+    // Table doesn't exist yet - show setup banner
+    document.body.insertAdjacentHTML('afterbegin',
+      '<div id="setupBanner" style="position:fixed;top:0;left:0;right:0;z-index:999;background:#D13B26;color:#fff;padding:16px 24px;font-family:Hanken Grotesk,sans-serif;font-size:15px;display:flex;align-items:center;gap:16px;box-shadow:0 4px 20px rgba(0,0,0,.2)">'
+      +'<b style="font-size:22px">&#9888;</b>'
+      +'<span>Database table not set up yet. Go to your <b>Supabase dashboard &rarr; SQL Editor</b> and run the SQL below, then refresh this page.</span>'
+      +'<button onclick="navigator.clipboard.writeText(document.getElementById(\'setupSql\').textContent);this.textContent=\'Copied!\'" style="background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:8px;padding:8px 14px;cursor:pointer;font-family:inherit;font-weight:700;white-space:nowrap">Copy SQL</button>'
+      +'</div>'
+      +'<pre id="setupSql" style="display:none">create table plate_storage (\n  key text primary key,\n  value text,\n  updated_at timestamptz default now()\n);\nalter table plate_storage enable row level security;\ncreate policy "allow all" on plate_storage for all using (true) with check (true);</pre>'
+    );
+    return;
+  }
+  await loadState();renderAll();
+})();
+</script>
+</body>
+</html>
