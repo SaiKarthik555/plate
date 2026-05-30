@@ -174,8 +174,50 @@ input[type=date]#datePicker:focus{border-color:var(--ink)}
 .ov-nav button:hover{background:rgba(255,255,255,.28)}
 .ov-count{color:rgba(255,255,255,.42);text-align:center;margin-top:8px;font-size:12px}
 footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;font-family:"Fraunces",serif;font-style:italic}
-@media(max-width:820px){.layout{grid-template-columns:1fr}.sidebar{position:static;max-height:none}.hist-layout{grid-template-columns:1fr}}
-@media(max-width:520px){.stats{grid-template-columns:1fr}.wrap{padding:0 14px}.brand h1{font-size:28px}}
+@media(max-width:820px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:static;max-height:none;order:2}
+  .main{order:1}
+  .hist-layout{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  /* Header */
+  header{flex-direction:column;align-items:flex-start;gap:10px;padding:16px 0 0}
+  .brand h1{font-size:28px}
+  .daynav{width:100%;justify-content:space-between}
+  .datepick-wrap{width:100%}
+  input[type=date]#datePicker{width:100%}
+
+  /* Stat cards — more compact on mobile */
+  .stats{grid-template-columns:1fr 1fr;gap:10px}
+  .stat{padding:14px 16px}
+  .stat .num{font-size:42px;margin:4px 0 2px}
+  .stat .sub{font-size:13px}
+  .stat .lbl{font-size:11px}
+  .goalrow{flex-wrap:wrap;gap:5px}
+
+  /* Add bar */
+  .addrow input{font-size:15px;padding:12px 13px}
+  .gobtn{padding:0 16px;font-size:15px}
+
+  /* Food items */
+  .item .name{font-size:14px}
+  .item .meal-tag,.item .type-tag{font-size:10px;padding:2px 7px}
+
+  /* Motivation section */
+  .moverbar{flex-direction:column;align-items:flex-start}
+  .urge{width:100%;justify-content:center}
+  .moaddrow{flex-direction:column}
+  .moaddrow input.url,.moaddrow input.cap{width:100%;min-width:unset}
+  .moaddrow .addbtn,.uploadbtn{width:100%;justify-content:center;text-align:center}
+
+  /* Tabs */
+  .tab{font-size:14px;padding:10px 14px}
+
+  /* History page */
+  .hist-streak .big{font-size:34px}
+  .hist-item{font-size:13.5px}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
