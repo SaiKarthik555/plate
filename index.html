@@ -456,7 +456,7 @@ function renderHistory(){
   const pd7=days7.map(d=>({d,p:dayLog(fmtKey(d)).filter(x=>x.type==='protein').length}));
   const maxP=Math.max(1,...pd7.map(x=>x.p));
   const totalPW=pd7.reduce((s,x)=>s+x.p,0);
-  let pStreak=0;for(let i=0;i<60;i++){const d=new Date();d.setDate(d.getDate()-i);if(dayLog(fmtKey(d)).filter(x=>x.type==='protein').length>=state.settings.proteinTarget)pStreak++;else break;}
+  let pStreak=0;for(let i=0;i<60;i++){const d=new Date();d.setDate(d.getDate()-i);const dl=dayLog(fmtKey(d));if(dl.length===0)break;if(dl.filter(x=>x.type==='protein').length>=state.settings.proteinTarget)pStreak++;else break;}
   const totalP=Object.values(state.logs).flat().filter(x=>x.type==='protein').length;
   const pChart='<div class="hist-bars">'+pd7.map(x=>{const isT=fmtKey(x.d)===todayKey();const h=Math.max(0,Math.round(x.p/maxP*100));return'<div class="hbc'+(isT?' td':'')+'"><div class="bar" style="height:'+h+'%;background:var(--gr)"></div><div class="lbl">'+x.d.toLocaleDateString(undefined,{weekday:'short'}).slice(0,2)+'</div></div>';}).join('')+'</div>';
   const pHTML='<h2 style="color:var(--grd)">&#x1F4AA; Protein History</h2><div class="subdesc">Your full protein log &mdash; every item, every day.</div>'
@@ -468,7 +468,7 @@ function renderHistory(){
   const jd7=days7.map(d=>({d,j:dayLog(fmtKey(d)).filter(x=>x.type==='junk').length}));
   const maxJJ=Math.max(1,...jd7.map(x=>x.j));
   const totalJW=jd7.reduce((s,x)=>s+x.j,0);
-  let jClean=0;for(let i=0;i<90;i++){const d=new Date();d.setDate(d.getDate()-i);if(dayLog(fmtKey(d)).some(x=>x.type==='junk'))break;jClean++;}
+  let jClean=0;for(let i=0;i<90;i++){const d=new Date();d.setDate(d.getDate()-i);const dl=dayLog(fmtKey(d));if(dl.length===0)break;if(dl.some(x=>x.type==='junk'))break;jClean++;}
   const totalJ=Object.values(state.logs).flat().filter(x=>x.type==='junk').length;
   const jChart='<div class="hist-bars">'+jd7.map(x=>{const isT=fmtKey(x.d)===todayKey();const h=Math.max(0,Math.round(x.j/maxJJ*100));return'<div class="hbc'+(isT?' td':'')+'"><div class="bar" style="height:'+h+'%;background:var(--re)"></div><div class="lbl">'+x.d.toLocaleDateString(undefined,{weekday:'short'}).slice(0,2)+'</div></div>';}).join('')+'</div>';
   const jHTML='<h2 style="color:var(--red)">&#x1F354; Junk History</h2><div class="subdesc">Every junk item logged &mdash; see the patterns clearly.</div>'
