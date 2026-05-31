@@ -66,7 +66,7 @@ input[type=date]#datePicker:focus{border-color:var(--ink)}
 .cp:hover{border-color:var(--gr)!important;background:var(--grs)!important;color:var(--grd)!important}
 .cj:hover{border-color:var(--re)!important;background:var(--res)!important;color:var(--red)!important}
 .cn:hover{border-color:var(--muted)!important;background:#edebe3!important}
-.meal-choices{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.meal-choices{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
 .meal-choices button{flex-direction:row;justify-content:flex-start;padding:11px 14px}
 .meal-choices button:hover{border-color:var(--ink);background:var(--card)}
 .misc-input-wrap{margin-top:10px;display:flex;gap:8px}
@@ -130,6 +130,10 @@ input[type=date]#datePicker:focus{border-color:var(--ink)}
 .jhday .ji{font-size:13px;color:var(--ink);display:flex;align-items:center;gap:5px}
 .jh-empty{text-align:center;color:var(--grd);font-size:13.5px;font-family:"Fraunces",serif;font-style:italic;padding:16px 10px;background:var(--grs);border-radius:10px;flex-shrink:0}
 .hist-layout{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.htabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+.htab{background:var(--card);border:1px solid var(--line);border-radius:30px;padding:9px 18px;font-family:inherit;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer;transition:.15s}
+.htab:hover{border-color:var(--ink);color:var(--ink)}
+.htab.active{background:var(--ink);color:var(--p2);border-color:var(--ink)}
 .hist-col h2{font-family:"Fraunces",serif;font-size:24px;font-weight:600;margin-bottom:6px}
 .hist-col .subdesc{font-size:14px;color:var(--muted);margin-bottom:18px}
 .hist-chart-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--sh);margin-bottom:20px}
@@ -285,10 +289,14 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;fon
   </div>
 </div>
 <div class="view" id="view-history">
-  <div class="hist-layout">
-    <div class="hist-col" id="proteinHistCol"></div>
-    <div class="hist-col" id="junkHistCol"></div>
+  <div class="htabs">
+    <button class="htab active" data-ht="protein">&#x1F4AA; Protein</button>
+    <button class="htab" data-ht="junk">&#x1F354; Junk</button>
+    <button class="htab" data-ht="morning">&#x2615; Morning Drink</button>
   </div>
+  <div id="proteinHistCol"></div>
+  <div id="junkHistCol"></div>
+  <div id="morningHistCol"></div>
 </div>
 <footer>Plate &middot; saves automatically &middot; drag items to reorder</footer>
 </div>
@@ -374,12 +382,14 @@ function tryAdd(){
 function showMealPicker(){
   $('chooser').innerHTML='<div class="chooser"><div class="chooser-title">When did you have <b>'+esc(pendingName)+'</b>?</div>'
     +'<div class="meal-choices">'
+    +'<button data-m="morningdrink"><span class="emo">&#x2615;</span> Morning Drink</button>'
     +'<button data-m="breakfast"><span class="emo">&#x1F305;</span> Breakfast</button>'
     +'<button data-m="lunch"><span class="emo">&#x2600;&#xFE0F;</span> Lunch</button>'
+    +'<button data-m="evening"><span class="emo">&#x1F306;</span> Evening</button>'
     +'<button data-m="dinner"><span class="emo">&#x1F319;</span> Dinner</button>'
     +'<button data-m="misc"><span class="emo">&#x270F;&#xFE0F;</span> Misc / custom</button>'
     +'</div><div id="miscWrap" style="display:none" class="misc-input-wrap">'
-    +'<input id="miscInput" placeholder="e.g. morning drink, afternoon snack..." autocomplete="off"/>'
+    +'<input id="miscInput" placeholder="e.g. mid-afternoon snack, post workout..." autocomplete="off"/>'
     +'<button id="miscSave">Add</button></div></div>';
   $('chooser').querySelectorAll('button[data-m]').forEach(b=>{
     b.onclick=()=>{
@@ -391,7 +401,7 @@ function showMealPicker(){
         $('miscSave').onclick=doMisc;
         $('miscInput').addEventListener('keydown',e=>{if(e.key==='Enter')doMisc();});
       } else {
-        finishAdd(m,{breakfast:'Breakfast',lunch:'Lunch',dinner:'Dinner'}[m]||m);
+        finishAdd(m,{morningdrink:'Morning Drink',breakfast:'Breakfast',lunch:'Lunch',evening:'Evening',dinner:'Dinner'}[m]||m);
       }
     };
   });
@@ -450,33 +460,122 @@ function renderSidebar(){
   $('jhlist').innerHTML=junkDays.map(x=>'<div class="jhday"><div class="jdate">'+prettyDate(x.k)+' \u00B7 '+x.items.length+' item'+(x.items.length>1?'s':'')+'</div><div class="jitems">'+x.items.map(i=>'<div class="ji">'+esc(i.name)+'</div>').join('')+'</div></div>').join('');
 }
 function renderHistory(){
-  const allDays=Object.entries(state.logs).sort((a,b)=>b[0].localeCompare(a[0]));
-  const days7=[];for(let i=6;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);days7.push(d);}
+  const allDays=Object.entries(state.logs).sort((a,b)=>a[0].localeCompare(b[0]));
+
+  // Build date range from May 23 2026 to today
+  const startDate=new Date(2026,4,23); // May 23 2026
+  const today=new Date();
+  const dateRange=[];
+  for(let d=new Date(startDate);d<=today;d.setDate(d.getDate()+1)){
+    dateRange.push(fmtKey(new Date(d)));
+  }
+
+  // Render whichever tab is active
+  const activeTab=state.histTab||'protein';
+  document.querySelectorAll('.htab').forEach(t=>{
+    t.classList.toggle('active', t.dataset.ht===activeTab);
+  });
+
+  if(activeTab==='protein') renderProteinHistory(allDays,dateRange);
+  else if(activeTab==='junk') renderJunkHistory(allDays,dateRange);
+  else if(activeTab==='morning') renderMorningHistory(allDays,dateRange);
+}
+
+function makeScrollChart(dateRange, dataFn, color, label){
+  // For each date, get items
+  const dayData = dateRange.map(k=>({k, items: dataFn(k)}));
+  const maxItems = Math.max(1, ...dayData.map(x=>x.items.length));
+  const BAR_W = 12; // width of each thin bar
+  const GAP = 3;    // gap between bars in same day
+  const DAY_W = 52; // total width per day slot
+  const H = 80;     // chart height
+
+  const totalW = Math.max(dateRange.length * DAY_W, 1);
+
+  let bars = '';
+  dayData.forEach((day, di)=>{
+    const x = di * DAY_W;
+    if(day.items.length === 0){
+      // empty day — tiny baseline
+      bars += `<rect x="${x+DAY_W/2-1}" y="${H-2}" width="2" height="2" rx="1" fill="${color}" opacity="0.2"/>`;
+    } else {
+      const n = day.items.length;
+      const totalBarsW = n * BAR_W + (n-1) * GAP;
+      const startX = x + (DAY_W - totalBarsW) / 2;
+      day.items.forEach((item, ii)=>{
+        const bh = Math.max(6, Math.round((1/maxItems)*H*0.85) + Math.round(Math.random()*0)); // each bar same height based on max
+        const bh2 = Math.round((day.items.length/maxItems)*H*0.85);
+        const bx = startX + ii*(BAR_W+GAP);
+        bars += `<rect x="${bx}" y="${H-bh2}" width="${BAR_W}" height="${bh2}" rx="3" fill="${color}" opacity="0.85"/>`;
+      });
+    }
+    // Date label — show dd/mm
+    const [y,m,d]=day.k.split('-');
+    const lbl = d+'/'+m;
+    const isToday = day.k===todayKey();
+    bars += `<text x="${x+DAY_W/2}" y="${H+14}" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="${isToday?'#21231E':'#B0A898'}" font-weight="${isToday?'800':'500'}" text-anchor="middle">${lbl}</text>`;
+  });
+
+  return `<div style="overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px">
+    <svg width="${totalW}" height="${H+24}" xmlns="http://www.w3.org/2000/svg">
+      ${bars}
+    </svg>
+  </div>`;
+}
+
+function renderProteinHistory(allDays, dateRange){
   const pDays=allDays.map(([k,items])=>({k,items:items.filter(x=>x.type==='protein')})).filter(x=>x.items.length>0);
-  const pd7=days7.map(d=>({d,p:dayLog(fmtKey(d)).filter(x=>x.type==='protein').length}));
-  const maxP=Math.max(1,...pd7.map(x=>x.p));
-  const totalPW=pd7.reduce((s,x)=>s+x.p,0);
+  const totalPW=dateRange.slice(-7).reduce((s,k)=>s+dayLog(k).filter(x=>x.type==='protein').length,0);
   let pStreak=0;for(let i=0;i<60;i++){const d=new Date();d.setDate(d.getDate()-i);const dl=dayLog(fmtKey(d));if(dl.length===0)break;if(dl.filter(x=>x.type==='protein').length>=state.settings.proteinTarget)pStreak++;else break;}
   const totalP=Object.values(state.logs).flat().filter(x=>x.type==='protein').length;
-  const pChart='<div class="hist-bars">'+pd7.map(x=>{const isT=fmtKey(x.d)===todayKey();const h=Math.max(0,Math.round(x.p/maxP*100));return'<div class="hbc'+(isT?' td':'')+'"><div class="bar" style="height:'+h+'%;background:var(--gr)"></div><div class="lbl">'+x.d.toLocaleDateString(undefined,{weekday:'short'}).slice(0,2)+'</div></div>';}).join('')+'</div>';
-  const pHTML='<h2 style="color:var(--grd)">&#x1F4AA; Protein History</h2><div class="subdesc">Your full protein log &mdash; every item, every day.</div>'
-    +'<div class="hist-chart-card"><h4>Last 7 days</h4>'+pChart+'<div class="hist-legend">'+totalPW+' protein items this week</div></div>'
+
+  const chart = makeScrollChart(dateRange, k=>dayLog(k).filter(x=>x.type==='protein'), 'var(--gr)', 'protein');
+
+  const html='<div class="hist-chart-card"><h4>All days since 23 May &mdash; scroll right for full history</h4>'+chart+'<div class="hist-legend">'+totalPW+' protein items in last 7 days &nbsp;|&nbsp; '+totalP+' all-time</div></div>'
     +'<div class="hist-streaks"><div class="hist-streak pstreak"><div class="big">'+pStreak+'</div><div class="cap">day goal streak</div></div><div class="hist-streak pstreak" style="background:var(--gos)"><div class="big" style="color:#8a6418">'+totalP+'</div><div class="cap">all-time total</div></div></div>'
     +(pDays.length===0?'<div class="hist-empty">No protein items logged yet.</div>':
-    '<div class="hist-list">'+pDays.map(d=>'<div class="hist-day"><div class="hist-day-head"><span class="date">'+prettyDate(d.k)+'</span><span class="cnt cnt-p">'+d.items.length+' item'+(d.items.length>1?'s':'')+'</span></div><div class="hist-day-items">'+d.items.sort((a,b)=>(a.order||0)-(b.order||0)).map(i=>'<div class="hist-item pi">&#x1F4AA; <span>'+esc(i.name)+'</span>'+(i.mealLabel?'<span class="mlbl">'+esc(i.mealLabel)+'</span>':'')+'</div>').join('')+'</div></div>').join('')+'</div>');
+    '<div class="hist-list">'+pDays.slice().reverse().map(d=>'<div class="hist-day"><div class="hist-day-head"><span class="date">'+prettyDate(d.k)+'</span><span class="cnt cnt-p">'+d.items.length+' item'+(d.items.length>1?'s':'')+'</span></div><div class="hist-day-items">'+d.items.sort((a,b)=>(a.order||0)-(b.order||0)).map(i=>'<div class="hist-item pi">&#x1F4AA; <span>'+esc(i.name)+'</span>'+(i.mealLabel?'<span class="mlbl">'+esc(i.mealLabel)+'</span>':'')+'</div>').join('')+'</div></div>').join('')+'</div>');
+
+  $('proteinHistCol').innerHTML='<h2 style="color:var(--grd)">&#x1F4AA; Protein History</h2><div class="subdesc">Every protein item, every day.</div>'+html;
+  $('junkHistCol').innerHTML='';
+  $('morningHistCol').innerHTML='';
+}
+
+function renderJunkHistory(allDays, dateRange){
   const jDays=allDays.map(([k,items])=>({k,items:items.filter(x=>x.type==='junk')})).filter(x=>x.items.length>0);
-  const jd7=days7.map(d=>({d,j:dayLog(fmtKey(d)).filter(x=>x.type==='junk').length}));
-  const maxJJ=Math.max(1,...jd7.map(x=>x.j));
-  const totalJW=jd7.reduce((s,x)=>s+x.j,0);
+  const totalJW=dateRange.slice(-7).reduce((s,k)=>s+dayLog(k).filter(x=>x.type==='junk').length,0);
   let jClean=0;for(let i=0;i<90;i++){const d=new Date();d.setDate(d.getDate()-i);const dl=dayLog(fmtKey(d));if(dl.length===0)break;if(dl.some(x=>x.type==='junk'))break;jClean++;}
   const totalJ=Object.values(state.logs).flat().filter(x=>x.type==='junk').length;
-  const jChart='<div class="hist-bars">'+jd7.map(x=>{const isT=fmtKey(x.d)===todayKey();const h=Math.max(0,Math.round(x.j/maxJJ*100));return'<div class="hbc'+(isT?' td':'')+'"><div class="bar" style="height:'+h+'%;background:var(--re)"></div><div class="lbl">'+x.d.toLocaleDateString(undefined,{weekday:'short'}).slice(0,2)+'</div></div>';}).join('')+'</div>';
-  const jHTML='<h2 style="color:var(--red)">&#x1F354; Junk History</h2><div class="subdesc">Every junk item logged &mdash; see the patterns clearly.</div>'
-    +'<div class="hist-chart-card"><h4>Last 7 days</h4>'+jChart+'<div class="hist-legend">'+totalJW+' junk items this week</div></div>'
+
+  const chart = makeScrollChart(dateRange, k=>dayLog(k).filter(x=>x.type==='junk'), 'var(--re)', 'junk');
+
+  const html='<div class="hist-chart-card"><h4>All days since 23 May &mdash; scroll right for full history</h4>'+chart+'<div class="hist-legend">'+totalJW+' junk items in last 7 days &nbsp;|&nbsp; '+totalJ+' all-time</div></div>'
     +'<div class="hist-streaks"><div class="hist-streak jstreak-clean"><div class="big">'+jClean+'</div><div class="cap">days clean of junk</div></div><div class="hist-streak jstreak"><div class="big">'+totalJ+'</div><div class="cap">all-time total</div></div></div>'
-    +(jDays.length===0?'<div class="hist-empty">\uD83C\uDF89 No junk logged yet!</div>':
-    '<div class="hist-list">'+jDays.map(d=>'<div class="hist-day"><div class="hist-day-head"><span class="date">'+prettyDate(d.k)+'</span><span class="cnt cnt-j">'+d.items.length+' item'+(d.items.length>1?'s':'')+'</span></div><div class="hist-day-items">'+d.items.sort((a,b)=>(a.order||0)-(b.order||0)).map(i=>'<div class="hist-item ji">&#x1F354; <span>'+esc(i.name)+'</span>'+(i.mealLabel?'<span class="mlbl">'+esc(i.mealLabel)+'</span>':'')+'</div>').join('')+'</div></div>').join('')+'</div>');
-  $('proteinHistCol').innerHTML=pHTML;$('junkHistCol').innerHTML=jHTML;
+    +(jDays.length===0?'<div class="hist-empty">&#x1F389; No junk logged yet!</div>':
+    '<div class="hist-list">'+jDays.slice().reverse().map(d=>'<div class="hist-day"><div class="hist-day-head"><span class="date">'+prettyDate(d.k)+'</span><span class="cnt cnt-j">'+d.items.length+' item'+(d.items.length>1?'s':'')+'</span></div><div class="hist-day-items">'+d.items.sort((a,b)=>(a.order||0)-(b.order||0)).map(i=>'<div class="hist-item ji">&#x1F354; <span>'+esc(i.name)+'</span>'+(i.mealLabel?'<span class="mlbl">'+esc(i.mealLabel)+'</span>':'')+'</div>').join('')+'</div></div>').join('')+'</div>');
+
+  $('proteinHistCol').innerHTML='';
+  $('junkHistCol').innerHTML='<h2 style="color:var(--red)">&#x1F354; Junk History</h2><div class="subdesc">Every junk item logged.</div>'+html;
+  $('morningHistCol').innerHTML='';
+}
+
+function renderMorningHistory(allDays, dateRange){
+  const mDays=allDays.map(([k,items])=>({k,items:items.filter(x=>x.meal==='morningdrink')})).filter(x=>x.items.length>0);
+  const totalMW=dateRange.slice(-7).reduce((s,k)=>s+dayLog(k).filter(x=>x.meal==='morningdrink').length,0);
+  const totalM=Object.values(state.logs).flat().filter(x=>x.meal==='morningdrink').length;
+  // streak of consecutive logged days with morning drink
+  let mStreak=0;for(let i=0;i<90;i++){const d=new Date();d.setDate(d.getDate()-i);const dl=dayLog(fmtKey(d));if(dl.length===0)break;if(dl.some(x=>x.meal==='morningdrink'))mStreak++;else break;}
+
+  const chart = makeScrollChart(dateRange, k=>dayLog(k).filter(x=>x.meal==='morningdrink'), '#C98F22', 'morning');
+
+  const html='<div class="hist-chart-card"><h4>All days since 23 May &mdash; scroll right for full history</h4>'+chart+'<div class="hist-legend">'+totalMW+' morning drinks in last 7 days &nbsp;|&nbsp; '+totalM+' all-time</div></div>'
+    +'<div class="hist-streaks"><div class="hist-streak pstreak" style="background:var(--gos)"><div class="big" style="color:#8a6418">'+mStreak+'</div><div class="cap">day streak</div></div><div class="hist-streak pstreak" style="background:var(--gos)"><div class="big" style="color:#8a6418">'+totalM+'</div><div class="cap">all-time total</div></div></div>'
+    +(mDays.length===0?'<div class="hist-empty">&#x2615; No morning drinks logged yet.</div>':
+    '<div class="hist-list">'+mDays.slice().reverse().map(d=>'<div class="hist-day"><div class="hist-day-head"><span class="date">'+prettyDate(d.k)+'</span><span class="cnt" style="background:var(--gos);color:#8a6418">'+d.items.length+' item'+(d.items.length>1?'s':'')+'</span></div><div class="hist-day-items">'+d.items.sort((a,b)=>(a.order||0)-(b.order||0)).map(i=>'<div class="hist-item" style="background:var(--gos)">&#x2615; <span>'+esc(i.name)+'</span>'+(i.mealLabel?'<span class="mlbl">'+esc(i.mealLabel)+'</span>':'')+'</div>').join('')+'</div></div>').join('')+'</div>');
+
+  $('proteinHistCol').innerHTML='';
+  $('junkHistCol').innerHTML='';
+  $('morningHistCol').innerHTML='<h2 style="color:#8a6418">&#x2615; Morning Drink History</h2><div class="subdesc">Every morning drink logged.</div>'+html;
 }
 function imgSrc(m){return m.stored?(imgCache[m.id]||''):m.url;}
 function renderMotivation(){
@@ -497,6 +596,13 @@ function showOverlay(){const m=state.motivation[ovIdx];if(!m)return;$('ovImg').s
 function openOverlay(){if(!state.motivation.length){alert('Add a motivation image first!');return;}ovIdx=0;showOverlay();$('overlay').classList.add('on');}
 function ovStep(n){ovIdx=(ovIdx+n+state.motivation.length)%state.motivation.length;showOverlay();}
 let currentView='today';
+if(!state.histTab)state.histTab='protein';
+document.querySelectorAll('.htab').forEach(htab=>{
+  htab.onclick=()=>{
+    state.histTab=htab.dataset.ht;
+    renderHistory();
+  };
+});
 document.querySelectorAll('.tab').forEach(tab=>{
   tab.onclick=()=>{
     currentView=tab.dataset.view;
