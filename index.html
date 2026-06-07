@@ -33,7 +33,7 @@ input[type=date]#datePicker:focus{border-color:var(--ink)}
 .tab:hover{color:var(--ink)}.tab.active{color:var(--ink);border-bottom-color:var(--ink)}
 .view{display:none}.view.on{display:block}
 .layout{display:grid;grid-template-columns:1fr 290px;gap:24px;align-items:start}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}.stats-wrap{display:flex;flex-direction:column;gap:14px}
 .stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;box-shadow:var(--sh)}
 .stat .lbl{font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;display:flex;align-items:center;gap:7px}
 .stat .num{font-family:"Fraunces",serif;font-size:58px;font-weight:600;line-height:1;margin:6px 0 4px}
@@ -151,7 +151,7 @@ input[type=date]#datePicker:focus{border-color:var(--ink)}
 .pstreak{background:var(--grs)}.pstreak .big{color:var(--grd)}
 .jstreak{background:var(--res)}.jstreak .big{color:var(--red)}
 .jstreak-clean{background:var(--grs)}.jstreak-clean .big{color:var(--grd)}
-.hist-list{display:flex;flex-direction:column;gap:12px;max-height:540px;overflow-y:auto;padding-right:4px}
+.hist-list{display:flex;flex-direction:column;gap:12px;padding-right:4px}
 .hist-list::-webkit-scrollbar{width:4px}
 .hist-list::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
 .hist-day{background:var(--card);border:1px solid var(--line);border-radius:13px;overflow:hidden;box-shadow:var(--sh)}
@@ -177,6 +177,18 @@ input[type=date]#datePicker:focus{border-color:var(--ink)}
 .ov-nav button{background:rgba(255,255,255,.14);border:none;color:#fff;border-radius:28px;padding:10px 20px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:.14s}
 .ov-nav button:hover{background:rgba(255,255,255,.28)}
 .ov-count{color:rgba(255,255,255,.42);text-align:center;margin-top:8px;font-size:12px}
+/* Weight card */
+.stat.weight{border-top:4px solid #7C6AE8}
+.stat.weight .lbl{color:#4B3DB5}
+.stat.weight .num{font-size:36px;margin:4px 0 2px}
+.weight-input-wrap{display:flex;gap:8px;margin-top:10px;align-items:center}
+.weight-input-wrap input{flex:1;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:9px 12px;font-size:15px;font-family:inherit;color:var(--ink);max-width:120px}
+.weight-input-wrap input:focus{outline:none;border-color:#7C6AE8}
+.weight-input-wrap button{background:#7C6AE8;color:#fff;border:none;border-radius:10px;padding:9px 16px;font-weight:700;cursor:pointer;font-family:inherit;font-size:14px}
+.weight-input-wrap .wsub{font-size:12px;color:var(--muted)}
+/* Weight history chart line */
+.wline{fill:none;stroke:#7C6AE8;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.wdot{fill:#7C6AE8}
 footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;font-family:"Fraunces",serif;font-style:italic}
 @media(max-width:820px){
   .layout{grid-template-columns:1fr}
@@ -194,6 +206,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;fon
 
   /* Stat cards — more compact on mobile */
   .stats{grid-template-columns:1fr 1fr;gap:10px}
+  .stat.weight .num{font-size:30px}
   .stat{padding:14px 16px}
   .stat .num{font-size:42px;margin:4px 0 2px}
   .stat .sub{font-size:13px}
@@ -245,17 +258,29 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;fon
 <div class="view on" id="view-today">
   <div class="layout">
     <div class="main">
-      <div class="stats">
-        <div class="stat protein" id="proteinCard">
-          <div class="lbl">&#128170; Protein</div>
-          <div class="num" id="proteinNum">0</div>
-          <div class="sub" id="proteinSub">items today</div>
-          <div class="goalrow"><span>Daily goal:</span><button id="gDown">&#8722;</button><b id="goalNum" style="font-size:14px">3</b><button id="gUp">+</button></div>
+      <div class="stats-wrap">
+        <div class="stats">
+          <div class="stat protein" id="proteinCard">
+            <div class="lbl">&#128170; Protein</div>
+            <div class="num" id="proteinNum">0</div>
+            <div class="sub" id="proteinSub">items today</div>
+            <div class="goalrow"><span>Daily goal:</span><button id="gDown">&#8722;</button><b id="goalNum" style="font-size:14px">3</b><button id="gUp">+</button></div>
+          </div>
+          <div class="stat junk" id="junkCard">
+            <div class="lbl">&#127828; Junk</div>
+            <div class="num" id="junkNum">0</div>
+            <div class="sub" id="junkSub">items today</div>
+          </div>
         </div>
-        <div class="stat junk" id="junkCard">
-          <div class="lbl">&#127828; Junk</div>
-          <div class="num" id="junkNum">0</div>
-          <div class="sub" id="junkSub">items today</div>
+        <div class="stat weight" id="weightCard">
+          <div class="lbl">&#9878;&#65039; Weight</div>
+          <div class="num" id="weightNum">&mdash;</div>
+          <div class="sub" id="weightSub">kg today</div>
+          <div class="weight-input-wrap" id="weightInputWrap" style="display:none">
+            <input type="number" id="weightInput" placeholder="e.g. 72.5" step="0.1" min="20" max="300"/>
+            <button id="weightSave">Save</button>
+            <span class="wsub">kg</span>
+          </div>
         </div>
       </div>
       <div id="banner"></div>
@@ -293,7 +318,9 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;fon
     <button class="htab active" data-ht="protein">&#x1F4AA; Protein</button>
     <button class="htab" data-ht="junk">&#x1F354; Junk</button>
     <button class="htab" data-ht="morning">&#x2615; Morning Drink</button>
+    <button class="htab" data-ht="weight">&#9878;&#65039; Weight</button>
   </div>
+  <div id="weightHistCol"></div>
   <div id="proteinHistCol"></div>
   <div id="junkHistCol"></div>
   <div id="morningHistCol"></div>
@@ -459,6 +486,86 @@ function renderSidebar(){
   if(!junkDays.length){$('jhlist').innerHTML='<div class="jh-empty">\uD83C\uDF89 No junk logged yet! Keep it up.</div>';return;}
   $('jhlist').innerHTML=junkDays.map(x=>'<div class="jhday"><div class="jdate">'+prettyDate(x.k)+' \u00B7 '+x.items.length+' item'+(x.items.length>1?'s':'')+'</div><div class="jitems">'+x.items.map(i=>'<div class="ji">'+esc(i.name)+'</div>').join('')+'</div></div>').join('');
 }
+function getTodayWeight(){
+  const key=fmtKey(current);
+  return (state.weights&&state.weights[key])||null;
+}
+function renderWeightCard(){
+  const w=getTodayWeight();
+  $('weightNum').textContent=w?w:'—';
+  $('weightSub').textContent=w?'kg today — tap to update':'kg today — tap to log';
+}
+function toggleWeightInput(){
+  const wrap=$('weightInputWrap');
+  const showing=wrap.style.display!=='none';
+  wrap.style.display=showing?'none':'flex';
+  if(!showing){$('weightInput').focus();const w=getTodayWeight();if(w)$('weightInput').value=w;}
+}
+function saveWeight(){
+  const val=parseFloat($('weightInput').value);
+  if(isNaN(val)||val<20||val>300){alert('Please enter a valid weight between 20 and 300 kg');return;}
+  if(!state.weights)state.weights={};
+  state.weights[fmtKey(current)]=val;
+  $('weightInputWrap').style.display='none';
+  $('weightInput').value='';
+  save();renderWeightCard();
+}
+function renderWeightHistory(dateRange){
+  if(!state.weights)state.weights={};
+  const entries=dateRange.map(k=>({k,w:state.weights[k]||null}));
+  const withData=entries.filter(x=>x.w!==null);
+  const totalEntries=withData.length;
+  const latest=withData.length?withData[withData.length-1].w:null;
+  const lowest=withData.length?Math.min(...withData.map(x=>x.w)):null;
+  const highest=withData.length?Math.max(...withData.map(x=>x.w)):null;
+
+  // Build line chart
+  const DAY_W=52;const H=90;const PAD=10;
+  const totalW=Math.max(dateRange.length*DAY_W,300);
+  const allW=withData.map(x=>x.w);
+  const minW=allW.length?Math.min(...allW)-2:60;
+  const maxW=allW.length?Math.max(...allW)+2:100;
+  const range=Math.max(maxW-minW,1);
+
+  let points='';let dots='';let labels='';
+  const coords=[];
+  entries.forEach((e,i)=>{
+    const x=i*DAY_W+DAY_W/2;
+    const [y,m,d]=e.k.split('-');
+    const lbl=d+'/'+m;
+    const isToday=e.k===todayKey();
+    labels+=`<text x="${x}" y="${H+PAD+12}" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="${isToday?'#21231E':'#B0A898'}" font-weight="${isToday?'800':'500'}" text-anchor="middle">${lbl}</text>`;
+    if(e.w!==null){
+      const cy=PAD+Math.round((1-(e.w-minW)/range)*(H-PAD*2));
+      coords.push({x,cy,w:e.w});
+      dots+=`<circle cx="${x}" cy="${cy}" r="4" class="wdot"/>`;
+      dots+=`<text x="${x}" y="${cy-8}" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#7C6AE8" text-anchor="middle" font-weight="700">${e.w}</text>`;
+    }
+  });
+  if(coords.length>1){
+    const d='M'+coords.map(c=>c.x+','+c.cy).join(' L');
+    points=`<path d="${d}" class="wline"/>`;
+  }
+
+  const chart=`<div style="overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px">
+    <svg width="${totalW}" height="${H+PAD+20}" xmlns="http://www.w3.org/2000/svg">
+      ${points}${dots}${labels}
+    </svg>
+  </div>`;
+
+  const html='<div class="hist-chart-card"><h4>Weight trend — all days since 23 May</h4>'+chart
+    +'<div class="hist-legend">'+(latest?'Latest: '+latest+' kg':' No entries yet')+(lowest?' &nbsp;|&nbsp; Low: '+lowest+' kg':'')+(highest?' &nbsp;|&nbsp; High: '+highest+' kg':'')+'</div></div>'
+    +'<div class="hist-streaks">'
+    +'<div class="hist-streak" style="background:#EDE9FB"><div class="big" style="color:#4B3DB5;font-family:Fraunces,serif;font-size:42px;font-weight:600;line-height:1">'+(latest||'—')+'</div><div class="cap" style="font-size:13px;color:var(--muted);margin-top:4px">latest kg</div></div>'
+    +'<div class="hist-streak" style="background:#EDE9FB"><div class="big" style="color:#4B3DB5;font-family:Fraunces,serif;font-size:42px;font-weight:600;line-height:1">'+totalEntries+'</div><div class="cap" style="font-size:13px;color:var(--muted);margin-top:4px">days logged</div></div>'
+    +'</div>'
+    +(withData.length===0?'<div class="hist-empty">No weight entries yet. Tap the weight card on Today to log.</div>':
+    '<div class="hist-list">'+withData.slice().reverse().map(e=>'<div class="hist-day"><div class="hist-day-head"><span class="date">'+prettyDate(e.k)+'</span><span class="cnt" style="background:#EDE9FB;color:#4B3DB5">'+e.w+' kg</span></div></div>').join('')+'</div>');
+
+  $('weightHistCol').innerHTML='<h2 style="color:#4B3DB5">&#9878;&#65039; Weight History</h2><div class="subdesc">Your weight trend over time.</div>'+html;
+  $('proteinHistCol').innerHTML='';$('junkHistCol').innerHTML='';$('morningHistCol').innerHTML='';
+}
+
 function renderHistory(){
   const allDays=Object.entries(state.logs).sort((a,b)=>a[0].localeCompare(b[0]));
 
@@ -479,6 +586,9 @@ function renderHistory(){
   if(activeTab==='protein') renderProteinHistory(allDays,dateRange);
   else if(activeTab==='junk') renderJunkHistory(allDays,dateRange);
   else if(activeTab==='morning') renderMorningHistory(allDays,dateRange);
+  else if(activeTab==='weight') renderWeightHistory(dateRange);
+  // reset unused cols
+  if(activeTab!=='weight')$('weightHistCol').innerHTML='';
 }
 
 function makeScrollChart(dateRange, dataFn, color, label){
@@ -613,13 +723,17 @@ document.querySelectorAll('.tab').forEach(tab=>{
     if(currentView==='history')renderHistory();
   };
 });
-function renderAll(){renderHeader();renderStats();renderList();renderSidebar();renderMotivation();if(currentView==='history')renderHistory();}
+function renderAll(){renderHeader();renderStats();renderWeightCard();renderList();renderSidebar();renderMotivation();if(currentView==='history')renderHistory();}
 $('addBtn').onclick=tryAdd;
 $('foodInput').addEventListener('keydown',e=>{if(e.key==='Enter')tryAdd();});
 $('prev').onclick=()=>{current.setDate(current.getDate()-1);renderAll();};
 $('next').onclick=()=>{current.setDate(current.getDate()+1);renderAll();};
 $('datePicker').onchange=e=>{if(e.target.value){const[y,m,d]=e.target.value.split('-').map(Number);current=new Date(y,m-1,d);renderAll();}};
 $('gUp').onclick=e=>{e.stopPropagation();state.settings.proteinTarget++;save();renderStats();};
+$('weightCard').onclick=toggleWeightInput;
+$('weightSave').onclick=e=>{e.stopPropagation();saveWeight();};
+$('weightInput').addEventListener('keydown',e=>{if(e.key==='Enter')saveWeight();e.stopPropagation();});
+$('weightInput').addEventListener('click',e=>e.stopPropagation());
 $('gDown').onclick=e=>{e.stopPropagation();state.settings.proteinTarget=Math.max(1,state.settings.proteinTarget-1);save();renderStats();};
 $('moAddBtn').onclick=()=>{const url=$('moUrl').value.trim();if(!url)return;state.motivation.push({id:uid(),url,caption:$('moCap').value.trim(),stored:false});$('moUrl').value='';$('moCap').value='';save();renderMotivation();};
 $('moUrl').addEventListener('keydown',e=>{if(e.key==='Enter')$('moAddBtn').click();});
