@@ -547,7 +547,9 @@ function renderWeightHistory(dateRange){
     points=`<path d="${d}" class="wline"/>`;
   }
 
-  const chart=`<div style="overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px">
+  const wchartId='wchart-'+Math.random().toString(36).slice(2,7);
+  setTimeout(()=>{const el=document.getElementById(wchartId);if(el)el.scrollLeft=el.scrollWidth;},50);
+  const chart=`<div id="${wchartId}" style="overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px">
     <svg width="${totalW}" height="${H+PAD+20}" xmlns="http://www.w3.org/2000/svg">
       ${points}${dots}${labels}
     </svg>
@@ -626,7 +628,9 @@ function makeScrollChart(dateRange, dataFn, color, label){
     bars += `<text x="${x+DAY_W/2}" y="${H+14}" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="${isToday?'#21231E':'#B0A898'}" font-weight="${isToday?'800':'500'}" text-anchor="middle">${lbl}</text>`;
   });
 
-  return `<div style="overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px">
+  const chartId='chart-'+Math.random().toString(36).slice(2,7);
+  setTimeout(()=>{const el=document.getElementById(chartId);if(el)el.scrollLeft=el.scrollWidth;},50);
+  return `<div id="${chartId}" style="overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px">
     <svg width="${totalW}" height="${H+24}" xmlns="http://www.w3.org/2000/svg">
       ${bars}
     </svg>
