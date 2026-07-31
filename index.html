@@ -235,13 +235,80 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;fon
   .hist-streak .big{font-size:34px}
   .hist-item{font-size:13.5px}
 }
+/* ═══════════ TIME TRACKER ═══════════ */
+.appnav{display:flex;gap:8px;margin:18px 0 0}
+.appbtn{background:var(--card);border:1px solid var(--line);border-radius:30px;padding:10px 22px;font-family:inherit;font-size:15px;font-weight:700;color:var(--muted);cursor:pointer;box-shadow:var(--sh);transition:.16s;display:flex;align-items:center;gap:7px}
+.appbtn:hover{border-color:var(--ink);color:var(--ink);transform:translateY(-1px)}
+.appbtn.active{background:var(--ink);color:var(--p2);border-color:var(--ink)}
+.tstats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.stat.tcard{padding:18px 20px}
+.stat.tcard .num{font-size:40px;margin:5px 0 3px}
+.stat.tcard .num .hu{font-family:"Hanken Grotesk",sans-serif;font-size:16px;font-weight:600;color:var(--muted);margin-left:3px}
+.stat.tcard.total{border-top:4px solid var(--ink)}.stat.tcard.total .lbl{color:var(--ink)}
+.stat.tcard.focus{border-top:4px solid #2F80C4}.stat.tcard.focus .lbl{color:#1B5A8E}
+.stat.tcard.work{border-top:4px solid var(--re)}.stat.tcard.work .lbl{color:var(--red)}
+.stat.tcard.sleepc{border-top:4px solid #7C6AE8}.stat.tcard.sleepc .lbl{color:#4B3DB5}
+.cover-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 20px;box-shadow:var(--sh)}
+.cover-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px}
+.cover-head .ct{font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted)}
+.cover-head .cv{font-size:13px;color:var(--muted);font-weight:600}
+.coverbar{display:flex;height:16px;border-radius:8px;overflow:hidden;background:#EAE5D8;gap:1px}
+.coverbar .cseg{height:100%;transition:.35s}
+.cover-legend{display:flex;flex-wrap:wrap;gap:9px;margin-top:10px}
+.clg{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--muted);font-weight:600}
+.clg i{width:9px;height:9px;border-radius:3px;display:inline-block}
+.cat-choices{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.cat-choices button{border:1.5px solid var(--line);background:var(--paper);border-radius:11px;padding:12px 8px;cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:600;color:var(--ink);transition:.14s;display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;line-height:1.25}
+.cat-choices button .emo{font-size:20px}
+.cat-choices button:hover{transform:translateY(-2px);border-color:var(--cc,var(--ink));background:#fff}
+.cat-choices button.ccustom{border-style:dashed;color:var(--muted)}
+.item.titem{border-left-width:5px}
+.item .hrs{font-family:"Fraunces",serif;font-size:17px;font-weight:600;flex-shrink:0}
+.item .cat-tag{font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:3px 10px;border-radius:20px;flex-shrink:0}
+.tbadge{background:#E4EEF7;color:#1B5A8E}
+.mbc .bar.tbar{background:#2F80C4}
+.mbc.td .bar.tbar{background:#1B5A8E}
+.catsplit{display:flex;flex-direction:column;gap:9px;flex-shrink:0}
+.csrow .cshead{display:flex;justify-content:space-between;font-size:12.5px;font-weight:600;margin-bottom:3px}
+.csrow .cshead .csh{color:var(--muted);font-weight:700}
+.cstrack{height:7px;border-radius:5px;background:#EDE9DE;overflow:hidden}
+.cstrack i{display:block;height:100%;border-radius:5px}
+.thday{border-left:3px solid #2F80C4;padding:8px 11px;border-radius:0 9px 9px 0;background:#EEF4FA}
+.thday .jdate{font-size:12px;font-weight:700;color:#1B5A8E}
+.thday .jitems{margin-top:5px;display:flex;flex-direction:column;gap:3px}
+.thday .ji{font-size:13px;color:var(--ink);display:flex;align-items:center;gap:6px}
+.thday .ji b{font-family:"Fraunces",serif;font-weight:600}
+.tlegend{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.tchip{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:5px 12px;cursor:pointer;transition:.14s;user-select:none}
+.tchip i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.tchip.off{opacity:.38}
+.tchip:hover{border-color:var(--ink)}
+.donut-wrap{display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+.donut-legend{flex:1;min-width:190px;display:flex;flex-direction:column;gap:8px}
+.dlg{display:flex;align-items:center;gap:9px;font-size:14px}
+.dlg i{width:11px;height:11px;border-radius:3px;flex-shrink:0}
+.dlg .dn{flex:1;font-weight:500}
+.dlg .dh{font-family:"Fraunces",serif;font-weight:600}
+.dlg .dp{color:var(--muted);font-size:12.5px;width:42px;text-align:right}
+.tstreak-blue{background:#E4EEF7}.tstreak-blue .big{color:#1B5A8E}
+.tstreak-purple{background:#EDE9FB}.tstreak-purple .big{color:#4B3DB5}
+@media(max-width:600px){
+  .appnav{width:100%}
+  .appbtn{flex:1;justify-content:center;padding:10px 8px;font-size:14px}
+  .tstats{gap:10px}
+  .stat.tcard{padding:13px 14px}
+  .stat.tcard .num{font-size:29px}
+  .cat-choices{grid-template-columns:repeat(2,1fr)}
+  .item .hrs{font-size:15px}
+  .donut-wrap{gap:14px}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 <div class="wrap">
 <header>
-  <div class="brand"><h1>Plate<span class="dot"></span></h1><small>protein up, junk down</small></div>
+  <div class="brand"><h1 id="brandName">Plate<span class="dot"></span></h1><small id="brandTag">protein up, junk down</small></div>
   <div class="daynav" id="daynavWrap">
     <button class="navbtn" id="prev">&#8249;</button>
     <div class="dateblock"><div class="dmain" id="dateMain"></div><div class="drel" id="dateRel"></div></div>
@@ -251,9 +318,17 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;fon
     <label>Jump to</label><input type="date" id="datePicker"/>
   </div>
 </header>
-<div class="tabs">
-  <button class="tab active" data-view="today">Today</button>
-  <button class="tab" data-view="history">History</button>
+<div class="appnav">
+  <button class="appbtn active" data-app="plate">&#127869;&#65039; Plate</button>
+  <button class="appbtn" data-app="time">&#9201;&#65039; Time</button>
+</div>
+<div class="tabs" id="plateTabs">
+  <button class="tab active" data-app="plate" data-tab="today">Today</button>
+  <button class="tab" data-app="plate" data-tab="history">History</button>
+</div>
+<div class="tabs" id="timeTabs" style="display:none">
+  <button class="tab active" data-app="time" data-tab="today">Today</button>
+  <button class="tab" data-app="time" data-tab="history">History</button>
 </div>
 <div class="view on" id="view-today">
   <div class="layout">
@@ -325,7 +400,68 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;fon
   <div id="junkHistCol"></div>
   <div id="morningHistCol"></div>
 </div>
-<footer>Plate &middot; saves automatically &middot; drag items to reorder</footer>
+<div class="view" id="view-time-today">
+  <div class="layout">
+    <div class="main">
+      <div class="stats-wrap">
+        <div class="tstats">
+          <div class="stat tcard total">
+            <div class="lbl">&#9201;&#65039; Total</div>
+            <div class="num"><span id="tTotalNum">0</span><span class="hu">h</span></div>
+            <div class="sub" id="tTotalSub">nothing logged yet</div>
+          </div>
+          <div class="stat tcard focus" id="focusCard">
+            <div class="lbl">&#127919; Focus</div>
+            <div class="num"><span id="tFocusNum">0</span><span class="hu">h</span></div>
+            <div class="sub" id="tFocusSub">system design + dsa + lld</div>
+            <div class="goalrow"><span>Daily goal:</span><button id="fDown">&#8722;</button><b id="focusGoalNum" style="font-size:14px">4</b><button id="fUp">+</button><span>h</span></div>
+          </div>
+          <div class="stat tcard work">
+            <div class="lbl">&#128188; Work</div>
+            <div class="num"><span id="tWorkNum">0</span><span class="hu">h</span></div>
+            <div class="sub" id="tWorkSub">hours today</div>
+          </div>
+          <div class="stat tcard sleepc">
+            <div class="lbl">&#128564; Sleep</div>
+            <div class="num"><span id="tSleepNum">0</span><span class="hu">h</span></div>
+            <div class="sub" id="tSleepSub">not logged</div>
+            <div class="goalrow"><span>Target:</span><button id="sDown">&#8722;</button><b id="sleepGoalNum" style="font-size:14px">7</b><button id="sUp">+</button><span>h</span></div>
+          </div>
+        </div>
+        <div class="cover-card">
+          <div class="cover-head"><span class="ct">Day coverage</span><span class="cv" id="coverVal">0 of 24 h accounted</span></div>
+          <div class="coverbar" id="coverBar"></div>
+          <div class="cover-legend" id="coverLegend"></div>
+        </div>
+      </div>
+      <div id="timeBanner"></div>
+      <div class="addwrap">
+        <div class="addrow"><input id="hoursInput" type="number" step="0.25" min="0.25" max="24" placeholder="How many hours? e.g. 2.5" autocomplete="off"/><button class="gobtn" id="timeAddBtn">Add</button></div>
+        <div id="timeChooser"></div>
+      </div>
+      <div class="list" id="timeList"></div>
+    </div>
+    <aside class="sidebar">
+      <h3>&#9201;&#65039; Time Radar <span class="alarm-badge tbadge" id="timeBadge">0h this week</span></h3>
+      <div class="minibars" id="timeMinibars"></div>
+      <div class="chartlbl">Hours per day &mdash; last 7 days</div>
+      <div class="sid-divider">Where it went &mdash; last 7 days</div>
+      <div class="catsplit" id="catSplit"></div>
+      <div class="sid-divider" style="margin-top:16px">Logged days</div>
+      <div class="jhlist" id="timeDayList"></div>
+    </aside>
+  </div>
+</div>
+<div class="view" id="view-time-history">
+  <div class="htabs">
+    <button class="htab active" data-tht="daily">&#128202; Daily</button>
+    <button class="htab" data-tht="trend">&#128200; Trend</button>
+    <button class="htab" data-tht="weekly">&#127849; Weekly</button>
+    <button class="htab" data-tht="sleep">&#128564; Sleep</button>
+  </div>
+  <div id="timeHistCol"></div>
+</div>
+<footer id="footNote">Plate &middot; saves automatically &middot; drag items to reorder</footer>
 </div>
 <div class="overlay" id="overlay">
   <div class="ov-top"><h3>Remember why you started.</h3><button class="ov-close" id="ovClose">&#215;</button></div>
@@ -354,7 +490,7 @@ async function _dbDel(key){
 
 const SKEY='plate-v3';
 const imgCache={};
-let state={logs:{},motivation:[],settings:{proteinTarget:3},memory:{}};
+let state={logs:{},motivation:[],settings:{proteinTarget:3,focusTarget:4,sleepTarget:7},memory:{},timeLogs:{},timeCats:[],timeHistTab:'daily'};
 
 async function loadState(){
   const r=await _dbGet(SKEY);
@@ -581,7 +717,7 @@ function renderHistory(){
 
   // Render whichever tab is active
   const activeTab=state.histTab||'protein';
-  document.querySelectorAll('.htab').forEach(t=>{
+  document.querySelectorAll('#view-history .htab').forEach(t=>{
     t.classList.toggle('active', t.dataset.ht===activeTab);
   });
 
@@ -711,23 +847,43 @@ function openOverlay(){if(!state.motivation.length){alert('Add a motivation imag
 function ovStep(n){ovIdx=(ovIdx+n+state.motivation.length)%state.motivation.length;showOverlay();}
 let currentView='today';
 if(!state.histTab)state.histTab='protein';
-document.querySelectorAll('.htab').forEach(htab=>{
+document.querySelectorAll('#view-history .htab').forEach(htab=>{
   htab.onclick=()=>{
     state.histTab=htab.dataset.ht;
     renderHistory();
   };
 });
-document.querySelectorAll('.tab').forEach(tab=>{
-  tab.onclick=()=>{
-    currentView=tab.dataset.view;
-    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');
-    document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));$('view-'+currentView).classList.add('on');
-    const isToday=currentView==='today';
-    $('daynavWrap').style.display=isToday?'flex':'none';$('datepickWrap').style.display=isToday?'flex':'none';
-    if(currentView==='history')renderHistory();
+let currentApp='plate',plateTab='today',timeTab='today';
+function setView(app,tab){
+  currentApp=app;
+  currentView=(app==='plate')?tab:('time-'+tab);
+  document.querySelectorAll('.appbtn').forEach(b=>b.classList.toggle('active',b.dataset.app===app));
+  $('plateTabs').style.display=(app==='plate')?'flex':'none';
+  $('timeTabs').style.display=(app==='time')?'flex':'none';
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.app===app&&t.dataset.tab===tab));
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
+  $('view-'+currentView).classList.add('on');
+  const isToday=(tab==='today');
+  $('daynavWrap').style.display=isToday?'flex':'none';
+  $('datepickWrap').style.display=isToday?'flex':'none';
+  $('brandName').innerHTML=(app==='plate'?'Plate':'Time')+'<span class="dot"'+(app==='time'?' style="background:#2F80C4"':'')+'></span>';
+  $('brandTag').textContent=(app==='plate')?'protein up, junk down':'where the hours go';
+  $('footNote').textContent=(app==='plate')?'Plate \u00B7 saves automatically \u00B7 drag items to reorder':'Time \u00B7 saves automatically \u00B7 drag entries to reorder';
+  document.title=(app==='plate')?'Plate':'Time';
+  if(currentView==='history')renderHistory();
+  else if(currentView==='time-today')renderTimeAll();
+  else if(currentView==='time-history')renderTimeHistory();
+}
+document.querySelectorAll('.appbtn').forEach(b=>{
+  b.onclick=()=>setView(b.dataset.app,b.dataset.app==='plate'?plateTab:timeTab);
+});
+document.querySelectorAll('.tab').forEach(t=>{
+  t.onclick=()=>{
+    if(t.dataset.app==='plate')plateTab=t.dataset.tab;else timeTab=t.dataset.tab;
+    setView(t.dataset.app,t.dataset.tab);
   };
 });
-function renderAll(){renderHeader();renderStats();renderWeightCard();renderList();renderSidebar();renderMotivation();if(currentView==='history')renderHistory();}
+function renderAll(){renderHeader();renderStats();renderWeightCard();renderList();renderSidebar();renderMotivation();renderTimeAll();if(currentView==='history')renderHistory();}
 $('addBtn').onclick=tryAdd;
 $('foodInput').addEventListener('keydown',e=>{if(e.key==='Enter')tryAdd();});
 $('prev').onclick=()=>{current.setDate(current.getDate()-1);renderAll();};
@@ -747,6 +903,399 @@ $('urgeBtn').onclick=openOverlay;
 $('ovClose').onclick=()=>$('overlay').classList.remove('on');
 $('ovPrev').onclick=()=>ovStep(-1);$('ovNext').onclick=()=>ovStep(1);
 document.addEventListener('keydown',e=>{if($('overlay').classList.contains('on')){if(e.key==='Escape')$('overlay').classList.remove('on');if(e.key==='ArrowRight')ovStep(1);if(e.key==='ArrowLeft')ovStep(-1);}});
+/* ══════════════════ TIME TRACKER ══════════════════ */
+const TIME_CATS=[
+  {id:'systemdesign',label:'System Design',emo:'&#127959;&#65039;',color:'#1F8A52'},
+  {id:'dsa',label:'DSA',emo:'&#129513;',color:'#2F80C4'},
+  {id:'lld',label:'Low Level Design',emo:'&#128295;',color:'#C98F22'},
+  {id:'work',label:'Work',emo:'&#128188;',color:'#D13B26'},
+  {id:'sleep',label:'Sleep',emo:'&#128564;',color:'#7C6AE8'}
+];
+const FOCUS_IDS=['systemdesign','dsa','lld'];
+const CUSTOM_PALETTE=['#0F9B8E','#B5539C','#4B3DB5','#3D5A80','#8A6418','#A0522D','#6B8E23','#C2185B'];
+
+function allCats(){return TIME_CATS.concat(state.timeCats||[]);}
+function catMeta(id){const c=allCats().find(x=>x.id===id);return c||{id:id,label:id,emo:'&#9201;&#65039;',color:'#70685A'};}
+function timeLog(key){return (state.timeLogs&&state.timeLogs[key])||[];}
+function dayHours(key){return timeLog(key).reduce((s,e)=>s+(+e.hours||0),0);}
+function catHours(key,cid){return timeLog(key).filter(e=>e.cat===cid).reduce((s,e)=>s+(+e.hours||0),0);}
+function focusHours(key){return timeLog(key).filter(e=>FOCUS_IDS.indexOf(e.cat)>=0).reduce((s,e)=>s+(+e.hours||0),0);}
+function fmtH(n){return String(Math.round((+n||0)*100)/100);}
+function slug(s){return 'c-'+s.trim().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,32);}
+function dayCatTotals(key){
+  const g={},order=[];
+  timeLog(key).slice().sort((a,b)=>(a.order||0)-(b.order||0)).forEach(e=>{
+    if(g[e.cat]===undefined){g[e.cat]=0;order.push(e.cat);}
+    g[e.cat]+=(+e.hours||0);
+  });
+  return order.map(c=>({cat:c,hours:g[c]}));
+}
+function registerCustom(label){
+  if(!state.timeCats)state.timeCats=[];
+  const id=slug(label);
+  if(!id||id==='c-')return null;
+  const built=TIME_CATS.find(c=>c.id===id);
+  if(built)return built;
+  let ex=state.timeCats.find(c=>c.id===id);
+  if(!ex){
+    ex={id:id,label:label.trim(),emo:'&#9201;&#65039;',color:CUSTOM_PALETTE[state.timeCats.length%CUSTOM_PALETTE.length]};
+    state.timeCats.push(ex);
+  }
+  return ex;
+}
+
+/* ── entry input ── */
+let pendingHours=0;
+function tryAddTime(){
+  const v=parseFloat($('hoursInput').value);
+  if(isNaN(v)||v<=0||v>24){alert('Enter hours between 0.25 and 24 \u2014 e.g. 2.5');return;}
+  pendingHours=Math.round(v*100)/100;
+  showCatPicker();
+}
+function showCatPicker(){
+  const cats=allCats();
+  $('timeChooser').innerHTML='<div class="chooser"><div class="chooser-title">Where did those <b>'+fmtH(pendingHours)+' h</b> go?</div>'
+    +'<div class="cat-choices">'
+    +cats.map(c=>'<button data-c="'+c.id+'" style="--cc:'+c.color+'"><span class="emo">'+c.emo+'</span>'+esc(c.label)+'</button>').join('')
+    +'<button class="ccustom" data-c="__custom"><span class="emo">&#10133;</span>Other / custom</button>'
+    +'</div><div id="custWrap" style="display:none" class="misc-input-wrap">'
+    +'<input id="custInput" placeholder="e.g. gym, reading, meetings, side project..." autocomplete="off"/>'
+    +'<button id="custSave">Add</button></div></div>';
+  $('timeChooser').querySelectorAll('button[data-c]').forEach(b=>{
+    b.onclick=()=>{
+      const c=b.dataset.c;
+      if(c==='__custom'){
+        $('custWrap').style.display='flex';$('custInput').focus();
+        const doCust=()=>{
+          const lbl=$('custInput').value.trim();
+          if(!lbl){$('custInput').focus();return;}
+          const meta=registerCustom(lbl);
+          if(!meta)return;
+          finishAddTime(meta.id,meta.label);
+        };
+        $('custSave').onclick=doCust;
+        $('custInput').addEventListener('keydown',e=>{if(e.key==='Enter')doCust();});
+      } else {
+        finishAddTime(c,catMeta(c).label);
+      }
+    };
+  });
+}
+function finishAddTime(cid,label){
+  const key=fmtKey(current);
+  if(!state.timeLogs)state.timeLogs={};
+  if(!state.timeLogs[key])state.timeLogs[key]=[];
+  const maxOrd=state.timeLogs[key].reduce((m,x)=>Math.max(m,x.order||0),0);
+  state.timeLogs[key].push({id:uid(),cat:cid,label:label,hours:pendingHours,ts:Date.now(),order:maxOrd+1});
+  pendingHours=0;$('hoursInput').value='';$('timeChooser').innerHTML='';
+  save();renderTimeAll();$('hoursInput').focus();
+}
+function delTimeEntry(id){
+  const key=fmtKey(current);
+  state.timeLogs[key]=timeLog(key).filter(e=>e.id!==id);
+  save();renderTimeAll();
+}
+
+/* ── today render ── */
+function renderTimeStats(){
+  const key=fmtKey(current);
+  const total=dayHours(key),focus=focusHours(key),work=catHours(key,'work'),sleep=catHours(key,'sleep');
+  const fGoal=state.settings.focusTarget||4,sGoal=state.settings.sleepTarget||7;
+  const n=timeLog(key).length;
+  $('tTotalNum').textContent=fmtH(total);
+  $('tTotalSub').textContent=n?n+(n>1?' entries logged':' entry logged'):'nothing logged yet';
+  $('tFocusNum').textContent=fmtH(focus);
+  $('tFocusSub').textContent=focus>=fGoal?'goal hit! \uD83C\uDF89':fmtH(Math.max(0,fGoal-focus))+' h more to goal';
+  $('focusGoalNum').textContent=fGoal;
+  $('tWorkNum').textContent=fmtH(work);
+  $('tWorkSub').textContent=work?'hours today':'none logged';
+  $('tSleepNum').textContent=fmtH(sleep);
+  $('sleepGoalNum').textContent=sGoal;
+  $('tSleepSub').textContent=sleep===0?'not logged':(sleep>=sGoal?'well rested \u2728':fmtH(Math.round((sGoal-sleep)*100)/100)+' h short');
+
+  const segs=dayCatTotals(key);
+  const acc=Math.min(total,24);
+  $('coverVal').textContent=fmtH(total)+' of 24 h accounted';
+  let bar=segs.map(s=>'<div class="cseg" style="width:'+(Math.min(s.hours,24)/24*100)+'%;background:'+catMeta(s.cat).color+'" title="'+esc(catMeta(s.cat).label)+'"></div>').join('');
+  if(acc<24)bar+='<div class="cseg" style="width:'+((24-acc)/24*100)+'%;background:#EAE5D8"></div>';
+  $('coverBar').innerHTML=bar||'<div class="cseg" style="width:100%;background:#EAE5D8"></div>';
+  $('coverLegend').innerHTML=segs.map(s=>'<span class="clg"><i style="background:'+catMeta(s.cat).color+'"></i>'+esc(catMeta(s.cat).label)+' '+fmtH(s.hours)+'h</span>').join('');
+
+  const b=$('timeBanner');b.className='';b.textContent='';
+  if(total>24){b.className='banner warn';b.textContent='\u26A0\uFE0F  More than 24 h logged today \u2014 check your entries.';}
+  else if(focus>=fGoal&&sleep>=sGoal){b.className='banner good';b.textContent='\u2705 Focus goal hit and slept well. Strong day.';}
+  else if(focus>=fGoal){b.className='banner good';b.textContent='\u2705 Focus goal hit \u2014 '+fmtH(focus)+' h of deep work.';}
+  else if(sleep>0&&sleep<sGoal){b.className='banner nudge';b.textContent='\uD83D\uDE34 Only '+fmtH(sleep)+' h of sleep \u2014 target is '+sGoal+' h.';}
+  else if(n>0&&focus<fGoal){b.className='banner nudge';b.textContent='\uD83C\uDFAF '+fmtH(Math.round((fGoal-focus)*100)/100)+' h more focus time to hit today\u2019s goal.';}
+}
+let dragTimeId=null;
+function renderTimeList(){
+  const key=fmtKey(current);
+  const items=timeLog(key).slice().sort((a,b)=>(a.order||0)-(b.order||0));
+  const el=$('timeList');
+  if(!items.length){el.innerHTML='<div class="empty">No hours logged yet. Enter hours above and pick a category.</div>';return;}
+  el.innerHTML=items.map(e=>{
+    const m=catMeta(e.cat);
+    return '<div class="item titem" draggable="true" data-id="'+e.id+'" style="border-left-color:'+m.color+'">'
+      +'<span class="drag-handle" title="Drag to reorder">\u22EE\u22EE</span>'
+      +'<span class="ico">'+m.emo+'</span>'
+      +'<span class="name">'+esc(e.label||m.label)+'</span>'
+      +'<span class="hrs" style="color:'+m.color+'">'+fmtH(e.hours)+' h</span>'
+      +'<span class="cat-tag" style="background:'+m.color+'1F;color:'+m.color+'">'+esc(m.label)+'</span>'
+      +'<button class="del" data-id="'+e.id+'">\u00D7</button></div>';
+  }).join('');
+  el.querySelectorAll('.del').forEach(b=>b.onclick=ev=>{ev.stopPropagation();delTimeEntry(b.dataset.id);});
+  el.querySelectorAll('.item[data-id]').forEach(row=>{
+    row.addEventListener('dragstart',e=>{dragTimeId=row.dataset.id;setTimeout(()=>row.classList.add('dragging'),0);e.dataTransfer.effectAllowed='move';});
+    row.addEventListener('dragend',()=>{row.classList.remove('dragging');el.querySelectorAll('.item').forEach(r=>r.classList.remove('drag-over'));});
+    row.addEventListener('dragover',e=>{e.preventDefault();if(row.dataset.id===dragTimeId)return;el.querySelectorAll('.item').forEach(r=>r.classList.remove('drag-over'));row.classList.add('drag-over');});
+    row.addEventListener('drop',e=>{
+      e.preventDefault();
+      if(!dragTimeId||row.dataset.id===dragTimeId)return;
+      const logs=state.timeLogs[key]||[];
+      const si=logs.findIndex(x=>x.id===dragTimeId),di=logs.findIndex(x=>x.id===row.dataset.id);
+      if(si<0||di<0)return;
+      const mv=logs.splice(si,1)[0];logs.splice(di,0,mv);
+      logs.forEach((x,i)=>x.order=i+1);
+      state.timeLogs[key]=logs;save();renderTimeList();
+    });
+  });
+}
+function renderTimeSidebar(){
+  const days7=[];for(let i=6;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);days7.push(d);}
+  const hd=days7.map(d=>({d:d,h:dayHours(fmtKey(d))}));
+  const maxH=Math.max(1,...hd.map(x=>x.h));
+  $('timeBadge').textContent=fmtH(hd.reduce((s,x)=>s+x.h,0))+'h this week';
+  $('timeMinibars').innerHTML=hd.map(x=>{
+    const isT=fmtKey(x.d)===todayKey();
+    const h=Math.max(0,Math.round(x.h/maxH*100));
+    return '<div class="mbc'+(isT?' td':'')+'"><div class="bar tbar" style="height:'+h+'%"></div><div class="lbl">'+x.d.toLocaleDateString(undefined,{weekday:'short'}).slice(0,2)+'</div></div>';
+  }).join('');
+
+  const totals={};
+  days7.forEach(d=>{dayCatTotals(fmtKey(d)).forEach(s=>{totals[s.cat]=(totals[s.cat]||0)+s.hours;});});
+  const rows=Object.keys(totals).map(c=>({cat:c,h:totals[c]})).sort((a,b)=>b.h-a.h);
+  const grand=rows.reduce((s,r)=>s+r.h,0);
+  $('catSplit').innerHTML=rows.length?rows.map(r=>{
+    const m=catMeta(r.cat);
+    return '<div class="csrow"><div class="cshead"><span>'+esc(m.label)+'</span><span class="csh">'+fmtH(r.h)+'h</span></div>'
+      +'<div class="cstrack"><i style="width:'+(grand?r.h/grand*100:0)+'%;background:'+m.color+'"></i></div></div>';
+  }).join(''):'<div class="jh-empty" style="background:#EEF4FA;color:#1B5A8E">No hours logged in the last 7 days.</div>';
+
+  const logged=Object.keys(state.timeLogs||{}).filter(k=>timeLog(k).length).sort((a,b)=>b.localeCompare(a));
+  $('timeDayList').innerHTML=logged.length?logged.map(k=>{
+    const segs=dayCatTotals(k);
+    return '<div class="thday"><div class="jdate">'+prettyDate(k)+' \u00B7 '+fmtH(dayHours(k))+'h</div><div class="jitems">'
+      +segs.map(s=>'<div class="ji"><i style="width:8px;height:8px;border-radius:2px;background:'+catMeta(s.cat).color+';display:inline-block;flex-shrink:0"></i>'+esc(catMeta(s.cat).label)+' <b>'+fmtH(s.hours)+'h</b></div>').join('')
+      +'</div></div>';
+  }).join(''):'<div class="jh-empty" style="background:#EEF4FA;color:#1B5A8E">Nothing logged yet. Start with today.</div>';
+}
+function renderTimeAll(){
+  renderTimeStats();renderTimeList();renderTimeSidebar();
+  if(currentView==='time-history')renderTimeHistory();
+}
+
+/* ── history ── */
+function timeDateRange(){
+  const keys=Object.keys(state.timeLogs||{}).filter(k=>timeLog(k).length).sort();
+  const today=new Date();
+  let start=new Date();start.setDate(start.getDate()-13);
+  if(keys.length){
+    const p=keys[0].split('-').map(Number);
+    const first=new Date(p[0],p[1]-1,p[2]);
+    if(first<start)start=first;
+  }
+  const out=[];
+  for(let d=new Date(start);d<=today;d.setDate(d.getDate()+1))out.push(fmtKey(new Date(d)));
+  return out;
+}
+function scrollWrap(inner,w,h){
+  const id='tc-'+Math.random().toString(36).slice(2,7);
+  setTimeout(()=>{const el=document.getElementById(id);if(el)el.scrollLeft=el.scrollWidth;},50);
+  return '<div id="'+id+'" style="overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px">'
+    +'<svg width="'+w+'" height="'+h+'" xmlns="http://www.w3.org/2000/svg">'+inner+'</svg></div>';
+}
+function dateLabels(dateRange,DAY_W,y){
+  return dateRange.map((k,i)=>{
+    const p=k.split('-');
+    const isT=k===todayKey();
+    return '<text x="'+(i*DAY_W+DAY_W/2)+'" y="'+y+'" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="'+(isT?'#21231E':'#B0A898')+'" font-weight="'+(isT?'800':'500')+'" text-anchor="middle">'+p[2]+'/'+p[1]+'</text>';
+  }).join('');
+}
+function makeStackedChart(dateRange){
+  const DAY_W=52,BAR_W=26,H=130,TOP=16;
+  const maxT=Math.max(1,...dateRange.map(k=>dayHours(k)));
+  const totalW=Math.max(dateRange.length*DAY_W,300);
+  let g='';
+  dateRange.forEach((k,di)=>{
+    const x=di*DAY_W+(DAY_W-BAR_W)/2;
+    const segs=dayCatTotals(k);
+    if(!segs.length){
+      g+='<rect x="'+(x+BAR_W/2-1)+'" y="'+(H-2)+'" width="2" height="2" rx="1" fill="#B0A898" opacity=".35"/>';
+      return;
+    }
+    const tot=segs.reduce((s,v)=>s+v.hours,0);
+    let y=H;
+    segs.forEach(s=>{
+      const hh=Math.max(3,Math.round(s.hours/maxT*(H-TOP)));
+      y-=hh;
+      g+='<rect x="'+x+'" y="'+y+'" width="'+BAR_W+'" height="'+Math.max(2,hh-1)+'" fill="'+catMeta(s.cat).color+'" opacity=".92"><title>'+catMeta(s.cat).label.replace(/&/g,'&amp;')+': '+fmtH(s.hours)+'h</title></rect>';
+    });
+    g+='<text x="'+(x+BAR_W/2)+'" y="'+Math.max(9,y-4)+'" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#70685A" font-weight="700" text-anchor="middle">'+fmtH(tot)+'</text>';
+  });
+  g+=dateLabels(dateRange,DAY_W,H+14);
+  return scrollWrap(g,totalW,H+24);
+}
+let hiddenTrend={};
+function makeTrendChart(dateRange){
+  const DAY_W=52,H=140,PAD=12;
+  const cats=allCats().filter(c=>dateRange.some(k=>catHours(k,c.id)>0));
+  if(!cats.length)return '<div class="hist-empty">No hours logged yet.</div>';
+  const shown=cats.filter(c=>!hiddenTrend[c.id]);
+  const vals=shown.length?shown:cats;
+  const maxV=Math.max(1,...vals.map(c=>Math.max(...dateRange.map(k=>catHours(k,c.id)))));
+  const totalW=Math.max(dateRange.length*DAY_W,300);
+  let g='';
+  [0.5,1].forEach(f=>{
+    const y=PAD+Math.round((1-f)*(H-PAD*2));
+    g+='<line x1="0" y1="'+y+'" x2="'+totalW+'" y2="'+y+'" stroke="#E6DFD0" stroke-width="1"/>';
+    g+='<text x="3" y="'+(y-3)+'" font-family="Helvetica,Arial,sans-serif" font-size="8.5" fill="#B0A898">'+fmtH(maxV*f)+'h</text>';
+  });
+  shown.forEach(c=>{
+    const pts=dateRange.map((k,i)=>({x:i*DAY_W+DAY_W/2,y:PAD+Math.round((1-catHours(k,c.id)/maxV)*(H-PAD*2)),v:catHours(k,c.id)}));
+    g+='<path d="M'+pts.map(p=>p.x+','+p.y).join(' L')+'" fill="none" stroke="'+c.color+'" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" opacity=".9"/>';
+    pts.forEach(p=>{if(p.v>0)g+='<circle cx="'+p.x+'" cy="'+p.y+'" r="3.2" fill="'+c.color+'"/>';});
+  });
+  g+=dateLabels(dateRange,DAY_W,H+14);
+  const legend='<div class="tlegend">'+cats.map(c=>'<span class="tchip'+(hiddenTrend[c.id]?' off':'')+'" data-tg="'+c.id+'"><i style="background:'+c.color+'"></i>'+esc(c.label)+'</span>').join('')+'</div>';
+  return scrollWrap(g,totalW,H+24)+legend;
+}
+function makeDonut(dateRange){
+  const last7=dateRange.slice(-7);
+  const totals={};
+  last7.forEach(k=>{dayCatTotals(k).forEach(s=>{totals[s.cat]=(totals[s.cat]||0)+s.hours;});});
+  const rows=Object.keys(totals).map(c=>({cat:c,h:totals[c]})).sort((a,b)=>b.h-a.h);
+  const grand=rows.reduce((s,r)=>s+r.h,0);
+  if(!grand)return '<div class="hist-empty">No hours logged in the last 7 days.</div>';
+  const R=52,SW=26,CX=70,CY=70,C=2*Math.PI*R;
+  let off=0,arcs='';
+  rows.forEach(r=>{
+    const len=r.h/grand*C;
+    arcs+='<circle cx="'+CX+'" cy="'+CY+'" r="'+R+'" fill="none" stroke="'+catMeta(r.cat).color+'" stroke-width="'+SW+'" stroke-dasharray="'+len+' '+(C-len)+'" stroke-dashoffset="'+(-off)+'" transform="rotate(-90 '+CX+' '+CY+')"/>';
+    off+=len;
+  });
+  const svg='<svg width="140" height="140" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">'+arcs
+    +'<text x="70" y="66" font-family="Fraunces,Georgia,serif" font-size="24" font-weight="600" fill="#21231E" text-anchor="middle">'+fmtH(grand)+'</text>'
+    +'<text x="70" y="82" font-family="Helvetica,Arial,sans-serif" font-size="10" fill="#70685A" text-anchor="middle">hours / 7 days</text></svg>';
+  const legend='<div class="donut-legend">'+rows.map(r=>'<div class="dlg"><i style="background:'+catMeta(r.cat).color+'"></i><span class="dn">'+esc(catMeta(r.cat).label)+'</span><span class="dh">'+fmtH(r.h)+'h</span><span class="dp">'+Math.round(r.h/grand*100)+'%</span></div>').join('')+'</div>';
+  return '<div class="donut-wrap">'+svg+legend+'</div>';
+}
+function makeSleepChart(dateRange){
+  const DAY_W=52,BAR_W=26,H=130,TOP=18;
+  const tgt=state.settings.sleepTarget||7;
+  const maxV=Math.max(tgt+1,...dateRange.map(k=>catHours(k,'sleep')));
+  const totalW=Math.max(dateRange.length*DAY_W,300);
+  let g='';
+  const ty=TOP+Math.round((1-tgt/maxV)*(H-TOP));
+  g+='<line x1="0" y1="'+ty+'" x2="'+totalW+'" y2="'+ty+'" stroke="#7C6AE8" stroke-width="1.5" stroke-dasharray="5 4" opacity=".65"/>';
+  g+='<text x="3" y="'+(ty-4)+'" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#4B3DB5" font-weight="700">target '+tgt+'h</text>';
+  dateRange.forEach((k,di)=>{
+    const v=catHours(k,'sleep');
+    const x=di*DAY_W+(DAY_W-BAR_W)/2;
+    if(v>0){
+      const hh=Math.max(3,Math.round(v/maxV*(H-TOP)));
+      g+='<rect x="'+x+'" y="'+(H-hh)+'" width="'+BAR_W+'" height="'+hh+'" rx="3" fill="'+(v>=tgt?'#7C6AE8':'#B9AFF0')+'"/>';
+      g+='<text x="'+(x+BAR_W/2)+'" y="'+Math.max(9,H-hh-4)+'" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#4B3DB5" font-weight="700" text-anchor="middle">'+fmtH(v)+'</text>';
+    } else {
+      g+='<rect x="'+(x+BAR_W/2-1)+'" y="'+(H-2)+'" width="2" height="2" rx="1" fill="#B0A898" opacity=".35"/>';
+    }
+  });
+  g+=dateLabels(dateRange,DAY_W,H+14);
+  return scrollWrap(g,totalW,H+24);
+}
+function timeDayListHtml(dateRange){
+  const logged=dateRange.filter(k=>timeLog(k).length).reverse();
+  if(!logged.length)return '<div class="hist-empty">No hours logged yet.</div>';
+  return '<div class="hist-list">'+logged.map(k=>{
+    const items=timeLog(k).slice().sort((a,b)=>(a.order||0)-(b.order||0));
+    return '<div class="hist-day"><div class="hist-day-head"><span class="date">'+prettyDate(k)+'</span>'
+      +'<span class="cnt" style="background:#E4EEF7;color:#1B5A8E">'+fmtH(dayHours(k))+' h</span></div>'
+      +'<div class="hist-day-items">'+items.map(e=>{
+        const m=catMeta(e.cat);
+        return '<div class="hist-item" style="background:'+m.color+'14">'+m.emo+' <span>'+esc(e.label||m.label)+'</span>'
+          +'<span class="mlbl" style="color:'+m.color+'">'+fmtH(e.hours)+' h</span></div>';
+      }).join('')+'</div></div>';
+  }).join('')+'</div>';
+}
+function renderTimeHistory(){
+  const dateRange=timeDateRange();
+  const tab=state.timeHistTab||'daily';
+  document.querySelectorAll('#view-time-history .htab').forEach(t=>t.classList.toggle('active',t.dataset.tht===tab));
+
+  const last7=dateRange.slice(-7);
+  const week=last7.reduce((s,k)=>s+dayHours(k),0);
+  const weekFocus=last7.reduce((s,k)=>s+focusHours(k),0);
+  const allTime=Object.keys(state.timeLogs||{}).reduce((s,k)=>s+dayHours(k),0);
+  const loggedDays=Object.keys(state.timeLogs||{}).filter(k=>timeLog(k).length).length;
+  const fGoal=state.settings.focusTarget||4;
+  let fStreak=0;
+  for(let i=0;i<120;i++){const d=new Date();d.setDate(d.getDate()-i);const k=fmtKey(d);if(!timeLog(k).length)break;if(focusHours(k)>=fGoal)fStreak++;else break;}
+
+  let html='';
+  if(tab==='daily'){
+    html='<h2 style="color:#1B5A8E">&#128202; Daily Breakdown</h2><div class="subdesc">Every day, stacked by category. Scroll right for the full history.</div>'
+      +'<div class="hist-chart-card"><h4>Hours per day &mdash; stacked by category</h4>'+makeStackedChart(dateRange)
+      +'<div class="tlegend">'+allCats().filter(c=>dateRange.some(k=>catHours(k,c.id)>0)).map(c=>'<span class="tchip" style="cursor:default"><i style="background:'+c.color+'"></i>'+esc(c.label)+'</span>').join('')+'</div>'
+      +'<div class="hist-legend">'+fmtH(week)+' h in the last 7 days &nbsp;|&nbsp; '+fmtH(allTime)+' h all-time</div></div>'
+      +'<div class="hist-streaks"><div class="hist-streak tstreak-blue"><div class="big">'+fmtH(week)+'</div><div class="cap">hours this week</div></div>'
+      +'<div class="hist-streak tstreak-blue"><div class="big">'+fStreak+'</div><div class="cap">day focus streak</div></div>'
+      +'<div class="hist-streak tstreak-purple"><div class="big">'+loggedDays+'</div><div class="cap">days logged</div></div></div>'
+      +timeDayListHtml(dateRange);
+  } else if(tab==='trend'){
+    html='<h2 style="color:#1B5A8E">&#128200; Category Trend</h2><div class="subdesc">One line per category. Tap a chip to show or hide it.</div>'
+      +'<div class="hist-chart-card"><h4>Hours per category over time</h4>'+makeTrendChart(dateRange)
+      +'<div class="hist-legend">'+fmtH(weekFocus)+' h of focus work in the last 7 days</div></div>'
+      +timeDayListHtml(dateRange);
+  } else if(tab==='weekly'){
+    const avg=loggedDays?allTime/loggedDays:0;
+    html='<h2 style="color:#1B5A8E">&#127849; Weekly Split</h2><div class="subdesc">How the last 7 days divided up.</div>'
+      +'<div class="hist-chart-card"><h4>Last 7 days by category</h4>'+makeDonut(dateRange)+'</div>'
+      +'<div class="hist-streaks"><div class="hist-streak tstreak-blue"><div class="big">'+fmtH(week)+'</div><div class="cap">hours this week</div></div>'
+      +'<div class="hist-streak tstreak-blue"><div class="big">'+fmtH(Math.round(avg*10)/10)+'</div><div class="cap">avg h per logged day</div></div>'
+      +'<div class="hist-streak tstreak-purple"><div class="big">'+fmtH(allTime)+'</div><div class="cap">all-time hours</div></div></div>'
+      +timeDayListHtml(dateRange);
+  } else {
+    const sDays=dateRange.filter(k=>catHours(k,'sleep')>0);
+    const sTot=sDays.reduce((s,k)=>s+catHours(k,'sleep'),0);
+    const sAvg=sDays.length?sTot/sDays.length:0;
+    const sGoal=state.settings.sleepTarget||7;
+    let sStreak=0;
+    for(let i=0;i<120;i++){const d=new Date();d.setDate(d.getDate()-i);const k=fmtKey(d);const v=catHours(k,'sleep');if(v===0)break;if(v>=sGoal)sStreak++;else break;}
+    html='<h2 style="color:#4B3DB5">&#128564; Sleep History</h2><div class="subdesc">Hours slept against your '+sGoal+' h target.</div>'
+      +'<div class="hist-chart-card"><h4>Sleep per night</h4>'+makeSleepChart(dateRange)
+      +'<div class="hist-legend">'+(sDays.length?'Average '+fmtH(Math.round(sAvg*10)/10)+' h across '+sDays.length+' logged night'+(sDays.length>1?'s':''):'No sleep logged yet \u2014 add it as a Sleep entry on Today')+'</div></div>'
+      +'<div class="hist-streaks"><div class="hist-streak tstreak-purple"><div class="big">'+fmtH(Math.round(sAvg*10)/10)+'</div><div class="cap">average hours</div></div>'
+      +'<div class="hist-streak tstreak-purple"><div class="big">'+sStreak+'</div><div class="cap">nights at target</div></div>'
+      +'<div class="hist-streak tstreak-blue"><div class="big">'+sDays.length+'</div><div class="cap">nights logged</div></div></div>'
+      +(sDays.length?'<div class="hist-list">'+sDays.slice().reverse().map(k=>'<div class="hist-day"><div class="hist-day-head"><span class="date">'+prettyDate(k)+'</span><span class="cnt" style="background:#EDE9FB;color:#4B3DB5">'+fmtH(catHours(k,'sleep'))+' h</span></div></div>').join('')+'</div>':'');
+  }
+  $('timeHistCol').innerHTML=html;
+  $('timeHistCol').querySelectorAll('.tchip[data-tg]').forEach(ch=>{
+    ch.onclick=()=>{const id=ch.dataset.tg;hiddenTrend[id]=!hiddenTrend[id];renderTimeHistory();};
+  });
+}
+
+/* ── wiring ── */
+$('timeAddBtn').onclick=tryAddTime;
+$('hoursInput').addEventListener('keydown',e=>{if(e.key==='Enter')tryAddTime();});
+$('fUp').onclick=e=>{e.stopPropagation();state.settings.focusTarget=(state.settings.focusTarget||4)+1;save();renderTimeStats();};
+$('fDown').onclick=e=>{e.stopPropagation();state.settings.focusTarget=Math.max(1,(state.settings.focusTarget||4)-1);save();renderTimeStats();};
+$('sUp').onclick=e=>{e.stopPropagation();state.settings.sleepTarget=Math.min(14,(state.settings.sleepTarget||7)+1);save();renderTimeStats();};
+$('sDown').onclick=e=>{e.stopPropagation();state.settings.sleepTarget=Math.max(3,(state.settings.sleepTarget||7)-1);save();renderTimeStats();};
+document.querySelectorAll('#view-time-history .htab').forEach(t=>{
+  t.onclick=()=>{state.timeHistTab=t.dataset.tht;renderTimeHistory();};
+});
+
 (async()=>{
   // Check table exists on first load
   const testRes = await _db.from('plate_storage').select('key').limit(1);
