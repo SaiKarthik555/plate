@@ -236,6 +236,19 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;fon
   .hist-item{font-size:13.5px}
 }
 /* ═══════════ TIME TRACKER ═══════════ */
+.dayhit{cursor:pointer}
+.daydetail{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;box-shadow:var(--sh);margin-bottom:20px;animation:drop .18s ease}
+.daydetail.hint{border-style:dashed;background:transparent;box-shadow:none;text-align:center;color:var(--muted);font-family:"Fraunces",serif;font-style:italic;font-size:15px;padding:20px}
+.dd-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.dd-head .ddate{font-family:"Fraunces",serif;font-size:19px;font-weight:600}
+.dd-head .dtot{font-family:"Fraunces",serif;font-size:19px;font-weight:600;color:#1B5A8E}
+.dd-rows{display:flex;flex-direction:column;gap:7px}
+.ddrow{display:flex;align-items:center;gap:10px;font-size:14.5px;padding:8px 12px;border-radius:9px}
+.ddrow .dnm{flex:1;font-weight:500}
+.ddrow .dhr{font-family:"Fraunces",serif;font-weight:600;flex-shrink:0}
+.ddrow .dpct{color:var(--muted);font-size:12.5px;width:40px;text-align:right;flex-shrink:0}
+.dd-sub{font-size:12px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);margin:16px 0 9px}
+
 .appnav{display:flex;gap:8px;margin:18px 0 0}
 .appbtn{background:var(--card);border:1px solid var(--line);border-radius:30px;padding:10px 22px;font-family:inherit;font-size:15px;font-weight:700;color:var(--muted);cursor:pointer;box-shadow:var(--sh);transition:.16s;display:flex;align-items:center;gap:7px}
 .appbtn:hover{border-color:var(--ink);color:var(--ink);transform:translateY(-1px)}
@@ -1126,10 +1139,12 @@ function makeStackedChart(dateRange){
   const DAY_W=52,BAR_W=26,H=130,TOP=16;
   const maxT=Math.max(1,...dateRange.map(k=>dayHours(k)));
   const totalW=Math.max(dateRange.length*DAY_W,300);
-  let g='';
+  let g='',hits='';
   dateRange.forEach((k,di)=>{
     const x=di*DAY_W+(DAY_W-BAR_W)/2;
     const segs=dayCatTotals(k);
+    g+='<rect class="dayhl" data-hl="'+k+'" x="'+(di*DAY_W+2)+'" y="0" width="'+(DAY_W-4)+'" height="'+H+'" rx="7" fill="#21231E" opacity="0"/>';
+    hits+='<rect class="dayhit" data-k="'+k+'" x="'+(di*DAY_W)+'" y="0" width="'+DAY_W+'" height="'+(H+22)+'" fill="#000" opacity="0"/>';
     if(!segs.length){
       g+='<rect x="'+(x+BAR_W/2-1)+'" y="'+(H-2)+'" width="2" height="2" rx="1" fill="#B0A898" opacity=".35"/>';
       return;
@@ -1144,7 +1159,44 @@ function makeStackedChart(dateRange){
     g+='<text x="'+(x+BAR_W/2)+'" y="'+Math.max(9,y-4)+'" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#70685A" font-weight="700" text-anchor="middle">'+fmtH(tot)+'</text>';
   });
   g+=dateLabels(dateRange,DAY_W,H+14);
-  return scrollWrap(g,totalW,H+24);
+  return scrollWrap(g+hits,totalW,H+24);
+}
+/* ── day breakdown panel (Daily tab) ── */
+let selDay=null;
+function dayDetailHtml(k){
+  const items=timeLog(k).slice().sort((a,b)=>(a.order||0)-(b.order||0));
+  if(!items.length)return '<div class="daydetail hint">Nothing logged on '+prettyDate(k)+'.</div>';
+  const tot=dayHours(k);
+  const cats=dayCatTotals(k);
+  const rows=items.map(e=>{
+    const m=catMeta(e.cat);
+    return '<div class="ddrow" style="background:'+m.color+'14"><span>'+m.emo+'</span>'
+      +'<span class="dnm">'+esc(e.label||m.label)+'</span>'
+      +'<span class="dhr" style="color:'+m.color+'">'+fmtH(e.hours)+' h</span>'
+      +'<span class="dpct">'+Math.round(e.hours/tot*100)+'%</span></div>';
+  }).join('');
+  const catRows=(cats.length<items.length)?'<div class="dd-sub">Category totals</div><div class="dd-rows">'
+    +cats.map(s=>{const m=catMeta(s.cat);
+      return '<div class="ddrow" style="background:var(--paper)"><i style="width:10px;height:10px;border-radius:3px;background:'+m.color+';display:inline-block;flex-shrink:0"></i>'
+        +'<span class="dnm">'+esc(m.label)+'</span>'
+        +'<span class="dhr" style="color:'+m.color+'">'+fmtH(s.hours)+' h</span>'
+        +'<span class="dpct">'+Math.round(s.hours/tot*100)+'%</span></div>';}).join('')+'</div>':'';
+  return '<div class="daydetail"><div class="dd-head"><span class="ddate">'+prettyDate(k)+'</span>'
+    +'<span class="dtot">'+fmtH(tot)+' h total</span></div>'
+    +'<div class="dd-rows">'+rows+'</div>'+catRows+'</div>';
+}
+function selectDay(k){
+  selDay=k;
+  const col=$('timeHistCol');
+  const box=col.querySelector('#dayDetail');
+  if(box)box.innerHTML=dayDetailHtml(k);
+  col.querySelectorAll('rect.dayhl').forEach(r=>r.setAttribute('opacity',r.dataset.hl===k?'0.07':'0'));
+}
+function wireDayClicks(){
+  const col=$('timeHistCol');
+  col.querySelectorAll('rect.dayhit').forEach(r=>{
+    r.addEventListener('click',()=>selectDay(r.dataset.k));
+  });
 }
 let hiddenTrend={};
 function makeTrendChart(dateRange){
@@ -1246,7 +1298,8 @@ function renderTimeHistory(){
     html='<h2 style="color:#1B5A8E">&#128202; Daily Breakdown</h2><div class="subdesc">Every day, stacked by category. Scroll right for the full history.</div>'
       +'<div class="hist-chart-card"><h4>Hours per day &mdash; stacked by category</h4>'+makeStackedChart(dateRange)
       +'<div class="tlegend">'+allCats().filter(c=>dateRange.some(k=>catHours(k,c.id)>0)).map(c=>'<span class="tchip" style="cursor:default"><i style="background:'+c.color+'"></i>'+esc(c.label)+'</span>').join('')+'</div>'
-      +'<div class="hist-legend">'+fmtH(week)+' h in the last 7 days &nbsp;|&nbsp; '+fmtH(allTime)+' h all-time</div></div>'
+      +'<div class="hist-legend">Tap any bar to see that day\u2019s breakdown &nbsp;|&nbsp; '+fmtH(week)+' h in the last 7 days &nbsp;|&nbsp; '+fmtH(allTime)+' h all-time</div></div>'
+      +'<div id="dayDetail"></div>'
       +'<div class="hist-streaks"><div class="hist-streak tstreak-blue"><div class="big">'+fmtH(week)+'</div><div class="cap">hours this week</div></div>'
       +'<div class="hist-streak tstreak-blue"><div class="big">'+fStreak+'</div><div class="cap">day focus streak</div></div>'
       +'<div class="hist-streak tstreak-purple"><div class="big">'+loggedDays+'</div><div class="cap">days logged</div></div></div>'
@@ -1280,6 +1333,14 @@ function renderTimeHistory(){
       +(sDays.length?'<div class="hist-list">'+sDays.slice().reverse().map(k=>'<div class="hist-day"><div class="hist-day-head"><span class="date">'+prettyDate(k)+'</span><span class="cnt" style="background:#EDE9FB;color:#4B3DB5">'+fmtH(catHours(k,'sleep'))+' h</span></div></div>').join('')+'</div>':'');
   }
   $('timeHistCol').innerHTML=html;
+  if(tab==='daily'){
+    wireDayClicks();
+    let pick=(selDay&&dateRange.indexOf(selDay)>=0&&timeLog(selDay).length)?selDay:null;
+    if(!pick&&timeLog(todayKey()).length&&dateRange.indexOf(todayKey())>=0)pick=todayKey();
+    if(!pick){const logged=dateRange.filter(k=>timeLog(k).length);if(logged.length)pick=logged[logged.length-1];}
+    if(pick)selectDay(pick);
+    else $('dayDetail').innerHTML='<div class="daydetail hint">Tap a bar above to see what that day was made of.</div>';
+  }
   $('timeHistCol').querySelectorAll('.tchip[data-tg]').forEach(ch=>{
     ch.onclick=()=>{const id=ch.dataset.tg;hiddenTrend[id]=!hiddenTrend[id];renderTimeHistory();};
   });
