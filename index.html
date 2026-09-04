@@ -678,7 +678,7 @@ $('uploadBtn').onclick=()=>$('fileInput').click();
 $('fileInput').onchange=e=>{handleFiles(e.target.files);e.target.value='';};
 
 /* ───────────────────────── MIND / JOURNAL ───────────────────────── */
-const CHECKS=['Phone away during work','No unscheduled checking','Didn\'t seek reassurance','Didn\'t rehearse scenarios','Messaged her freely','Used the worry window'];
+const CHECKS=['No WhatsApp till 7PM','Phone away during work','No unscheduled checking','Didn\'t seek reassurance','Didn\'t rehearse scenarios','Messaged her freely','Used the worry window'];
 let mindUnlocked=false, pinMode='enter', pendingChecks=[];
 
 async function hashPin(p){
