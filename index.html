@@ -235,138 +235,63 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;fon
   .hist-streak .big{font-size:34px}
   .hist-item{font-size:13.5px}
 }
-/* ═══════════ FOCUS DASHBOARD ═══════════ */
+/* ═══════════ FOCUS LOG ═══════════ */
 .appnav{display:flex;gap:8px;margin:18px 0 0}
 .appbtn{background:var(--card);border:1px solid var(--line);border-radius:30px;padding:10px 22px;font-family:inherit;font-size:15px;font-weight:700;color:var(--muted);cursor:pointer;box-shadow:var(--sh);transition:.16s;display:flex;align-items:center;gap:7px}
 .appbtn:hover{border-color:var(--ink);color:var(--ink);transform:translateY(-1px)}
 .appbtn.active{background:var(--ink);color:var(--p2);border-color:var(--ink)}
-
-/* hero */
-.hero{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:26px 28px;border-top:4px solid var(--ink)}
-.hero-main{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
-.hero-num{font-family:"Fraunces",serif;font-size:74px;font-weight:600;line-height:.92}
-.hero-unit{font-family:"Fraunces",serif;font-size:22px;font-weight:600;color:var(--muted);font-style:italic}
-.hero-sub{font-size:15px;color:var(--muted);margin-top:8px}
-.hero-chain{display:flex;gap:5px;margin-top:16px;flex-wrap:wrap}
-.hc{width:15px;height:15px;border-radius:4px;background:#EAE5D8}
-.hc.win{background:var(--gr)}.hc.half{background:var(--go)}.hc.miss{background:var(--res);border:1px solid #f0c2b4}
-.hc.td{box-shadow:0 0 0 2px var(--ink)}
-.hero-chainlbl{font-size:11.5px;color:var(--muted);margin-top:9px;letter-spacing:.3px}
-
-/* countdown / outcome */
-.stat.outcome{border-top:4px solid var(--go)}
-.stat.outcome .lbl{color:#8a6418}
-.stat.outcome .num{font-size:46px}
-.oc-title{font-family:"Fraunces",serif;font-size:16px;font-weight:600;margin-top:6px;line-height:1.3}
-.oc-none{font-family:"Fraunces",serif;font-style:italic;color:var(--muted);font-size:15px;line-height:1.4;margin:6px 0 10px}
-.oc-edit{display:flex;flex-direction:column;gap:8px;margin-top:12px}
-.oc-edit input{border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:10px 12px;font-size:14.5px;font-family:inherit;color:var(--ink);width:100%}
-.oc-edit input:focus{outline:none;border-color:var(--go)}
-.oc-edit .ocrow{display:flex;gap:8px;flex-wrap:wrap}
-.oc-edit .ocrow input{flex:1;min-width:130px}
-.oc-btn{background:var(--go);color:#fff;border:none;border-radius:10px;padding:10px 18px;font-weight:700;cursor:pointer;font-family:inherit;font-size:14px}
-.oc-btn.ghost{background:var(--paper);color:var(--muted);border:1px solid var(--line)}
-.oc-link{background:none;border:none;color:var(--muted);font-family:inherit;font-size:12.5px;font-weight:600;cursor:pointer;text-decoration:underline;padding:0;margin-top:10px}
-.oc-stale{background:var(--res);color:var(--red);border:1px solid #f0c2b4;border-radius:11px;padding:11px 14px;font-size:14px;font-weight:600;margin-top:12px;display:flex;align-items:center;gap:8px}
-.oc-fresh{background:var(--grs);color:var(--grd);border:1px solid #bee3cc;border-radius:11px;padding:11px 14px;font-size:14px;font-weight:600;margin-top:12px}
-
-/* daily check-in */
-.checkin{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px 24px;margin-top:18px}
-.checkin h3{font-family:"Fraunces",serif;font-size:21px;font-weight:600;margin-bottom:4px}
-.checkin .clead{font-size:14px;color:var(--muted);margin-bottom:18px}
-.qblock{margin-bottom:18px}
-.qlbl{font-size:13px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);margin-bottom:9px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.qlbl .qhint{font-weight:500;letter-spacing:0;text-transform:none;font-size:12.5px;opacity:.85}
-.yn{display:flex;gap:10px}
-.yn button{flex:1;border:1.5px solid var(--line);background:var(--paper);border-radius:12px;padding:15px 10px;cursor:pointer;font-family:inherit;font-size:15px;font-weight:700;color:var(--ink);transition:.14s;display:flex;align-items:center;justify-content:center;gap:8px}
-.yn button:hover{transform:translateY(-2px)}
-.yn button.yes.on{background:var(--gr);border-color:var(--gr);color:#fff}
-.yn button.no.on{background:var(--re);border-color:var(--re);color:#fff}
-.yn button.yes:hover{border-color:var(--gr)}
-.yn button.no:hover{border-color:var(--re)}
-.leaks{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
-.leaks button{border:1.5px solid var(--line);background:var(--paper);border-radius:11px;padding:12px 8px;cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:600;color:var(--ink);transition:.14s;display:flex;flex-direction:column;align-items:center;gap:5px;line-height:1.25;text-align:center}
-.leaks button .emo{font-size:19px}
-.leaks button:hover{transform:translateY(-2px);border-color:var(--ink)}
-.leaks button.on{background:var(--ink);border-color:var(--ink);color:var(--p2)}
-.leaks button.lcustom{border-style:dashed;color:var(--muted)}
-.noterow{display:flex;gap:9px}
-.noterow input{flex:1;border:1px solid var(--line);background:var(--paper);border-radius:11px;padding:12px 14px;font-size:15px;font-family:inherit;color:var(--ink)}
-.noterow input:focus{outline:none;border-color:var(--ink)}
-.done-pill{background:var(--grs);color:var(--grd);border:1px solid #bee3cc;border-radius:11px;padding:12px 15px;font-size:14.5px;font-weight:600;display:flex;align-items:center;gap:9px;margin-top:4px}
-
-/* 30-day grid */
-.gridcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px 24px;margin-top:18px}
-.gridcard h3{font-family:"Fraunces",serif;font-size:20px;font-weight:600;margin-bottom:3px}
-.gridcard .glead{font-size:13.5px;color:var(--muted);margin-bottom:16px}
-.daygrid{display:grid;grid-template-columns:repeat(10,1fr);gap:7px}
-.dg{aspect-ratio:1;border-radius:7px;background:#EDE9DE;position:relative;cursor:pointer;transition:.14s;display:grid;place-items:center;font-size:10px;font-weight:700;color:transparent;border:1px solid transparent}
-.dg:hover{transform:scale(1.11);z-index:2}
-.dg.l0{background:#EDE9DE}
-.dg.l1{background:var(--go)}
-.dg.l2{background:var(--gr)}
-.dg.miss{background:var(--res);border-color:#EFC9BC}
-.dg.td{box-shadow:0 0 0 2.5px var(--ink)}
-.dg.sel{box-shadow:0 0 0 2.5px #2F80C4}
-.dg.future{opacity:.3;cursor:default}
-.dg.future:hover{transform:none}
-.gridkey{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px}
-.gk{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);font-weight:600}
-.gk i{width:11px;height:11px;border-radius:3px;display:inline-block}
-.daypeek{margin-top:16px;border-top:1px solid var(--line);padding-top:16px}
-.daypeek.hint{color:var(--muted);font-family:"Fraunces",serif;font-style:italic;font-size:14.5px}
-.dp-date{font-family:"Fraunces",serif;font-size:17px;font-weight:600;margin-bottom:10px}
-.dp-rows{display:flex;flex-direction:column;gap:7px}
-.dpr{display:flex;align-items:center;gap:9px;font-size:14.5px;padding:8px 12px;border-radius:9px;background:var(--paper)}
-.dpr .dprl{flex:1;color:var(--muted)}
-.dpr .dprv{font-weight:700}
-.dpr.win{background:var(--grs)}.dpr.win .dprv{color:var(--grd)}
-.dpr.lose{background:var(--res)}.dpr.lose .dprv{color:var(--red)}
-.dp-note{font-family:"Fraunces",serif;font-style:italic;font-size:14.5px;color:var(--ink);background:var(--paper);border-left:3px solid var(--line);padding:10px 13px;border-radius:0 9px 9px 0;margin-top:9px}
-
-/* summary */
-.sumgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.sumcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:20px 22px}
-.sumcard .slbl{font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted)}
-.sumcard .sbig{font-family:"Fraunces",serif;font-size:44px;font-weight:600;line-height:1;margin:7px 0 4px}
-.sumcard .ssub{font-size:14px;color:var(--muted)}
-.sumcard.warnc{border-top:4px solid var(--re)}.sumcard.warnc .sbig{color:var(--red)}
-.sumcard.goodc{border-top:4px solid var(--gr)}.sumcard.goodc .sbig{color:var(--grd)}
-.verdict{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:22px 24px;margin-top:18px;border-left:5px solid var(--ink)}
-.verdict h3{font-family:"Fraunces",serif;font-size:20px;font-weight:600;margin-bottom:12px}
-.vline{font-size:15px;line-height:1.55;margin-bottom:9px;display:flex;gap:10px;align-items:flex-start}
-.vline:last-child{margin-bottom:0}
-.vline .vi{flex-shrink:0}
-.vline b{font-weight:700}
-.leakbars{display:flex;flex-direction:column;gap:10px;margin-top:4px}
-.lbr .lbh{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:4px}
-.lbr .lbh b{font-weight:700}
-.lbtrack{height:8px;border-radius:5px;background:#EDE9DE;overflow:hidden}
-.lbtrack i{display:block;height:100%;border-radius:5px;background:var(--re)}
-.setwrap{margin-top:18px}
-.setcard{background:transparent;border:1px dashed var(--line);border-radius:var(--r);padding:20px 22px}
-.setcard h4{font-size:12.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
-.setrow{display:flex;align-items:center;gap:10px;margin-bottom:11px;flex-wrap:wrap}
-.setrow label{font-size:14px;color:var(--muted);min-width:132px}
-.setrow input{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:9px 12px;font-size:14.5px;font-family:inherit;color:var(--ink);flex:1;min-width:150px}
-.setrow input:focus{outline:none;border-color:var(--ink)}
-.setrow input[type=time]{max-width:130px;flex:0}
-@media(max-width:820px){.sumgrid{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){
-  .appnav{width:100%}
-  .appbtn{flex:1;justify-content:center;padding:10px 8px;font-size:14px}
-  .hero{padding:20px}
-  .hero-num{font-size:56px}
-  .checkin,.gridcard,.verdict{padding:17px 16px}
-  .daygrid{grid-template-columns:repeat(7,1fr);gap:6px}
-  .leaks{grid-template-columns:repeat(2,1fr)}
-  .yn button{padding:14px 6px;font-size:14px}
-  .sumgrid{grid-template-columns:1fr 1fr;gap:10px}
-  .sumcard{padding:14px 15px}
-  .sumcard .sbig{font-size:33px}
-  .sumcard .ssub{font-size:12.5px}
-  .setrow label{min-width:unset;width:100%}
+.tally{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+.tcard2{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:16px 18px}
+.tcard2 .tl{font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.tsplit{display:flex;align-items:baseline;gap:8px}
+.tsplit .tv{font-family:"Fraunces",serif;font-size:34px;font-weight:600;line-height:1}
+.tsplit .tvs{font-size:13px;color:var(--muted);font-weight:600}
+.tsplit .tsep{color:var(--line);font-size:22px;margin:0 2px}
+.tme{color:#1B5A8E}.ther{color:#B5539C}.tyes{color:var(--grd)}.tno{color:var(--red)}
+.tbar2{height:7px;border-radius:5px;overflow:hidden;background:#EDE9DE;display:flex;margin-top:11px}
+.tbar2 i{height:100%}
+.logcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:20px 22px}
+.logcard h3{font-family:"Fraunces",serif;font-size:21px;font-weight:600;margin-bottom:3px}
+.logcard .llead{font-size:13.5px;color:var(--muted);margin-bottom:18px}
+.loghead{display:grid;grid-template-columns:118px 1fr 1fr 1fr;gap:12px;padding:0 4px 9px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.loghead span{font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);text-align:center}
+.loghead span:first-child{text-align:left}
+.logrow{display:grid;grid-template-columns:118px 1fr 1fr 1fr;gap:12px;align-items:center;padding:9px 4px;border-radius:10px;transition:.14s}
+.logrow:hover{background:var(--paper)}
+.logrow.td{background:var(--gos);box-shadow:inset 0 0 0 1.5px var(--go)}
+.logrow.future{opacity:.42}
+.logrow.done{background:var(--grs)}
+.logrow.done:hover{background:#dbeee3}
+.ldate{display:flex;flex-direction:column;line-height:1.25}
+.ldate .ldd{font-family:"Fraunces",serif;font-size:15.5px;font-weight:600}
+.ldate .ldw{font-size:11.5px;color:var(--muted);font-weight:600;letter-spacing:.3px}
+.ldate .ldt{font-size:10px;font-weight:800;letter-spacing:.5px;color:#8a6418;text-transform:uppercase}
+.pick{display:flex;gap:6px}
+.pick button{flex:1;border:1.5px solid var(--line);background:var(--paper);border-radius:9px;padding:9px 4px;cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:700;color:var(--muted);transition:.13s}
+.pick button:hover{transform:translateY(-1px);border-color:var(--ink);color:var(--ink)}
+.pick button.on.me{background:#2F80C4;border-color:#2F80C4;color:#fff}
+.pick button.on.her{background:#B5539C;border-color:#B5539C;color:#fff}
+.pick button.on.yes{background:var(--gr);border-color:var(--gr);color:#fff}
+.pick button.on.no{background:var(--re);border-color:var(--re);color:#fff}
+.logrow.future .pick button{cursor:default}
+.logrow.future .pick button:hover{transform:none;border-color:var(--line);color:var(--muted)}
+.monthsep{font-family:"Fraunces",serif;font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;margin:18px 0 8px;padding-top:12px;border-top:1px dashed var(--line)}
+.monthsep:first-child{margin-top:0;padding-top:0;border-top:none}
+.logfoot{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media(max-width:700px){
+  .tally{grid-template-columns:1fr;gap:10px}
+  .tcard2{padding:13px 15px}
+  .tsplit .tv{font-size:28px}
+  .logcard{padding:16px 13px}
+  .loghead{display:none}
+  .logrow{grid-template-columns:1fr;gap:8px;padding:13px 11px;border:1px solid var(--line);margin-bottom:9px}
+  .logrow:hover{background:transparent}
+  .ldate{flex-direction:row;align-items:baseline;gap:8px}
+  .pickwrap{display:flex;align-items:center;gap:9px}
+  .picklbl{font-size:11.5px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;color:var(--muted);width:78px;flex-shrink:0}
+  .pick{flex:1}
 }
+@media(min-width:701px){.picklbl{display:none}.pickwrap{display:block}}
 /* ═══════════ TIME TRACKER ═══════════ */
 .tstats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .stat.tcard{padding:18px 20px}
@@ -447,12 +372,12 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;fon
 <div class="wrap">
 <header>
   <div class="brand"><h1 id="brandName">Focus<span class="dot" style="background:#C98F22"></span></h1><small id="brandTag">two habits, one outcome</small></div>
-  <div class="daynav" id="daynavWrap">
+  <div class="daynav" id="daynavWrap" style="display:none">
     <button class="navbtn" id="prev">&#8249;</button>
     <div class="dateblock"><div class="dmain" id="dateMain"></div><div class="drel" id="dateRel"></div></div>
     <button class="navbtn" id="next">&#8250;</button>
   </div>
-  <div class="datepick-wrap" id="datepickWrap">
+  <div class="datepick-wrap" id="datepickWrap" style="display:none">
     <label>Jump to</label><input type="date" id="datePicker"/>
   </div>
 </header>
@@ -460,10 +385,6 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;fon
   <button class="appbtn active" data-app="focus">&#127919; Focus</button>
   <button class="appbtn" data-app="plate">&#127869;&#65039; Plate</button>
   <button class="appbtn" data-app="time">&#9201;&#65039; Time</button>
-</div>
-<div class="tabs" id="focusTabs">
-  <button class="tab active" data-app="focus" data-tab="today">Today</button>
-  <button class="tab" data-app="focus" data-tab="review">Review</button>
 </div>
 <div class="tabs" id="plateTabs" style="display:none">
   <button class="tab active" data-app="plate" data-tab="today">Today</button>
@@ -544,51 +465,13 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;fon
   <div id="morningHistCol"></div>
 </div>
 <div class="view on" id="view-focus-today">
-  <div class="layout">
-    <div class="main">
-      <div class="hero" id="heroCard">
-        <div class="hero-main"><span class="hero-num" id="heroNum">0</span><span class="hero-unit" id="heroUnit">day chain</span></div>
-        <div class="hero-sub" id="heroSub"></div>
-        <div class="hero-chain" id="heroChain"></div>
-        <div class="hero-chainlbl" id="heroChainLbl">LAST 14 DAYS</div>
-      </div>
-      <div class="checkin">
-        <h3 id="ciTitle">Today&rsquo;s check-in</h3>
-        <div class="clead" id="ciLead">Three taps. Answer honestly &mdash; the point is the pattern, not the score.</div>
-        <div class="qblock">
-          <div class="qlbl" id="q1lbl">1 &middot; Habit one</div>
-          <div class="yn" id="q1"><button class="yes" data-v="1">&#10003; Yes</button><button class="no" data-v="0">&#10007; No</button></div>
-        </div>
-        <div class="qblock">
-          <div class="qlbl" id="q2lbl">2 &middot; Habit two</div>
-          <div class="yn" id="q2"><button class="yes" data-v="1">&#10003; Yes</button><button class="no" data-v="0">&#10007; No</button></div>
-        </div>
-        <div class="qblock">
-          <div class="qlbl">3 &middot; Biggest leak today <span class="qhint">where the time actually went</span></div>
-          <div class="leaks" id="leaks"></div>
-          <div id="leakCustWrap" style="display:none" class="misc-input-wrap"><input id="leakCustInput" placeholder="e.g. WhatsApp, cricket, shopping..." autocomplete="off"/><button id="leakCustSave">Add</button></div>
-        </div>
-        <div class="qblock" style="margin-bottom:0">
-          <div class="qlbl">One line on the day <span class="qhint">optional</span></div>
-          <div class="noterow"><input id="focusNote" placeholder="What actually happened?" autocomplete="off"/><button class="gobtn" id="noteSave">Save</button></div>
-        </div>
-      </div>
-      <div class="gridcard">
-        <h3>&#128197; Last 30 days</h3>
-        <div class="glead">Tap a square to see that day. Gaps are the point.</div>
-        <div class="daygrid" id="dayGrid"></div>
-        <div class="gridkey" id="gridKey"></div>
-        <div class="daypeek hint" id="dayPeek">Tap a square above to read that day.</div>
-      </div>
-    </div>
-    <aside class="sidebar" style="position:static;max-height:none;overflow:visible">
-      <div class="stat outcome" id="outcomeCard" style="box-shadow:none;border:none;padding:0">
-        <div class="lbl">&#127919; The one outcome</div>
-        <div id="outcomeBody"></div>
-      </div>
-      <div class="sid-divider" style="margin-top:22px">Leak tally &mdash; last 30 days</div>
-      <div class="leakbars" id="leakBars"></div>
-    </aside>
+  <div class="tally" id="tally"></div>
+  <div class="logcard">
+    <h3>&#128197; Daily log</h3>
+    <div class="llead" id="logLead"></div>
+    <div class="loghead"><span>Date</span><span>Who called first?</span><span>Who msgd first?</span><span>Did I keep my calm?</span></div>
+    <div id="logRows"></div>
+    <div class="logfoot"><span id="logCount"></span><span id="logRange"></span></div>
   </div>
 </div>
 <div class="view" id="view-time-today">
@@ -652,25 +535,6 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;fon
   </div>
   <div id="timeHistCol"></div>
 </div>
-<div class="view" id="view-focus-review">
-  <div class="sumgrid" id="sumGrid"></div>
-  <div class="verdict" id="verdict"></div>
-  <div class="gridcard" style="margin-top:18px">
-    <h3>&#128203; Every day logged</h3>
-    <div class="glead" id="logLead">Newest first.</div>
-    <div id="focusLogList"></div>
-  </div>
-  <div class="setwrap">
-    <div class="setcard">
-      <h4>&#9881;&#65039; Setup</h4>
-      <div class="setrow"><label>Habit one</label><input id="setH1" placeholder="e.g. Woke at target time"/></div>
-      <div class="setrow"><label>Target wake time</label><input type="time" id="setWake"/></div>
-      <div class="setrow"><label>Habit two</label><input id="setH2" placeholder="e.g. Did the 90-minute block"/></div>
-      <div class="setrow"><label>Block length</label><input id="setBlock" placeholder="e.g. 90 minutes"/></div>
-      <div class="setrow" style="margin-bottom:0;margin-top:16px"><button class="oc-btn" id="setSave">Save setup</button></div>
-    </div>
-  </div>
-</div>
 <footer id="footNote">Focus &middot; saves automatically &middot; three taps a day</footer>
 </div>
 <div class="overlay" id="overlay">
@@ -700,7 +564,7 @@ async function _dbDel(key){
 
 const SKEY='plate-v3';
 const imgCache={};
-let state={logs:{},motivation:[],settings:{proteinTarget:3,timeFocusTarget:4,sleepTarget:7},memory:{},focus:null,timeLogs:{},timeCats:[],timeHistTab:'daily'};
+let state={logs:{},motivation:[],settings:{proteinTarget:3,timeFocusTarget:4,sleepTarget:7},memory:{},callLog:{},timeLogs:{},timeCats:[],timeHistTab:'daily'};
 
 async function loadState(){
   const r=await _dbGet(SKEY);
@@ -1063,8 +927,8 @@ document.querySelectorAll('#view-history .htab').forEach(htab=>{
     renderHistory();
   };
 });
-let currentApp='focus',plateTab='today',focusTab='today',timeTab='today';
-const APP_TABS={plate:()=>plateTab,focus:()=>focusTab,time:()=>timeTab};
+let currentApp='focus',plateTab='today',timeTab='today';
+const APP_TABS={plate:()=>plateTab,focus:()=>'today',time:()=>timeTab};
 const APP_BRAND={plate:['Plate','var(--gr)','protein up, junk down','Plate \u00B7 saves automatically \u00B7 drag items to reorder'],
   focus:['Focus','#C98F22','two habits, one outcome','Focus \u00B7 saves automatically \u00B7 three taps a day'],
   time:['Time','#2F80C4','where the hours go','Time \u00B7 saves automatically \u00B7 drag entries to reorder']};
@@ -1073,12 +937,11 @@ function setView(app,tab){
   currentView=(app==='plate')?tab:(app+'-'+tab);
   document.querySelectorAll('.appbtn').forEach(b=>b.classList.toggle('active',b.dataset.app===app));
   $('plateTabs').style.display=(app==='plate')?'flex':'none';
-  $('focusTabs').style.display=(app==='focus')?'flex':'none';
   $('timeTabs').style.display=(app==='time')?'flex':'none';
   document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.app===app&&t.dataset.tab===tab));
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
   $('view-'+currentView).classList.add('on');
-  const isToday=(tab==='today');
+  const isToday=(tab==='today'&&app!=='focus');
   $('daynavWrap').style.display=isToday?'flex':'none';
   $('datepickWrap').style.display=isToday?'flex':'none';
   const br=APP_BRAND[app];
@@ -1088,7 +951,6 @@ function setView(app,tab){
   document.title=br[0];
   if(currentView==='history')renderHistory();
   else if(currentView==='focus-today')renderFocusAll();
-  else if(currentView==='focus-review')renderFocusReview();
   else if(currentView==='time-today')renderTimeAll();
   else if(currentView==='time-history')renderTimeHistory();
 }
@@ -1099,7 +961,6 @@ document.querySelectorAll('.tab').forEach(t=>{
   t.onclick=()=>{
     if(t.dataset.app==='plate')plateTab=t.dataset.tab;
     else if(t.dataset.app==='time')timeTab=t.dataset.tab;
-    else focusTab=t.dataset.tab;
     setView(t.dataset.app,t.dataset.tab);
   };
 });
@@ -1123,305 +984,102 @@ $('urgeBtn').onclick=openOverlay;
 $('ovClose').onclick=()=>$('overlay').classList.remove('on');
 $('ovPrev').onclick=()=>ovStep(-1);$('ovNext').onclick=()=>ovStep(1);
 document.addEventListener('keydown',e=>{if($('overlay').classList.contains('on')){if(e.key==='Escape')$('overlay').classList.remove('on');if(e.key==='ArrowRight')ovStep(1);if(e.key==='ArrowLeft')ovStep(-1);}});
-/* ══════════════════ FOCUS DASHBOARD ══════════════════ */
-const DEF_LEAKS=[
-  {id:'scroll',label:'Instagram / scrolling',emo:'&#128241;'},
-  {id:'oversleep',label:'Overslept',emo:'&#128564;'},
-  {id:'youtube',label:'YouTube',emo:'&#128250;'},
-  {id:'drift',label:'Drifting / no plan',emo:'&#127744;'},
-  {id:'chat',label:'Chatting',emo:'&#128172;'},
-  {id:'none',label:'No real leak',emo:'&#10024;'}
+/* ══════════════════ FOCUS LOG ══════════════════ */
+const LOG_START='2026-10-05',LOG_END='2026-11-10';
+const LOG_Q=[
+  {k:'call',label:'Who called first?',short:'Called',opts:[{v:'me',t:'Me',c:'me'},{v:'her',t:'Her',c:'her'}]},
+  {k:'msg', label:'Who msgd first?', short:'Msgd',  opts:[{v:'me',t:'Me',c:'me'},{v:'her',t:'Her',c:'her'}]},
+  {k:'calm',label:'Did I keep my calm?',short:'Calm',opts:[{v:'yes',t:'Yes',c:'yes'},{v:'no',t:'No',c:'no'}]}
 ];
-function fset(){
-  if(!state.focus)state.focus={};
-  const f=state.focus;
-  if(!f.logs)f.logs={};
-  if(!f.leaks)f.leaks=[];
-  if(f.h1===undefined)f.h1='Woke at target time';
-  if(f.h2===undefined)f.h2='Did the morning block';
-  if(f.wake===undefined)f.wake='06:30';
-  if(f.block===undefined)f.block='90 minutes';
-  if(f.outcome===undefined)f.outcome=null;
-  if(f.start===undefined)f.start=todayKey();
-  return f;
+function flog(){
+  if(!state.callLog)state.callLog={};
+  return state.callLog;
 }
-function allLeaks(){return DEF_LEAKS.concat(fset().leaks);}
-function leakMeta(id){const l=allLeaks().find(x=>x.id===id);return l||{id:id,label:id,emo:'&#9201;&#65039;'};}
-function fday(k){return fset().logs[k]||null;}
-function fscore(k){const d=fday(k);if(!d)return -1;return (d.h1?1:0)+(d.h2?1:0);}
-function isLogged(k){return !!fday(k);}
-function daysBetween(a,b){return Math.round((new Date(b+'T00:00:00')-new Date(a+'T00:00:00'))/864e5);}
-function shiftKey(k,n){const p=k.split('-').map(Number);const d=new Date(p[0],p[1]-1,p[2]);d.setDate(d.getDate()+n);return fmtKey(d);}
-function lastNDays(n){const out=[];for(let i=n-1;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);out.push(fmtKey(d));}return out;}
-function fullStreak(){
-  let s=0;
-  for(let i=0;i<400;i++){
-    const d=new Date();d.setDate(d.getDate()-i);
-    const k=fmtKey(d);
-    if(k===todayKey()&&!isLogged(k))continue;
-    if(fscore(k)===2)s++;else break;
-  }
-  return s;
+function logDates(){
+  const out=[];
+  const p=LOG_START.split('-').map(Number);
+  const d=new Date(p[0],p[1]-1,p[2]);
+  const e=LOG_END.split('-').map(Number);
+  const end=new Date(e[0],e[1]-1,e[2]);
+  while(d<=end){out.push(fmtKey(new Date(d)));d.setDate(d.getDate()+1);}
+  return out;
 }
-function bestStreak(){
-  const keys=Object.keys(fset().logs).sort();
-  let best=0,run=0,prev=null;
-  keys.forEach(k=>{
-    if(fscore(k)===2){run=(prev&&daysBetween(prev,k)===1)?run+1:1;best=Math.max(best,run);prev=k;}
-    else{run=0;prev=null;}
-  });
-  return best;
+function setAns(key,q,val){
+  const L=flog();
+  if(!L[key])L[key]={};
+  L[key][q]=(L[key][q]===val)?null:val;
+  if(!L[key].call&&!L[key].msg&&!L[key].calm)delete L[key];
+  save();renderFocusAll();
 }
-function fsave(){save();renderFocusAll();}
-
-/* ── check-in ── */
-function setHabit(n,v){
-  const f=fset(),k=fmtKey(current);
-  if(!f.logs[k])f.logs[k]={h1:false,h2:false,leak:null,note:'',ts:Date.now()};
-  f.logs[k]['h'+n]=!!v;
-  f.logs[k].ts=Date.now();
-  fsave();
+function dayDone(k){
+  const d=flog()[k];
+  return !!(d&&d.call&&d.msg&&d.calm);
 }
-function setLeak(id){
-  const f=fset(),k=fmtKey(current);
-  if(!f.logs[k])f.logs[k]={h1:false,h2:false,leak:null,note:'',ts:Date.now()};
-  f.logs[k].leak=(f.logs[k].leak===id)?null:id;
-  fsave();
-}
-function saveNote(){
-  const f=fset(),k=fmtKey(current);
-  if(!f.logs[k])f.logs[k]={h1:false,h2:false,leak:null,note:'',ts:Date.now()};
-  f.logs[k].note=$('focusNote').value.trim();
-  fsave();
-}
-function addCustomLeak(label){
-  const f=fset();
-  const id='l-'+label.trim().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,28);
-  if(!id||id==='l-')return null;
-  if(DEF_LEAKS.some(l=>l.id===id))return DEF_LEAKS.find(l=>l.id===id);
-  let ex=f.leaks.find(l=>l.id===id);
-  if(!ex){ex={id:id,label:label.trim(),emo:'&#9888;&#65039;'};f.leaks.push(ex);}
-  return ex;
+function dayTouched(k){
+  const d=flog()[k];
+  return !!(d&&(d.call||d.msg||d.calm));
 }
 
-/* ── outcome ── */
-let ocEditing=false;
-function renderOutcome(){
-  const f=fset(),o=f.outcome;
-  const el=$('outcomeBody');
-  if(ocEditing||!o){
-    el.innerHTML=(!o&&!ocEditing?'<div class="oc-none">Nothing set. A habit chain without an outcome is just a nice streak &mdash; name one thing with a real date.</div>':'')
-      +'<div class="oc-edit">'
-      +'<input id="ocTitle" placeholder="e.g. Apply to 10 roles / book 1 interview" value="'+(o?esc(o.title):'')+'"/>'
-      +'<div class="ocrow"><input type="date" id="ocDate" value="'+(o?esc(o.due):'')+'"/>'
-      +'<button class="oc-btn" id="ocSave">Save</button>'
-      +(o?'<button class="oc-btn ghost" id="ocCancel">Cancel</button>':'')+'</div></div>';
-    $('ocSave').onclick=()=>{
-      const t=$('ocTitle').value.trim(),dd=$('ocDate').value;
-      if(!t){$('ocTitle').focus();return;}
-      if(!dd){alert('Pick a date \u2014 an outcome without a deadline is never late, so it never happens.');return;}
-      const f2=fset();
-      f2.outcome={title:t,due:dd,lastMove:(f2.outcome&&f2.outcome.lastMove)||null,moves:(f2.outcome&&f2.outcome.moves)||[]};
-      ocEditing=false;fsave();
-    };
-    if($('ocCancel'))$('ocCancel').onclick=()=>{ocEditing=false;renderOutcome();};
-    return;
-  }
-  const left=daysBetween(todayKey(),o.due);
-  const stale=o.lastMove?daysBetween(o.lastMove,todayKey()):null;
-  el.innerHTML='<div class="num" style="font-family:Fraunces,serif;font-size:46px;font-weight:600;line-height:1;margin:6px 0 2px;color:'+(left<0?'var(--red)':(left<=7?'#8a6418':'var(--ink)'))+'">'+Math.abs(left)+'</div>'
-    +'<div class="sub" style="font-size:14px;color:var(--muted)">'+(left<0?'days overdue':left===0?'due today':'days left')+'</div>'
-    +'<div class="oc-title">'+esc(o.title)+'</div>'
-    +(stale===null
-      ? '<div class="oc-stale">&#9888;&#65039; No progress logged yet.</div>'
-      : (stale===0
-        ? '<div class="oc-fresh">&#9989; Moved it today.</div>'
-        : '<div class="oc-stale">&#9888;&#65039; '+stale+' day'+(stale>1?'s':'')+' since you moved this.</div>'))
-    +'<button class="oc-btn" id="ocMove" style="width:100%;margin-top:12px">I moved this forward today</button>'
-    +'<button class="oc-link" id="ocEdit">edit outcome</button>';
-  $('ocMove').onclick=()=>{
-    const f2=fset();
-    const k=todayKey();
-    if(!f2.outcome.moves)f2.outcome.moves=[];
-    if(f2.outcome.moves.indexOf(k)<0)f2.outcome.moves.push(k);
-    f2.outcome.lastMove=k;
-    fsave();
+function renderTally(){
+  const dates=logDates(),L=flog();
+  const cnt=q=>{
+    const t={};
+    dates.forEach(k=>{const d=L[k];if(d&&d[q])t[d[q]]=(t[d[q]]||0)+1;});
+    return t;
   };
-  $('ocEdit').onclick=()=>{ocEditing=true;renderOutcome();};
+  const card=(lbl,t,a,b,ac,bc,at,bt)=>{
+    const na=t[a]||0,nb=t[b]||0,tot=na+nb;
+    return '<div class="tcard2"><div class="tl">'+lbl+'</div>'
+      +'<div class="tsplit"><span class="tv '+ac+'">'+na+'</span><span class="tvs '+ac+'">'+at+'</span>'
+      +'<span class="tsep">/</span><span class="tv '+bc+'">'+nb+'</span><span class="tvs '+bc+'">'+bt+'</span></div>'
+      +'<div class="tbar2">'+(tot
+        ? '<i style="width:'+(na/tot*100)+'%;background:'+(ac==='tme'?'#2F80C4':'var(--gr)')+'"></i><i style="width:'+(nb/tot*100)+'%;background:'+(bc==='ther'?'#B5539C':'var(--re)')+'"></i>'
+        : '')+'</div></div>';
+  };
+  const c=cnt('call'),m=cnt('msg'),ca=cnt('calm');
+  $('tally').innerHTML=card('Called first',c,'me','her','tme','ther','me','her')
+    +card('Messaged first',m,'me','her','tme','ther','me','her')
+    +card('Kept my calm',ca,'yes','no','tyes','tno','yes','no');
 }
+function renderLogRows(){
+  const dates=logDates(),L=flog(),tk=todayKey();
+  let html='',lastMonth='';
+  dates.forEach(k=>{
+    const p=k.split('-').map(Number);
+    const dt=new Date(p[0],p[1]-1,p[2]);
+    const mon=dt.toLocaleDateString(undefined,{month:'long',year:'numeric'});
+    if(mon!==lastMonth){html+='<div class="monthsep">'+mon+'</div>';lastMonth=mon;}
+    const future=k>tk;
+    const d=L[k]||{};
+    const cls=['logrow'];
+    if(k===tk)cls.push('td');
+    if(future)cls.push('future');
+    else if(dayDone(k))cls.push('done');
+    html+='<div class="'+cls.join(' ')+'" data-k="'+k+'">'
+      +'<div class="ldate"><span class="ldd">'+p[2]+'/'+p[1]+'</span>'
+      +'<span class="ldw">'+dt.toLocaleDateString(undefined,{weekday:'short'}).toUpperCase()+'</span>'
+      +(k===tk?'<span class="ldt">Today</span>':'')+'</div>'
+      +LOG_Q.map(q=>'<div class="pickwrap"><span class="picklbl">'+q.short+'</span><div class="pick">'
+        +q.opts.map(o=>'<button class="'+o.c+(d[q.k]===o.v?' on':'')+'" data-k="'+k+'" data-q="'+q.k+'" data-v="'+o.v+'"'+(future?' disabled':'')+'>'+o.t+'</button>').join('')
+        +'</div></div>').join('')
+      +'</div>';
+  });
+  $('logRows').innerHTML=html;
+  $('logRows').querySelectorAll('button[data-q]').forEach(b=>{
+    if(b.disabled)return;
+    b.onclick=()=>setAns(b.dataset.k,b.dataset.q,b.dataset.v);
+  });
 
-/* ── today render ── */
-function renderCheckin(){
-  const f=fset(),k=fmtKey(current),d=fday(k);
-  const isTd=k===todayKey();
-  $('ciTitle').textContent=isTd?'Today\u2019s check-in':'Check-in \u2014 '+prettyDate(k);
-  $('q1lbl').innerHTML='1 &middot; '+esc(f.h1)+'<span class="qhint">target '+esc(f.wake)+'</span>';
-  $('q2lbl').innerHTML='2 &middot; '+esc(f.h2)+'<span class="qhint">'+esc(f.block)+'</span>';
-  [1,2].forEach(n=>{
-    const wrap=$('q'+n);
-    const v=d?d['h'+n]:null;
-    wrap.querySelectorAll('button').forEach(b=>{
-      const on=d&&((b.dataset.v==='1')===!!v);
-      b.classList.toggle('on',!!on);
-      b.onclick=()=>setHabit(n,b.dataset.v==='1');
-    });
-  });
-  const ls=allLeaks();
-  $('leaks').innerHTML=ls.map(l=>'<button data-l="'+l.id+'"'+(d&&d.leak===l.id?' class="on"':'')+'><span class="emo">'+l.emo+'</span>'+esc(l.label)+'</button>').join('')
-    +'<button class="lcustom" data-l="__custom"><span class="emo">&#10133;</span>Other</button>';
-  $('leaks').querySelectorAll('button[data-l]').forEach(b=>{
-    b.onclick=()=>{
-      if(b.dataset.l==='__custom'){
-        $('leakCustWrap').style.display='flex';$('leakCustInput').focus();
-        const doIt=()=>{const v=$('leakCustInput').value.trim();if(!v){$('leakCustInput').focus();return;}const m=addCustomLeak(v);if(!m)return;$('leakCustInput').value='';$('leakCustWrap').style.display='none';setLeak(m.id);};
-        $('leakCustSave').onclick=doIt;
-        $('leakCustInput').onkeydown=e=>{if(e.key==='Enter')doIt();};
-      } else setLeak(b.dataset.l);
-    };
-  });
-  $('focusNote').value=d?(d.note||''):'';
-}
-function renderHero(){
-  const f=fset();
-  const streak=fullStreak();
-  const days14=lastNDays(14);
-  const logged=Object.keys(f.logs).length;
-  $('heroNum').textContent=streak;
-  $('heroUnit').textContent=streak===1?'day chain':'day chain';
-  const tdLogged=isLogged(todayKey());
-  let sub;
-  if(!logged)sub='Nothing logged yet. Answer today\u2019s three questions below \u2014 that\u2019s the whole system.';
-  else if(streak===0)sub=tdLogged?'Chain broken. One clean day starts a new one.':'No chain running. Log today and it starts at one.';
-  else sub=streak+' day'+(streak>1?'s':'')+' with both habits done.'+(tdLogged?'':' Today isn\u2019t logged yet.');
-  $('heroSub').textContent=sub;
-  $('heroChain').innerHTML=days14.map(k=>{
-    const s=fscore(k);
-    const cls=s===2?'win':s===1?'half':s===0?'miss':'';
-    return '<div class="hc '+cls+(k===todayKey()?' td':'')+'" title="'+prettyDate(k)+'"></div>';
-  }).join('');
-  const wins=days14.filter(k=>fscore(k)===2).length;
-  $('heroChainLbl').textContent='LAST 14 DAYS \u00B7 '+wins+' CLEAN \u00B7 BEST EVER '+bestStreak();
-}
-let selFDay=null;
-function renderDayGrid(){
-  const days=lastNDays(30);
-  $('dayGrid').innerHTML=days.map(k=>{
-    const s=fscore(k);
-    const cls=s===2?'l2':s===1?'l1':s===0?'miss':'l0';
-    const dd=k.split('-')[2];
-    return '<div class="dg '+cls+(k===todayKey()?' td':'')+(k===selFDay?' sel':'')+'" data-k="'+k+'" title="'+prettyDate(k)+'">'+dd+'</div>';
-  }).join('');
-  $('dayGrid').querySelectorAll('.dg[data-k]').forEach(c=>{c.onclick=()=>{selFDay=c.dataset.k;renderDayGrid();renderDayPeek();};});
-  $('gridKey').innerHTML='<span class="gk"><i style="background:var(--gr)"></i>Both done</span>'
-    +'<span class="gk"><i style="background:var(--go)"></i>One done</span>'
-    +'<span class="gk"><i style="background:var(--res);border:1px solid #EFC9BC"></i>Neither</span>'
-    +'<span class="gk"><i style="background:#EDE9DE"></i>Not logged</span>';
-}
-function renderDayPeek(){
-  const el=$('dayPeek');
-  const k=selFDay;
-  if(!k){el.className='daypeek hint';el.textContent='Tap a square above to read that day.';return;}
-  const f=fset(),d=fday(k);
-  if(!d){el.className='daypeek hint';el.innerHTML='<b style="font-family:Fraunces,serif;font-style:normal">'+prettyDate(k)+'</b> &mdash; nothing logged. '+(k===todayKey()?'Use the check-in above.':'');return;}
-  el.className='daypeek';
-  el.innerHTML='<div class="dp-date">'+prettyDate(k)+'</div><div class="dp-rows">'
-    +'<div class="dpr '+(d.h1?'win':'lose')+'"><span class="dprl">'+esc(f.h1)+'</span><span class="dprv">'+(d.h1?'Yes':'No')+'</span></div>'
-    +'<div class="dpr '+(d.h2?'win':'lose')+'"><span class="dprl">'+esc(f.h2)+'</span><span class="dprv">'+(d.h2?'Yes':'No')+'</span></div>'
-    +'<div class="dpr"><span class="dprl">Biggest leak</span><span class="dprv">'+(d.leak?leakMeta(d.leak).label:'\u2014')+'</span></div>'
-    +'</div>'+(d.note?'<div class="dp-note">\u201C'+esc(d.note)+'\u201D</div>':'');
-}
-function renderLeakBars(){
-  const days=lastNDays(30);
-  const tally={};
-  days.forEach(k=>{const d=fday(k);if(d&&d.leak&&d.leak!=='none')tally[d.leak]=(tally[d.leak]||0)+1;});
-  const rows=Object.keys(tally).map(id=>({id:id,n:tally[id]})).sort((a,b)=>b.n-a.n);
-  if(!rows.length){$('leakBars').innerHTML='<div class="jh-empty">No leaks tagged yet.</div>';return;}
-  const max=Math.max(...rows.map(r=>r.n));
-  $('leakBars').innerHTML=rows.map(r=>'<div class="lbr"><div class="lbh"><span>'+esc(leakMeta(r.id).label)+'</span><b>'+r.n+'d</b></div>'
-    +'<div class="lbtrack"><i style="width:'+(r.n/max*100)+'%"></i></div></div>').join('');
+  const past=dates.filter(k=>k<=tk);
+  const done=past.filter(dayDone).length;
+  const touched=past.filter(dayTouched).length;
+  $('logCount').textContent=done+' of '+past.length+' day'+(past.length>1?'s':'')+' fully logged'+(touched>done?' \u00B7 '+(touched-done)+' partial':'');
+  $('logRange').textContent=dates.length+' days total \u00B7 '+dates.filter(k=>k>tk).length+' still ahead';
+  $('logLead').textContent='05 Oct 2026 \u2014 10 Nov 2026. Tap an answer to set it, tap again to clear.';
 }
 function renderFocusAll(){
-  fset();
-  renderHero();renderCheckin();renderDayGrid();renderDayPeek();renderOutcome();renderLeakBars();
-  if(currentView==='focus-review')renderFocusReview();
+  renderTally();renderLogRows();
 }
-
-/* ── review ── */
-function renderFocusReview(){
-  const f=fset();
-  const days30=lastNDays(30);
-  const logged=days30.filter(k=>isLogged(k));
-  const clean=days30.filter(k=>fscore(k)===2).length;
-  const h1w=days30.filter(k=>{const d=fday(k);return d&&d.h1;}).length;
-  const h2w=days30.filter(k=>{const d=fday(k);return d&&d.h2;}).length;
-  const allLogged=Object.keys(f.logs).length;
-  const pct=n=>logged.length?Math.round(n/logged.length*100):0;
-
-  const tally={};
-  days30.forEach(k=>{const d=fday(k);if(d&&d.leak&&d.leak!=='none')tally[d.leak]=(tally[d.leak]||0)+1;});
-  const leakRows=Object.keys(tally).map(id=>({id:id,n:tally[id]})).sort((a,b)=>b.n-a.n);
-  const topLeak=leakRows.length?leakRows[0]:null;
-
-  const o=f.outcome;
-  const stale=(o&&o.lastMove)?daysBetween(o.lastMove,todayKey()):null;
-  const moves30=(o&&o.moves)?o.moves.filter(k=>days30.indexOf(k)>=0).length:0;
-
-  $('sumGrid').innerHTML=
-    '<div class="sumcard '+(clean>=logged.length*0.6&&logged.length?'goodc':'warnc')+'"><div class="slbl">Clean days</div><div class="sbig">'+clean+'</div><div class="ssub">of '+logged.length+' logged &middot; last 30 days</div></div>'
-    +'<div class="sumcard"><div class="slbl">Current chain</div><div class="sbig">'+fullStreak()+'</div><div class="ssub">best ever '+bestStreak()+' days</div></div>'
-    +'<div class="sumcard"><div class="slbl">'+esc(f.h1)+'</div><div class="sbig">'+pct(h1w)+'%</div><div class="ssub">'+h1w+' of '+logged.length+' logged days</div></div>'
-    +'<div class="sumcard"><div class="slbl">'+esc(f.h2)+'</div><div class="sbig">'+pct(h2w)+'%</div><div class="ssub">'+h2w+' of '+logged.length+' logged days</div></div>';
-
-  let v='<h3>&#128269; What the data says</h3>';
-  if(!logged.length){
-    v+='<div class="vline"><span class="vi">&#128465;&#65039;</span><span>Nothing logged in the last 30 days. There\u2019s no verdict to give yet &mdash; go answer today\u2019s three questions.</span></div>';
-  } else {
-    v+='<div class="vline"><span class="vi">&#128197;</span><span>You logged <b>'+logged.length+' of the last 30 days</b>'+(logged.length<days30.length*0.5?' &mdash; too sparse to trust. The gaps are data too: they tend to be the worst days.':'.')+'</span></div>';
-    v+='<div class="vline"><span class="vi">'+(pct(h1w)>=70?'&#9989;':'&#9888;&#65039;')+'</span><span><b>'+esc(f.h1)+'</b> on '+pct(h1w)+'% of logged days'+(pct(h1w)<50?' &mdash; this is the bottleneck. A lost morning sets the tone for the whole day.':pct(h1w)>=70?' &mdash; holding up well.':'.')+'</span></div>';
-    v+='<div class="vline"><span class="vi">'+(pct(h2w)>=70?'&#9989;':'&#9888;&#65039;')+'</span><span><b>'+esc(f.h2)+'</b> on '+pct(h2w)+'% of logged days'+(pct(h2w)<50?' &mdash; the block is not actually happening. Either it\u2019s too long or it\u2019s in the wrong slot.':'')+'.</span></div>';
-    if(h1w&&h2w){
-      const both=days30.filter(k=>fscore(k)===2).length;
-      const h1only=days30.filter(k=>{const d=fday(k);return d&&d.h1&&!d.h2;}).length;
-      if(h1only>both&&h1only>=2)v+='<div class="vline"><span class="vi">&#128161;</span><span>You woke on time but skipped the block on <b>'+h1only+' day'+(h1only>1?'s':'')+'</b> &mdash; more often than you did both. Waking up isn\u2019t the constraint; what you do in the first hour is.</span></div>';
-    }
-    if(topLeak)v+='<div class="vline"><span class="vi">&#128721;</span><span>Your biggest leak is <b>'+esc(leakMeta(topLeak.id).label)+'</b>, on '+topLeak.n+' of '+logged.length+' logged days. If you fix one thing this week, fix that one.</span></div>';
-    if(o){
-      v+='<div class="vline"><span class="vi">&#127919;</span><span><b>'+esc(o.title)+'</b> is '+(daysBetween(todayKey(),o.due)<0?Math.abs(daysBetween(todayKey(),o.due))+' days overdue':'due in '+daysBetween(todayKey(),o.due)+' days')+'. You moved it forward on <b>'+moves30+' of the last 30 days</b>'+(stale!==null&&stale>3?' &mdash; and not once in the last '+stale+'.':'.')+'</span></div>';
-      if(clean>0&&moves30===0)v+='<div class="vline"><span class="vi">&#128683;</span><span>You have clean habit days but <b>zero</b> progress on the outcome. That\u2019s the trap &mdash; the habits are becoming the goal instead of the vehicle.</span></div>';
-    } else {
-      v+='<div class="vline"><span class="vi">&#128683;</span><span>No outcome set. Without a dated outcome this page measures tidiness, not progress. Set one on the Today tab.</span></div>';
-    }
-  }
-  $('verdict').innerHTML=v;
-
-  const keys=Object.keys(f.logs).sort((a,b)=>b.localeCompare(a));
-  $('logLead').textContent=keys.length?keys.length+' day'+(keys.length>1?'s':'')+' logged in total. Newest first.':'Nothing logged yet.';
-  $('focusLogList').innerHTML=keys.length?'<div class="hist-list">'+keys.map(k=>{
-    const d=f.logs[k],s=fscore(k);
-    const badge=s===2?'<span class="cnt cnt-p">both</span>':s===1?'<span class="cnt" style="background:var(--gos);color:#8a6418">one</span>':'<span class="cnt cnt-j">neither</span>';
-    return '<div class="hist-day"><div class="hist-day-head"><span class="date">'+prettyDate(k)+'</span>'+badge+'</div>'
-      +'<div class="hist-day-items">'
-      +'<div class="hist-item '+(d.h1?'pi':'ji')+'">'+(d.h1?'\u2705':'\u274C')+' <span>'+esc(f.h1)+'</span></div>'
-      +'<div class="hist-item '+(d.h2?'pi':'ji')+'">'+(d.h2?'\u2705':'\u274C')+' <span>'+esc(f.h2)+'</span></div>'
-      +(d.leak?'<div class="hist-item" style="background:var(--paper)">'+leakMeta(d.leak).emo+' <span>'+esc(leakMeta(d.leak).label)+'</span></div>':'')
-      +(d.note?'<div class="dp-note" style="margin-top:4px">\u201C'+esc(d.note)+'\u201D</div>':'')
-      +'</div></div>';
-  }).join('')+'</div>':'<div class="hist-empty">No days logged yet.</div>';
-
-  $('setH1').value=f.h1;$('setH2').value=f.h2;$('setWake').value=f.wake;$('setBlock').value=f.block;
-}
-
-/* ── wiring ── */
-$('noteSave').onclick=saveNote;
-$('focusNote').addEventListener('keydown',e=>{if(e.key==='Enter')saveNote();});
-$('setSave').onclick=()=>{
-  const f=fset();
-  f.h1=$('setH1').value.trim()||f.h1;
-  f.h2=$('setH2').value.trim()||f.h2;
-  f.wake=$('setWake').value||f.wake;
-  f.block=$('setBlock').value.trim()||f.block;
-  fsave();
-};
 
 /* ══════════════════ TIME TRACKER ══════════════════ */
 const TIME_CATS=[
