@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Focus</title>
+<title>Discipline</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -235,63 +235,111 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;fon
   .hist-streak .big{font-size:34px}
   .hist-item{font-size:13.5px}
 }
-/* ═══════════ FOCUS LOG ═══════════ */
+/* ═══════════ APP NAV ═══════════ */
 .appnav{display:flex;gap:8px;margin:18px 0 0}
 .appbtn{background:var(--card);border:1px solid var(--line);border-radius:30px;padding:10px 22px;font-family:inherit;font-size:15px;font-weight:700;color:var(--muted);cursor:pointer;box-shadow:var(--sh);transition:.16s;display:flex;align-items:center;gap:7px}
 .appbtn:hover{border-color:var(--ink);color:var(--ink);transform:translateY(-1px)}
 .appbtn.active{background:var(--ink);color:var(--p2);border-color:var(--ink)}
-.tally{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
-.tcard2{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:16px 18px}
-.tcard2 .tl{font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-.tsplit{display:flex;align-items:baseline;gap:8px}
-.tsplit .tv{font-family:"Fraunces",serif;font-size:34px;font-weight:600;line-height:1}
-.tsplit .tvs{font-size:13px;color:var(--muted);font-weight:600}
-.tsplit .tsep{color:var(--line);font-size:22px;margin:0 2px}
-.tme{color:#1B5A8E}.ther{color:#B5539C}.tyes{color:var(--grd)}.tno{color:var(--red)}
-.tbar2{height:7px;border-radius:5px;overflow:hidden;background:#EDE9DE;display:flex;margin-top:11px}
-.tbar2 i{height:100%}
-.logcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:20px 22px}
-.logcard h3{font-family:"Fraunces",serif;font-size:21px;font-weight:600;margin-bottom:3px}
-.logcard .llead{font-size:13.5px;color:var(--muted);margin-bottom:18px}
-.loghead{display:grid;grid-template-columns:118px 1fr 1fr 1fr;gap:12px;padding:0 4px 9px;border-bottom:1px solid var(--line);margin-bottom:6px}
-.loghead span{font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);text-align:center}
-.loghead span:first-child{text-align:left}
-.logrow{display:grid;grid-template-columns:118px 1fr 1fr 1fr;gap:12px;align-items:center;padding:9px 4px;border-radius:10px;transition:.14s}
-.logrow:hover{background:var(--paper)}
-.logrow.td{background:var(--gos);box-shadow:inset 0 0 0 1.5px var(--go)}
-.logrow.future{opacity:.42}
-.logrow.done{background:var(--grs)}
-.logrow.done:hover{background:#dbeee3}
-.ldate{display:flex;flex-direction:column;line-height:1.25}
-.ldate .ldd{font-family:"Fraunces",serif;font-size:15.5px;font-weight:600}
-.ldate .ldw{font-size:11.5px;color:var(--muted);font-weight:600;letter-spacing:.3px}
-.ldate .ldt{font-size:10px;font-weight:800;letter-spacing:.5px;color:#8a6418;text-transform:uppercase}
-.pick{display:flex;gap:6px}
-.pick button{flex:1;border:1.5px solid var(--line);background:var(--paper);border-radius:9px;padding:9px 4px;cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:700;color:var(--muted);transition:.13s}
-.pick button:hover{transform:translateY(-1px);border-color:var(--ink);color:var(--ink)}
-.pick button.on.me{background:#2F80C4;border-color:#2F80C4;color:#fff}
-.pick button.on.her{background:#B5539C;border-color:#B5539C;color:#fff}
-.pick button.on.yes{background:var(--gr);border-color:var(--gr);color:#fff}
-.pick button.on.no{background:var(--re);border-color:var(--re);color:#fff}
-.logrow.future .pick button{cursor:default}
-.logrow.future .pick button:hover{transform:none;border-color:var(--line);color:var(--muted)}
-.monthsep{font-family:"Fraunces",serif;font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;margin:18px 0 8px;padding-top:12px;border-top:1px dashed var(--line)}
-.monthsep:first-child{margin-top:0;padding-top:0;border-top:none}
-.logfoot{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
-@media(max-width:700px){
-  .tally{grid-template-columns:1fr;gap:10px}
-  .tcard2{padding:13px 15px}
-  .tsplit .tv{font-size:28px}
-  .logcard{padding:16px 13px}
-  .loghead{display:none}
-  .logrow{grid-template-columns:1fr;gap:8px;padding:13px 11px;border:1px solid var(--line);margin-bottom:9px}
-  .logrow:hover{background:transparent}
-  .ldate{flex-direction:row;align-items:baseline;gap:8px}
-  .pickwrap{display:flex;align-items:center;gap:9px}
-  .picklbl{font-size:11.5px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;color:var(--muted);width:78px;flex-shrink:0}
-  .pick{flex:1}
+@media(max-width:600px){
+  .appnav{width:100%}
+  .appbtn{flex:1;justify-content:center;padding:10px 8px;font-size:14px}
 }
-@media(min-width:701px){.picklbl{display:none}.pickwrap{display:block}}
+/* ═══════════ DISCIPLINE ═══════════ */
+.winbar{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:14px;margin-bottom:16px}
+.wcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:18px 20px}
+.wcard .wl{font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted)}
+.wcard .wn{font-family:"Fraunces",serif;font-size:44px;font-weight:600;line-height:1;margin:7px 0 3px}
+.wcard .ws{font-size:13.5px;color:var(--muted)}
+.wcard.resisted{border-top:4px solid var(--gr)}
+.wcard.resisted .wn{color:var(--grd)}
+.wcard.held{border-top:4px solid #2F80C4}.wcard.held .wn{color:#1B5A8E}
+.wcard.chain{border-top:4px solid #C98F22}.wcard.chain .wn{color:#8a6418}
+.dbanner{border-radius:12px;padding:13px 16px;font-size:14.5px;font-weight:600;margin-bottom:16px;display:flex;gap:10px;align-items:flex-start;line-height:1.45}
+.dbanner.calm{background:var(--grs);color:var(--grd);border:1px solid #bee3cc}
+.dbanner.twice{background:var(--gos);color:#8a6418;border:1px solid #e8d49a}
+.dbanner.neutral{background:var(--paper);color:var(--muted);border:1px solid var(--line)}
+.goalcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:16px 18px;margin-bottom:13px;border-left:5px solid var(--gc,var(--line))}
+.gchead{display:flex;align-items:center;gap:11px;flex-wrap:wrap;margin-bottom:13px}
+.gchead .gemo{font-size:21px;flex-shrink:0}
+.gchead .gname{font-family:"Fraunces",serif;font-size:17px;font-weight:600;flex:1;min-width:130px;line-height:1.3}
+.gstreak{font-size:11.5px;font-weight:700;letter-spacing:.3px;padding:4px 11px;border-radius:20px;background:var(--paper);color:var(--muted);white-space:nowrap}
+.gstreak.hot{background:var(--grs);color:var(--grd)}
+.gcbody{display:grid;grid-template-columns:1fr auto;gap:13px;align-items:center}
+.ks{display:flex;gap:8px}
+.ks button{flex:1;border:1.5px solid var(--line);background:var(--paper);border-radius:10px;padding:11px 8px;cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;color:var(--muted);transition:.13s}
+.ks button:hover{transform:translateY(-1px);border-color:var(--ink);color:var(--ink)}
+.ks button.on.kept{background:var(--gr);border-color:var(--gr);color:#fff}
+.ks button.on.slip{background:#C98F22;border-color:#C98F22;color:#fff}
+.urge{display:flex;align-items:center;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:7px 11px}
+.urge .ul{font-size:11px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;color:var(--muted);line-height:1.2}
+.urge .uv{font-family:"Fraunces",serif;font-size:21px;font-weight:600;min-width:22px;text-align:center;color:var(--grd)}
+.urge button{width:28px;height:28px;border-radius:8px;border:1px solid var(--line);background:var(--card);cursor:pointer;font-size:16px;font-weight:700;color:var(--muted);line-height:1;display:grid;place-items:center;font-family:inherit}
+.urge button:hover{border-color:var(--gr);color:var(--grd)}
+.slipbox{margin-top:13px;padding-top:13px;border-top:1px dashed var(--line);animation:drop .18s ease}
+.sbl{font-size:11.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.sbrow{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.sbrow input[type=time]{border:1px solid var(--line);background:var(--paper);border-radius:9px;padding:9px 11px;font-family:inherit;font-size:14px;color:var(--ink)}
+.trigs{display:flex;gap:7px;flex-wrap:wrap}
+.trigs button{border:1.5px solid var(--line);background:var(--paper);border-radius:20px;padding:8px 13px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;color:var(--ink);transition:.13s;display:flex;align-items:center;gap:6px}
+.trigs button:hover{transform:translateY(-1px);border-color:var(--ink)}
+.trigs button.on{background:var(--ink);border-color:var(--ink);color:var(--p2)}
+.beforein{width:100%;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:11px 13px;font-family:inherit;font-size:14.5px;color:var(--ink);margin-top:11px}
+.beforein:focus,.sbrow input:focus{outline:none;border-color:var(--ink)}
+.notecard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:16px 18px;margin-top:4px}
+.notecard .nl{font-size:11.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.noterow2{display:flex;gap:9px}
+.noterow2 input{flex:1;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:11px 13px;font-family:inherit;font-size:15px;color:var(--ink)}
+.noterow2 input:focus{outline:none;border-color:var(--ink)}
+.strip{display:flex;gap:3px;margin-top:6px}
+.strip i{flex:1;height:9px;border-radius:3px;background:#EDE9DE}
+.strip i.k{background:var(--gr)}.strip i.s{background:#E8C46A}
+.strip i.td{box-shadow:0 0 0 1.5px var(--ink)}
+.sgrow{margin-bottom:13px}
+.sghead{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;gap:8px}
+.sghead .sgn{font-weight:600;flex:1;line-height:1.25}
+.sghead .sgv{font-family:"Fraunces",serif;font-weight:600;font-size:14px;white-space:nowrap}
+/* review */
+.wknav{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:13px 16px;margin-bottom:18px}
+.wknav button{background:var(--paper);border:1px solid var(--line);border-radius:9px;width:36px;height:36px;cursor:pointer;font-size:16px;color:var(--ink);font-family:inherit;display:grid;place-items:center}
+.wknav button:hover:not(:disabled){border-color:var(--ink)}
+.wknav button:disabled{opacity:.3;cursor:default}
+.wknav .wkl{font-family:"Fraunces",serif;font-size:17px;font-weight:600;text-align:center;flex:1}
+.wknav .wkl small{display:block;font-family:"Hanken Grotesk",sans-serif;font-size:12px;font-weight:600;color:var(--muted);margin-top:2px}
+.rsum{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px}
+.revcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:20px 22px;margin-bottom:18px}
+.revcard h4{font-family:"Fraunces",serif;font-size:17px;font-weight:600;margin-bottom:4px}
+.revcard .rl{font-size:13px;color:var(--muted);margin-bottom:15px}
+.rbars{display:flex;flex-direction:column;gap:11px}
+.rbar .rbh{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:5px;gap:8px}
+.rbar .rbh span:first-child{font-weight:600;display:flex;align-items:center;gap:7px}
+.rbar .rbh b{font-family:"Fraunces",serif;font-weight:600;white-space:nowrap}
+.rtrack{height:9px;border-radius:5px;background:#EDE9DE;overflow:hidden}
+.rtrack i{display:block;height:100%;border-radius:5px;transition:.3s}
+.pickone{background:var(--gos);border:1px solid #e8d49a;border-radius:var(--r);padding:20px 22px;margin-bottom:18px}
+.pickone h4{font-family:"Fraunces",serif;font-size:18px;font-weight:600;color:#8a6418;margin-bottom:10px}
+.pickone p{font-size:14.5px;line-height:1.55;color:var(--ink);margin-bottom:9px}
+.pickone p:last-child{margin-bottom:0}
+.pickone b{font-weight:700}
+.wkday{border-left:3px solid var(--line);padding:10px 13px;border-radius:0 10px 10px 0;background:var(--paper);margin-bottom:9px}
+.wkday.clean{border-left-color:var(--gr);background:var(--grs)}
+.wkday.has{border-left-color:#C98F22;background:var(--gos)}
+.wkd-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.wkd-head .wd{font-size:13.5px;font-weight:700}
+.wkd-head .wu{font-size:12px;font-weight:600;color:var(--grd)}
+.wkd-items{margin-top:7px;display:flex;flex-direction:column;gap:5px}
+.wkd-i{font-size:13px;display:flex;gap:7px;align-items:flex-start;line-height:1.4}
+.wkd-note{font-family:"Fraunces",serif;font-style:italic;font-size:13.5px;color:var(--muted);margin-top:7px}
+.rempty{font-family:"Fraunces",serif;font-style:italic;color:var(--muted);font-size:14.5px;text-align:center;padding:18px}
+@media(max-width:700px){
+  .winbar{grid-template-columns:1fr 1fr;gap:10px}
+  .winbar .wcard:first-child{grid-column:1/-1}
+  .wcard{padding:14px 15px}
+  .wcard .wn{font-size:33px}
+  .gcbody{grid-template-columns:1fr;gap:10px}
+  .urge{justify-content:space-between}
+  .rsum{grid-template-columns:1fr;gap:10px}
+  .goalcard,.revcard,.pickone{padding:15px 14px}
+}
 /* ═══════════ TIME TRACKER ═══════════ */
 .tstats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .stat.tcard{padding:18px 20px}
@@ -371,7 +419,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;fon
 <body>
 <div class="wrap">
 <header>
-  <div class="brand"><h1 id="brandName">Focus<span class="dot" style="background:#C98F22"></span></h1><small id="brandTag">two habits, one outcome</small></div>
+  <div class="brand"><h1 id="brandName">Discipline<span class="dot" style="background:#4B3DB5"></span></h1><small id="brandTag">notice it, let it pass</small></div>
   <div class="daynav" id="daynavWrap" style="display:none">
     <button class="navbtn" id="prev">&#8249;</button>
     <div class="dateblock"><div class="dmain" id="dateMain"></div><div class="drel" id="dateRel"></div></div>
@@ -382,9 +430,13 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;fon
   </div>
 </header>
 <div class="appnav">
-  <button class="appbtn active" data-app="focus">&#127919; Focus</button>
+  <button class="appbtn active" data-app="disc">&#129504; Discipline</button>
   <button class="appbtn" data-app="plate">&#127869;&#65039; Plate</button>
   <button class="appbtn" data-app="time">&#9201;&#65039; Time</button>
+</div>
+<div class="tabs" id="discTabs">
+  <button class="tab active" data-app="disc" data-tab="today">Today</button>
+  <button class="tab" data-app="disc" data-tab="review">Weekly review</button>
 </div>
 <div class="tabs" id="plateTabs" style="display:none">
   <button class="tab active" data-app="plate" data-tab="today">Today</button>
@@ -464,15 +516,34 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;fon
   <div id="junkHistCol"></div>
   <div id="morningHistCol"></div>
 </div>
-<div class="view on" id="view-focus-today">
-  <div class="tally" id="tally"></div>
-  <div class="logcard">
-    <h3>&#128197; Daily log</h3>
-    <div class="llead" id="logLead"></div>
-    <div class="loghead"><span>Date</span><span>Who called first?</span><span>Who msgd first?</span><span>Did I keep my calm?</span></div>
-    <div id="logRows"></div>
-    <div class="logfoot"><span id="logCount"></span><span id="logRange"></span></div>
+<div class="view on" id="view-disc-today">
+  <div class="layout">
+    <div class="main">
+      <div class="winbar" id="winBar"></div>
+      <div id="discBanner"></div>
+      <div id="goalCards"></div>
+      <div class="notecard">
+        <div class="nl">One line on the day &mdash; optional</div>
+        <div class="noterow2"><input id="discNote" placeholder="What kind of day was it?" autocomplete="off"/><button class="gobtn" id="discNoteSave">Save</button></div>
+      </div>
+    </div>
+    <aside class="sidebar">
+      <h3>&#128200; Streaks</h3>
+      <div id="streakList"></div>
+      <div class="sid-divider" style="margin-top:18px">Last 14 days</div>
+      <div id="stripList"></div>
+      <div class="sid-divider" style="margin-top:18px">Urges resisted &mdash; 7 days</div>
+      <div id="urgeWeek"></div>
+    </aside>
   </div>
+</div>
+<div class="view" id="view-disc-review">
+  <div class="wknav">
+    <button id="wkPrev" title="Previous week">&#8592;</button>
+    <div class="wkl" id="wkLabel"></div>
+    <button id="wkNext" title="Next week">&#8594;</button>
+  </div>
+  <div id="reviewBody"></div>
 </div>
 <div class="view" id="view-time-today">
   <div class="layout">
@@ -535,7 +606,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;fon
   </div>
   <div id="timeHistCol"></div>
 </div>
-<footer id="footNote">Focus &middot; saves automatically &middot; three taps a day</footer>
+<footer id="footNote">Discipline &middot; saves automatically &middot; one slip is data, not failure</footer>
 </div>
 <div class="overlay" id="overlay">
   <div class="ov-top"><h3>Remember why you started.</h3><button class="ov-close" id="ovClose">&#215;</button></div>
@@ -564,7 +635,7 @@ async function _dbDel(key){
 
 const SKEY='plate-v3';
 const imgCache={};
-let state={logs:{},motivation:[],settings:{proteinTarget:3,timeFocusTarget:4,sleepTarget:7},memory:{},callLog:{},timeLogs:{},timeCats:[],timeHistTab:'daily'};
+let state={logs:{},motivation:[],settings:{proteinTarget:3,timeFocusTarget:4,sleepTarget:7},memory:{},disc:{},timeLogs:{},timeCats:[],timeHistTab:'daily'};
 
 async function loadState(){
   const r=await _dbGet(SKEY);
@@ -919,7 +990,7 @@ let ovIdx=0;
 function showOverlay(){const m=state.motivation[ovIdx];if(!m)return;$('ovImg').src=imgSrc(m);$('ovCap').textContent=m.caption||'';$('ovCount').textContent=(ovIdx+1)+' / '+state.motivation.length;}
 function openOverlay(){if(!state.motivation.length){alert('Add a motivation image first!');return;}ovIdx=0;showOverlay();$('overlay').classList.add('on');}
 function ovStep(n){ovIdx=(ovIdx+n+state.motivation.length)%state.motivation.length;showOverlay();}
-let currentView='focus-today';
+let currentView='disc-today';
 if(!state.histTab)state.histTab='protein';
 document.querySelectorAll('#view-history .htab').forEach(htab=>{
   htab.onclick=()=>{
@@ -927,21 +998,22 @@ document.querySelectorAll('#view-history .htab').forEach(htab=>{
     renderHistory();
   };
 });
-let currentApp='focus',plateTab='today',timeTab='today';
-const APP_TABS={plate:()=>plateTab,focus:()=>'today',time:()=>timeTab};
+let currentApp='disc',plateTab='today',timeTab='today',discTab='today';
+const APP_TABS={plate:()=>plateTab,time:()=>timeTab,disc:()=>discTab};
 const APP_BRAND={plate:['Plate','var(--gr)','protein up, junk down','Plate \u00B7 saves automatically \u00B7 drag items to reorder'],
-  focus:['Focus','#C98F22','two habits, one outcome','Focus \u00B7 saves automatically \u00B7 three taps a day'],
-  time:['Time','#2F80C4','where the hours go','Time \u00B7 saves automatically \u00B7 drag entries to reorder']};
+  time:['Time','#2F80C4','where the hours go','Time \u00B7 saves automatically \u00B7 drag entries to reorder'],
+  disc:['Discipline','#4B3DB5','notice it, let it pass','Discipline \u00B7 saves automatically \u00B7 one slip is data, not failure']};
 function setView(app,tab){
   currentApp=app;
   currentView=(app==='plate')?tab:(app+'-'+tab);
   document.querySelectorAll('.appbtn').forEach(b=>b.classList.toggle('active',b.dataset.app===app));
   $('plateTabs').style.display=(app==='plate')?'flex':'none';
   $('timeTabs').style.display=(app==='time')?'flex':'none';
+  $('discTabs').style.display=(app==='disc')?'flex':'none';
   document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.app===app&&t.dataset.tab===tab));
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
   $('view-'+currentView).classList.add('on');
-  const isToday=(tab==='today'&&app!=='focus');
+  const isToday=(tab==='today'&&app!=='disc');
   $('daynavWrap').style.display=isToday?'flex':'none';
   $('datepickWrap').style.display=isToday?'flex':'none';
   const br=APP_BRAND[app];
@@ -950,7 +1022,8 @@ function setView(app,tab){
   $('footNote').textContent=br[3];
   document.title=br[0];
   if(currentView==='history')renderHistory();
-  else if(currentView==='focus-today')renderFocusAll();
+  else if(currentView==='disc-today')renderDiscAll();
+  else if(currentView==='disc-review')renderReview();
   else if(currentView==='time-today')renderTimeAll();
   else if(currentView==='time-history')renderTimeHistory();
 }
@@ -961,10 +1034,11 @@ document.querySelectorAll('.tab').forEach(t=>{
   t.onclick=()=>{
     if(t.dataset.app==='plate')plateTab=t.dataset.tab;
     else if(t.dataset.app==='time')timeTab=t.dataset.tab;
+    else if(t.dataset.app==='disc')discTab=t.dataset.tab;
     setView(t.dataset.app,t.dataset.tab);
   };
 });
-function renderAll(){renderHeader();renderStats();renderWeightCard();renderList();renderSidebar();renderMotivation();renderFocusAll();renderTimeAll();if(currentView==='history')renderHistory();}
+function renderAll(){renderHeader();renderStats();renderWeightCard();renderList();renderSidebar();renderMotivation();renderTimeAll();renderDiscAll();if(currentView==='history')renderHistory();}
 $('addBtn').onclick=tryAdd;
 $('foodInput').addEventListener('keydown',e=>{if(e.key==='Enter')tryAdd();});
 $('prev').onclick=()=>{current.setDate(current.getDate()-1);renderAll();};
@@ -984,102 +1058,372 @@ $('urgeBtn').onclick=openOverlay;
 $('ovClose').onclick=()=>$('overlay').classList.remove('on');
 $('ovPrev').onclick=()=>ovStep(-1);$('ovNext').onclick=()=>ovStep(1);
 document.addEventListener('keydown',e=>{if($('overlay').classList.contains('on')){if(e.key==='Escape')$('overlay').classList.remove('on');if(e.key==='ArrowRight')ovStep(1);if(e.key==='ArrowLeft')ovStep(-1);}});
-/* ══════════════════ FOCUS LOG ══════════════════ */
-const LOG_START='2026-10-05',LOG_END='2026-11-10';
-const LOG_Q=[
-  {k:'call',label:'Who called first?',short:'Called',opts:[{v:'me',t:'Me',c:'me'},{v:'her',t:'Her',c:'her'}]},
-  {k:'msg', label:'Who msgd first?', short:'Msgd',  opts:[{v:'me',t:'Me',c:'me'},{v:'her',t:'Her',c:'her'}]},
-  {k:'calm',label:'Did I keep my calm?',short:'Calm',opts:[{v:'yes',t:'Yes',c:'yes'},{v:'no',t:'No',c:'no'}]}
+/* ══════════════════ DISCIPLINE ══════════════════ */
+const GOALS=[
+  {id:'porn',    emo:'&#128683;', name:'No porn',                      kind:'abstain', color:'#4B3DB5'},
+  {id:'chase',   emo:'&#128241;', name:'No chasing / seeking validation', kind:'abstain', color:'#B5539C'},
+  {id:'impulse', emo:'&#9203;',   name:'24-hour rule honoured',         kind:'abstain', color:'#C98F22'},
+  {id:'junk',    emo:'&#127839;', name:'No junk food',                  kind:'abstain', color:'#D13B26'},
+  {id:'gym',     emo:'&#128170;', name:'Gym / discipline habit',        kind:'do',      color:'#1F8A52'}
 ];
-function flog(){
-  if(!state.callLog)state.callLog={};
-  return state.callLog;
+const TRIGGERS=[
+  {id:'tired',   emo:'&#128564;', label:'Tired'},
+  {id:'bored',   emo:'&#128528;', label:'Bored'},
+  {id:'stressed',emo:'&#128548;', label:'Stressed'},
+  {id:'lonely',  emo:'&#128533;', label:'Lonely'},
+  {id:'late',    emo:'&#127769;', label:'Late night'},
+  {id:'other',   emo:'&#10067;',  label:'Other'}
+];
+const FIXES={
+  tired:'Sleep debt is upstream of most of these. Move lights-out earlier before trying to white-knuckle the urge itself.',
+  bored:'Boredom needs a pre-decided replacement, not willpower. Pick one thing you will do instead and have it physically within reach.',
+  stressed:'You need a release valve that is not a screen — a walk, a shower, a phone call. Decide it now, while calm.',
+  lonely:'Plan one real point of contact on the days this hits — a call or meeting someone, scheduled in advance.',
+  late:'This is the friction fix: phone charges outside the bedroom, and a hard lights-out time.',
+  other:'Look at your "what happened just before" notes for this week — the pattern is usually in there.'
+};
+const BUCKETS=[
+  {id:'morning', label:'Morning (5am–12pm)', lo:5,  hi:12},
+  {id:'after',   label:'Afternoon (12–5pm)', lo:12, hi:17},
+  {id:'evening', label:'Evening (5–9pm)',    lo:17, hi:21},
+  {id:'late',    label:'Late night (9pm–5am)',lo:21,hi:29}
+];
+function dset(){
+  if(!state.disc)state.disc={};
+  return state.disc;
 }
-function logDates(){
-  const out=[];
-  const p=LOG_START.split('-').map(Number);
-  const d=new Date(p[0],p[1]-1,p[2]);
-  const e=LOG_END.split('-').map(Number);
-  const end=new Date(e[0],e[1]-1,e[2]);
-  while(d<=end){out.push(fmtKey(new Date(d)));d.setDate(d.getDate()+1);}
+function dday(k){return dset()[k]||null;}
+function gday(k,gid){const d=dday(k);return (d&&d.g&&d.g[gid])||null;}
+function ensureDay(k){
+  const D=dset();
+  if(!D[k])D[k]={g:{},note:''};
+  if(!D[k].g)D[k].g={};
+  return D[k];
+}
+function ensureGoal(k,gid){
+  const d=ensureDay(k);
+  if(!d.g[gid])d.g[gid]={s:null,u:0,t:'',tr:'',b:''};
+  return d.g[gid];
+}
+function pruneDay(k){
+  const D=dset(),d=D[k];
+  if(!d)return;
+  const any=Object.keys(d.g).some(id=>{const g=d.g[id];return g.s||g.u>0||g.t||g.tr||g.b;});
+  if(!any&&!d.note)delete D[k];
+}
+function dshift(k,n){const p=k.split('-').map(Number);const d=new Date(p[0],p[1]-1,p[2]);d.setDate(d.getDate()+n);return fmtKey(d);}
+function dDiff(a,b){return Math.round((new Date(b+'T00:00:00')-new Date(a+'T00:00:00'))/864e5);}
+function lastN(n,endKey){
+  const out=[];const e=endKey||todayKey();
+  for(let i=n-1;i>=0;i--)out.push(dshift(e,-i));
   return out;
 }
-function setAns(key,q,val){
-  const L=flog();
-  if(!L[key])L[key]={};
-  L[key][q]=(L[key][q]===val)?null:val;
-  if(!L[key].call&&!L[key].msg&&!L[key].calm)delete L[key];
-  save();renderFocusAll();
+function urgesOn(k){
+  const d=dday(k);if(!d)return 0;
+  return Object.keys(d.g).reduce((s,id)=>s+(+d.g[id].u||0),0);
 }
-function dayDone(k){
-  const d=flog()[k];
-  return !!(d&&d.call&&d.msg&&d.calm);
+function slipsOn(k){
+  const d=dday(k);if(!d)return [];
+  return Object.keys(d.g).filter(id=>d.g[id].s==='slip').map(id=>({gid:id,...d.g[id]}));
 }
-function dayTouched(k){
-  const d=flog()[k];
-  return !!(d&&(d.call||d.msg||d.calm));
+function goalStreak(gid){
+  let s=0;
+  for(let i=0;i<400;i++){
+    const k=dshift(todayKey(),-i);
+    const g=gday(k,gid);
+    if(i===0&&(!g||!g.s))continue;
+    if(g&&g.s==='kept')s++;else break;
+  }
+  return s;
+}
+function goalBest(gid){
+  const keys=Object.keys(dset()).sort();
+  let best=0,run=0,prev=null;
+  keys.forEach(k=>{
+    const g=gday(k,gid);
+    if(g&&g.s==='kept'){run=(prev&&dDiff(prev,k)===1)?run+1:1;best=Math.max(best,run);prev=k;}
+    else if(g&&g.s==='slip'){run=0;prev=null;}
+  });
+  return best;
+}
+function goalMeta(gid){return GOALS.find(g=>g.id===gid)||{id:gid,name:gid,emo:'',color:'#70685A',kind:'abstain'};}
+function trigMeta(id){return TRIGGERS.find(t=>t.id===id)||{id:id,label:id||'not noted',emo:'&#10067;'};}
+function bucketOf(hhmm){
+  if(!hhmm)return null;
+  let h=parseInt(hhmm.split(':')[0],10);
+  if(isNaN(h))return null;
+  if(h<5)h+=24;
+  return (BUCKETS.find(b=>h>=b.lo&&h<b.hi)||BUCKETS[3]).id;
 }
 
-function renderTally(){
-  const dates=logDates(),L=flog();
-  const cnt=q=>{
-    const t={};
-    dates.forEach(k=>{const d=L[k];if(d&&d[q])t[d[q]]=(t[d[q]]||0)+1;});
-    return t;
-  };
-  const card=(lbl,t,a,b,ac,bc,at,bt)=>{
-    const na=t[a]||0,nb=t[b]||0,tot=na+nb;
-    return '<div class="tcard2"><div class="tl">'+lbl+'</div>'
-      +'<div class="tsplit"><span class="tv '+ac+'">'+na+'</span><span class="tvs '+ac+'">'+at+'</span>'
-      +'<span class="tsep">/</span><span class="tv '+bc+'">'+nb+'</span><span class="tvs '+bc+'">'+bt+'</span></div>'
-      +'<div class="tbar2">'+(tot
-        ? '<i style="width:'+(na/tot*100)+'%;background:'+(ac==='tme'?'#2F80C4':'var(--gr)')+'"></i><i style="width:'+(nb/tot*100)+'%;background:'+(bc==='ther'?'#B5539C':'var(--re)')+'"></i>'
-        : '')+'</div></div>';
-  };
-  const c=cnt('call'),m=cnt('msg'),ca=cnt('calm');
-  $('tally').innerHTML=card('Called first',c,'me','her','tme','ther','me','her')
-    +card('Messaged first',m,'me','her','tme','ther','me','her')
-    +card('Kept my calm',ca,'yes','no','tyes','tno','yes','no');
+/* ── actions ── */
+function setStatus(gid,v){
+  const k=fmtKey(current);
+  const g=ensureGoal(k,gid);
+  g.s=(g.s===v)?null:v;
+  if(g.s!=='slip'){g.t='';g.tr='';g.b='';}
+  else if(!g.t&&k===todayKey()){
+    const n=new Date();g.t=String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0');
+  }
+  pruneDay(k);save();renderDiscAll();
 }
-function renderLogRows(){
-  const dates=logDates(),L=flog(),tk=todayKey();
-  let html='',lastMonth='';
-  dates.forEach(k=>{
-    const p=k.split('-').map(Number);
-    const dt=new Date(p[0],p[1]-1,p[2]);
-    const mon=dt.toLocaleDateString(undefined,{month:'long',year:'numeric'});
-    if(mon!==lastMonth){html+='<div class="monthsep">'+mon+'</div>';lastMonth=mon;}
-    const future=k>tk;
-    const d=L[k]||{};
-    const cls=['logrow'];
-    if(k===tk)cls.push('td');
-    if(future)cls.push('future');
-    else if(dayDone(k))cls.push('done');
-    html+='<div class="'+cls.join(' ')+'" data-k="'+k+'">'
-      +'<div class="ldate"><span class="ldd">'+p[2]+'/'+p[1]+'</span>'
-      +'<span class="ldw">'+dt.toLocaleDateString(undefined,{weekday:'short'}).toUpperCase()+'</span>'
-      +(k===tk?'<span class="ldt">Today</span>':'')+'</div>'
-      +LOG_Q.map(q=>'<div class="pickwrap"><span class="picklbl">'+q.short+'</span><div class="pick">'
-        +q.opts.map(o=>'<button class="'+o.c+(d[q.k]===o.v?' on':'')+'" data-k="'+k+'" data-q="'+q.k+'" data-v="'+o.v+'"'+(future?' disabled':'')+'>'+o.t+'</button>').join('')
-        +'</div></div>').join('')
+function bumpUrge(gid,n){
+  const k=fmtKey(current);
+  const g=ensureGoal(k,gid);
+  g.u=Math.max(0,(+g.u||0)+n);
+  pruneDay(k);save();renderDiscAll();
+}
+function setTrigger(gid,t){
+  const k=fmtKey(current);
+  const g=ensureGoal(k,gid);
+  g.tr=(g.tr===t)?'':t;
+  save();renderDiscAll();
+}
+function setField(gid,f,v){
+  const k=fmtKey(current);
+  const g=ensureGoal(k,gid);
+  g[f]=v;
+  save();
+}
+function saveDiscNote(){
+  const k=fmtKey(current);
+  ensureDay(k).note=$('discNote').value.trim();
+  pruneDay(k);save();renderDiscAll();
+}
+
+/* ── today ── */
+function renderWinBar(){
+  const k=fmtKey(current);
+  const u=urgesOn(k);
+  const answered=GOALS.filter(g=>{const x=gday(k,g.id);return x&&x.s;});
+  const kept=answered.filter(g=>gday(k,g.id).s==='kept').length;
+  const week=lastN(7,k).reduce((s,d)=>s+urgesOn(d),0);
+  const chains=GOALS.map(g=>goalStreak(g.id));
+  const longest=Math.max(0,...chains);
+  const longestG=GOALS[chains.indexOf(longest)];
+  $('winBar').innerHTML=
+    '<div class="wcard resisted"><div class="wl">&#128170; Urges resisted</div><div class="wn">'+u+'</div>'
+      +'<div class="ws">'+(u?'every one of those is a rep':'noticing counts — log them as they pass')+' · '+week+' this week</div></div>'
+    +'<div class="wcard held"><div class="wl">&#9989; Held today</div><div class="wn">'+kept+'<span style="font-size:19px;color:var(--muted)">/'+GOALS.length+'</span></div>'
+      +'<div class="ws">'+(answered.length?answered.length+' of '+GOALS.length+' answered':'not logged yet')+'</div></div>'
+    +'<div class="wcard chain"><div class="wl">&#128293; Longest chain</div><div class="wn">'+longest+'</div>'
+      +'<div class="ws">'+(longest?esc(longestG.name).toLowerCase():'starts with one day')+'</div></div>';
+}
+function renderDiscBanner(){
+  const k=fmtKey(current);
+  const yk=dshift(k,-1);
+  const el=$('discBanner');
+  const todaySlips=slipsOn(k);
+  const ySlips=slipsOn(yk);
+  const answered=GOALS.filter(g=>{const x=gday(k,g.id);return x&&x.s;}).length;
+  const u=urgesOn(k);
+  let cls='neutral',txt='';
+  if(ySlips.length&&!todaySlips.length&&answered){
+    cls='calm';
+    txt='✅ Yesterday had a slip, today doesn’t. That’s the whole rule — never miss twice. This is the day that actually counts.';
+  } else if(ySlips.length&&todaySlips.length){
+    cls='twice';
+    txt='⚠️ Second day in a row. Not a verdict on you — just the signal to change one thing in the environment today, not to try harder tomorrow.';
+  } else if(todaySlips.length){
+    cls='twice';
+    txt='📍 Logged — that’s data, not failure. Note the trigger while it’s fresh, then let today be done. Tomorrow is the one that matters.';
+  } else if(u>=3){
+    cls='calm';
+    txt='🌊 '+u+' urges noticed and ridden out today. That’s the skill being built — the urge peaks and fades in 10–20 minutes, and you proved it again.';
+  } else if(answered===GOALS.length){
+    cls='calm';
+    txt='✅ All five held today. Quiet days are the ones that compound.';
+  } else {
+    cls='neutral';
+    txt='Mark each one as you go, or in one pass before bed. Under two minutes either way.';
+  }
+  el.className='dbanner '+cls;
+  el.innerHTML='<span>'+txt+'</span>';
+}
+function renderGoalCards(){
+  const k=fmtKey(current);
+  $('goalCards').innerHTML=GOALS.map(g=>{
+    const d=gday(k,g.id)||{s:null,u:0,t:'',tr:'',b:''};
+    const st=goalStreak(g.id),best=goalBest(g.id);
+    const keptL=g.kind==='do'?'Done':'Kept';
+    const slipL=g.kind==='do'?'Missed':'Slipped';
+    return '<div class="goalcard" style="--gc:'+g.color+'">'
+      +'<div class="gchead"><span class="gemo">'+g.emo+'</span><span class="gname">'+esc(g.name)+'</span>'
+      +'<span class="gstreak'+(st>=3?' hot':'')+'">'+(st?st+' day'+(st>1?'s':''):'no chain')+(best>st?' · best '+best:'')+'</span></div>'
+      +'<div class="gcbody"><div class="ks">'
+        +'<button class="kept'+(d.s==='kept'?' on':'')+'" data-g="'+g.id+'" data-s="kept">'+keptL+'</button>'
+        +'<button class="slip'+(d.s==='slip'?' on':'')+'" data-g="'+g.id+'" data-s="slip">'+slipL+'</button>'
+      +'</div>'
+      +(g.kind==='abstain'
+        ? '<div class="urge"><span class="ul">Urges<br>resisted</span><button data-u="'+g.id+'" data-n="-1">&minus;</button>'
+          +'<span class="uv">'+(+d.u||0)+'</span><button data-u="'+g.id+'" data-n="1">+</button></div>'
+        : '<span></span>')
+      +'</div>'
+      +(d.s==='slip'
+        ? '<div class="slipbox"><div class="sbl">What was going on?</div>'
+          +'<div class="sbrow"><input type="time" value="'+esc(d.t||'')+'" data-tm="'+g.id+'" title="Time it happened"/></div>'
+          +'<div class="trigs">'+TRIGGERS.map(t=>'<button'+(d.tr===t.id?' class="on"':'')+' data-tg="'+g.id+'" data-t="'+t.id+'">'+t.emo+' '+t.label+'</button>').join('')+'</div>'
+          +'<input class="beforein" placeholder="What happened just before?" value="'+esc(d.b||'')+'" data-bf="'+g.id+'" autocomplete="off"/></div>'
+        : '')
       +'</div>';
-  });
-  $('logRows').innerHTML=html;
-  $('logRows').querySelectorAll('button[data-q]').forEach(b=>{
-    if(b.disabled)return;
-    b.onclick=()=>setAns(b.dataset.k,b.dataset.q,b.dataset.v);
-  });
+  }).join('');
+  const el=$('goalCards');
+  el.querySelectorAll('button[data-s]').forEach(b=>b.onclick=()=>setStatus(b.dataset.g,b.dataset.s));
+  el.querySelectorAll('button[data-u]').forEach(b=>b.onclick=()=>bumpUrge(b.dataset.u,+b.dataset.n));
+  el.querySelectorAll('button[data-tg]').forEach(b=>b.onclick=()=>setTrigger(b.dataset.tg,b.dataset.t));
+  el.querySelectorAll('input[data-tm]').forEach(i=>i.onchange=()=>setField(i.dataset.tm,'t',i.value));
+  el.querySelectorAll('input[data-bf]').forEach(i=>i.oninput=()=>setField(i.dataset.bf,'b',i.value));
+  $('discNote').value=(dday(k)&&dday(k).note)||'';
+}
+function renderDiscSidebar(){
+  const days=lastN(14,fmtKey(current));
+  const k=fmtKey(current);
+  $('streakList').innerHTML=GOALS.map(g=>{
+    const st=goalStreak(g.id),best=goalBest(g.id);
+    const pct=best?Math.min(100,st/Math.max(best,1)*100):0;
+    return '<div class="sgrow"><div class="sghead"><span class="sgn">'+g.emo+' '+esc(g.name)+'</span>'
+      +'<span class="sgv" style="color:'+g.color+'">'+st+'d</span></div>'
+      +'<div class="rtrack"><i style="width:'+pct+'%;background:'+g.color+'"></i></div></div>';
+  }).join('');
+  $('stripList').innerHTML=GOALS.map(g=>'<div class="sgrow"><div class="sghead"><span class="sgn" style="font-size:12.5px">'+esc(g.name)+'</span></div>'
+    +'<div class="strip">'+days.map(dk=>{
+      const x=gday(dk,g.id);
+      const c=x&&x.s==='kept'?'k':(x&&x.s==='slip'?'s':'');
+      return '<i class="'+c+(dk===k?' td':'')+'" title="'+prettyDate(dk)+'"></i>';
+    }).join('')+'</div></div>').join('');
+  const wk=lastN(7,k);
+  const tot={};
+  wk.forEach(dk=>{const d=dday(dk);if(d)Object.keys(d.g).forEach(id=>{tot[id]=(tot[id]||0)+(+d.g[id].u||0);});});
+  const rows=GOALS.filter(g=>tot[g.id]).map(g=>({g:g,n:tot[g.id]})).sort((a,b)=>b.n-a.n);
+  const mx=Math.max(1,...rows.map(r=>r.n));
+  $('urgeWeek').innerHTML=rows.length?rows.map(r=>'<div class="sgrow"><div class="sghead"><span class="sgn">'+esc(r.g.name)+'</span><span class="sgv" style="color:var(--grd)">'+r.n+'</span></div>'
+    +'<div class="rtrack"><i style="width:'+(r.n/mx*100)+'%;background:var(--gr)"></i></div></div>').join('')
+    :'<div class="jh-empty">None logged yet — tap + on a goal each time an urge passes.</div>';
+}
+function renderDiscAll(){
+  renderWinBar();renderDiscBanner();renderGoalCards();renderDiscSidebar();
+  if(currentView==='disc-review')renderReview();
+}
 
-  const past=dates.filter(k=>k<=tk);
-  const done=past.filter(dayDone).length;
-  const touched=past.filter(dayTouched).length;
-  $('logCount').textContent=done+' of '+past.length+' day'+(past.length>1?'s':'')+' fully logged'+(touched>done?' \u00B7 '+(touched-done)+' partial':'');
-  $('logRange').textContent=dates.length+' days total \u00B7 '+dates.filter(k=>k>tk).length+' still ahead';
-  $('logLead').textContent='05 Oct 2026 \u2014 10 Nov 2026. Tap an answer to set it, tap again to clear.';
+/* ── weekly review ── */
+let wkOffset=0;
+function weekStart(d){
+  const x=new Date(d);
+  const dow=(x.getDay()+6)%7; // Mon=0
+  x.setDate(x.getDate()-dow);
+  return x;
 }
-function renderFocusAll(){
-  renderTally();renderLogRows();
+function reviewWeek(){
+  const s=weekStart(new Date());
+  s.setDate(s.getDate()+wkOffset*7);
+  const keys=[];
+  for(let i=0;i<7;i++){const d=new Date(s);d.setDate(d.getDate()+i);keys.push(fmtKey(d));}
+  return keys;
 }
+function renderReview(){
+  const keys=reviewWeek();
+  const tk=todayKey();
+  const past=keys.filter(k=>k<=tk);
+  const first=keys[0].split('-'),last=keys[6].split('-');
+  const fd=new Date(+first[0],+first[1]-1,+first[2]),ld=new Date(+last[0],+last[1]-1,+last[2]);
+  const fmt=d=>d.toLocaleDateString(undefined,{month:'short',day:'numeric'});
+  $('wkLabel').innerHTML=(wkOffset===0?'This week':(wkOffset===-1?'Last week':fmt(fd)+' – '+fmt(ld)))
+    +'<small>'+fmt(fd)+' – '+fmt(ld)+'</small>';
+  $('wkNext').disabled=(wkOffset>=0);
+
+  const logged=past.filter(k=>dday(k));
+  const allSlips=[];
+  past.forEach(k=>slipsOn(k).forEach(s=>allSlips.push({...s,k:k})));
+  const urges=past.reduce((s,k)=>s+urgesOn(k),0);
+  const cleanDays=logged.filter(k=>!slipsOn(k).length).length;
+
+  if(!logged.length){
+    $('reviewBody').innerHTML='<div class="revcard"><div class="rempty">Nothing logged this week yet. The review fills in as you go.</div></div>';
+    return;
+  }
+
+  const bar=(label,n,max,color,emo)=>'<div class="rbar"><div class="rbh"><span>'+(emo?emo+' ':'')+esc(label)+'</span><b>'+n+'</b></div>'
+    +'<div class="rtrack"><i style="width:'+(max?n/max*100:0)+'%;background:'+color+'"></i></div></div>';
+
+  // wins first
+  const uByGoal=GOALS.map(g=>({g:g,n:past.reduce((s,k)=>{const x=gday(k,g.id);return s+(x?(+x.u||0):0);},0)})).filter(r=>r.n).sort((a,b)=>b.n-a.n);
+  const uMax=Math.max(1,...uByGoal.map(r=>r.n));
+  // slips
+  const byTrig=TRIGGERS.map(t=>({t:t,n:allSlips.filter(s=>s.tr===t.id).length})).filter(r=>r.n).sort((a,b)=>b.n-a.n);
+  const noTrig=allSlips.filter(s=>!s.tr).length;
+  const tMax=Math.max(1,...byTrig.map(r=>r.n));
+  const byBucket=BUCKETS.map(b=>({b:b,n:allSlips.filter(s=>bucketOf(s.t)===b.id).length})).filter(r=>r.n);
+  const bMax=Math.max(1,...byBucket.map(r=>r.n));
+  const byGoal=GOALS.map(g=>({g:g,n:allSlips.filter(s=>s.gid===g.id).length})).filter(r=>r.n).sort((a,b)=>b.n-a.n);
+  const gMax=Math.max(1,...byGoal.map(r=>r.n));
+
+  let h='<div class="rsum">'
+    +'<div class="wcard resisted"><div class="wl">&#128170; Urges resisted</div><div class="wn">'+urges+'</div><div class="ws">times the wave passed</div></div>'
+    +'<div class="wcard held"><div class="wl">&#9989; Clean days</div><div class="wn">'+cleanDays+'<span style="font-size:19px;color:var(--muted)">/'+logged.length+'</span></div><div class="ws">of days logged</div></div>'
+    +'<div class="wcard chain"><div class="wl">&#128205; Slips</div><div class="wn">'+allSlips.length+'</div><div class="ws">'+(allSlips.length?'each one has a pattern in it':'none this week')+'</div></div>'
+    +'</div>';
+
+  h+='<div class="revcard"><h4>&#128170; Where you held the line</h4><div class="rl">Urges noticed and ridden out, by goal. This is the number that grows the skill.</div>'
+    +'<div class="rbars">'+(uByGoal.length?uByGoal.map(r=>bar(r.g.name,r.n,uMax,'var(--gr)',r.g.emo)).join('')
+      :'<div class="rempty">No urges logged this week. Counting them is half the method — it turns a vague pull into something you watched pass.</div>')+'</div></div>';
+
+  if(allSlips.length){
+    h+='<div class="revcard"><h4>&#127919; Slips by trigger state</h4><div class="rl">The state you were in, not the thing you did. This is usually where the fix lives.</div>'
+      +'<div class="rbars">'+(byTrig.length?byTrig.map(r=>bar(r.t.label,r.n,tMax,'#C98F22',r.t.emo)).join('')
+        :'<div class="rempty">No triggers tagged yet.</div>')
+      +(noTrig?'<div class="rl" style="margin:4px 0 0">'+noTrig+' slip'+(noTrig>1?'s':'')+' with no trigger noted — worth tagging next time.</div>':'')
+      +'</div></div>';
+
+    if(byBucket.length){
+      h+='<div class="revcard"><h4>&#128336; Slips by time of day</h4><div class="rl">When the risk window actually opens.</div>'
+        +'<div class="rbars">'+byBucket.map(r=>bar(r.b.label,r.n,bMax,'#2F80C4','')).join('')+'</div></div>';
+    }
+    h+='<div class="revcard"><h4>&#128202; Slips by goal</h4><div class="rl">Which front needs the attention this week.</div>'
+      +'<div class="rbars">'+byGoal.map(r=>bar(r.g.name,r.n,gMax,r.g.color,r.g.emo)).join('')+'</div></div>';
+  }
+
+  // one thing to change
+  h+='<div class="pickone"><h4>&#128161; One thing to change next week</h4>';
+  if(!allSlips.length){
+    h+='<p>No slips to learn from this week — '+urges+' urge'+(urges===1?'':'s')+' noticed and let pass. Keep the environment exactly as it is; it’s working.</p>';
+  } else {
+    const topT=byTrig[0],topB=byBucket.slice().sort((a,b)=>b.n-a.n)[0],topG=byGoal[0];
+    if(topT){
+      h+='<p>Your most common state before a slip was <b>'+esc(topT.t.label.toLowerCase())+'</b> ('+topT.n+' of '+allSlips.length+').</p>';
+      h+='<p>'+FIXES[topT.t.id]+'</p>';
+    } else {
+      h+='<p>Tag the trigger state on each slip next week — without it there’s no pattern to act on.</p>';
+    }
+    if(topB)h+='<p>Most slips landed in the <b>'+esc(topB.b.label.toLowerCase())+'</b> window. That’s the stretch to design around, not the whole day.</p>';
+    if(topG&&byGoal.length>1)h+='<p>Change one thing, for <b>'+esc(topG.g.name.toLowerCase())+'</b> only. Spreading the effort across all five is how nothing changes.</p>';
+  }
+  h+='</div>';
+
+  // day by day
+  h+='<div class="revcard"><h4>&#128197; Day by day</h4><div class="rl">The week in order.</div>';
+  h+=past.slice().reverse().map(k=>{
+    const d=dday(k);
+    if(!d)return '<div class="wkday"><div class="wkd-head"><span class="wd">'+prettyDate(k)+'</span><span class="wu" style="color:var(--muted)">not logged</span></div></div>';
+    const sl=slipsOn(k),u=urgesOn(k);
+    return '<div class="wkday '+(sl.length?'has':'clean')+'">'
+      +'<div class="wkd-head"><span class="wd">'+prettyDate(k)+'</span>'
+      +'<span class="wu">'+(u?u+' urge'+(u>1?'s':'')+' resisted':'')+(u&&!sl.length?' · ':'')+(sl.length?'':(u?'clean':'clean day'))+'</span></div>'
+      +(sl.length?'<div class="wkd-items">'+sl.map(s=>'<div class="wkd-i"><span>'+goalMeta(s.gid).emo+'</span><span>'
+        +esc(goalMeta(s.gid).name)+(s.t?' · '+esc(s.t):'')+(s.tr?' · '+esc(trigMeta(s.tr).label.toLowerCase()):'')
+        +(s.b?'<br><span style="color:var(--muted)">“'+esc(s.b)+'”</span>':'')+'</span></div>').join('')+'</div>':'')
+      +(d.note?'<div class="wkd-note">“'+esc(d.note)+'”</div>':'')
+      +'</div>';
+  }).join('');
+  h+='</div>';
+
+  $('reviewBody').innerHTML=h;
+}
+
+/* ── wiring ── */
+$('discNoteSave').onclick=saveDiscNote;
+$('discNote').addEventListener('keydown',e=>{if(e.key==='Enter')saveDiscNote();});
+$('wkPrev').onclick=()=>{wkOffset--;renderReview();};
+$('wkNext').onclick=()=>{if(wkOffset<0){wkOffset++;renderReview();}};
 
 /* ══════════════════ TIME TRACKER ══════════════════ */
 const TIME_CATS=[
