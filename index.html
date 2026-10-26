@@ -340,6 +340,91 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;fon
   .rsum{grid-template-columns:1fr;gap:10px}
   .goalcard,.revcard,.pickone{padding:15px 14px}
 }
+.plancard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:17px 20px;margin-bottom:16px;border-top:4px solid #4B3DB5}
+.plancard .pl{font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#4B3DB5;margin-bottom:10px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.plancard .pl .phint{font-weight:500;letter-spacing:0;text-transform:none;font-size:12.5px;color:var(--muted)}
+.planrow{display:flex;gap:9px}
+.planrow input{flex:1;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:12px 14px;font-family:inherit;font-size:15px;color:var(--ink);min-width:0}
+.planrow input:focus{outline:none;border-color:#4B3DB5}
+.planrow .pbtn{background:#4B3DB5;color:#fff;border:none;border-radius:10px;padding:12px 20px;font-family:inherit;font-size:14.5px;font-weight:700;cursor:pointer;flex-shrink:0}
+.planrow .pbtn:hover{filter:brightness(1.08)}
+.planset{display:flex;align-items:flex-start;gap:12px}
+.planset .ptxt{flex:1;font-family:"Fraunces",serif;font-size:17px;font-weight:600;line-height:1.45}
+.planset .pedit{background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:7px 13px;font-family:inherit;font-size:12.5px;font-weight:700;color:var(--muted);cursor:pointer;flex-shrink:0}
+.planset .pedit:hover{border-color:var(--ink);color:var(--ink)}
+.plan-last{font-size:12.5px;color:var(--muted);margin-top:10px;line-height:1.45;padding-top:9px;border-top:1px dashed var(--line)}
+.plan-last b{font-weight:600;color:var(--ink)}
+.wkd-plan{font-size:13px;color:var(--ink);margin-top:6px;display:flex;gap:7px;align-items:flex-start;line-height:1.4}
+.wkd-plan .wpl{font-weight:700;color:var(--muted);flex-shrink:0}
+@media(max-width:700px){
+  .plancard{padding:14px 15px}
+  .planrow{flex-direction:column}
+  .planrow .pbtn{width:100%}
+  .planset .ptxt{font-size:15.5px}
+}
+/* ── the loop + urge timer ── */
+.loopcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);margin-bottom:16px;overflow:hidden;border-top:4px solid #0F9B8E}
+.lctop{padding:16px 20px;display:flex;align-items:center;gap:13px;flex-wrap:wrap}
+.lctop .lcl{font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#0B7A70;flex:1;min-width:120px}
+.urgebtn{background:#0F9B8E;color:#fff;border:none;border-radius:11px;padding:13px 20px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(15,155,142,.26);transition:.16s;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.urgebtn:hover{transform:translateY(-2px) scale(1.01)}
+.lcwhy{background:none;border:none;color:var(--muted);font-family:inherit;font-size:12.5px;font-weight:600;cursor:pointer;text-decoration:underline;padding:0;white-space:nowrap}
+.lcwhy:hover{color:var(--ink)}
+.lcbody{padding:0 20px 18px;border-top:1px dashed var(--line);margin-top:2px;padding-top:16px}
+.loopline{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:15px}
+.lpill{font-size:12.5px;font-weight:700;padding:6px 12px;border-radius:20px;background:var(--paper);border:1px solid var(--line);color:var(--ink);white-space:nowrap}
+.lpill.t1{background:#FFF4E0;border-color:#e8d49a;color:#8a6418}
+.lpill.t2{background:#E4F3F1;border-color:#9fd6cf;color:#0B7A70}
+.lpill.t3{background:var(--res);border-color:#f0c2b4;color:var(--red)}
+.lpill.t4{background:#EDE9FB;border-color:#cdc4f2;color:#4B3DB5}
+.larrow{color:var(--muted);font-size:13px;flex-shrink:0}
+.lcbody p{font-size:14.5px;line-height:1.6;color:var(--ink);margin-bottom:11px}
+.lcbody p:last-child{margin-bottom:0}
+.lcbody p b{font-weight:700}
+.lcbody .lckey{background:#E4F3F1;border-left:3px solid #0F9B8E;border-radius:0 10px 10px 0;padding:12px 15px;font-size:14.5px;line-height:1.55;margin:13px 0}
+.steps3{display:flex;flex-direction:column;gap:9px;margin:13px 0}
+.st3{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;line-height:1.5}
+.st3 .stn{width:23px;height:23px;border-radius:50%;background:#0F9B8E;color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;flex-shrink:0;margin-top:1px}
+.lcbal{display:flex;gap:11px;margin-top:14px;flex-wrap:wrap}
+.lcb{flex:1;min-width:150px;border-radius:11px;padding:13px 15px;font-size:13.5px;line-height:1.5}
+.lcb.up{background:var(--grs);color:var(--grd);border:1px solid #bee3cc}
+.lcb.down{background:var(--res);color:var(--red);border:1px solid #f0c2b4}
+.lcb b{display:block;font-family:"Fraunces",serif;font-size:15px;margin-bottom:3px}
+/* running timer */
+.loopcard.live{border-top-color:#0F9B8E;background:linear-gradient(180deg,#F2FAF9,var(--card) 70%)}
+.tmwrap{padding:20px}
+.tmhead{font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#0B7A70;margin-bottom:3px}
+.tmgoal{font-size:13.5px;color:var(--muted);margin-bottom:14px}
+.tmclock{display:flex;align-items:baseline;gap:9px;margin-bottom:4px}
+.tmmin{font-family:"Fraunces",serif;font-size:62px;font-weight:600;line-height:.95;color:#0B7A70}
+.tmsec{font-family:"Fraunces",serif;font-size:26px;font-weight:600;color:#0F9B8E;opacity:.75}
+.tmsay{font-size:14.5px;line-height:1.5;color:var(--ink);font-weight:600;margin:9px 0 14px;min-height:22px}
+.tmtrack{height:11px;border-radius:6px;background:#DCEDEB;overflow:hidden;position:relative;margin-bottom:7px}
+.tmtrack i{display:block;height:100%;background:#0F9B8E;border-radius:6px;transition:width 1s linear}
+.tmtrack .mk{position:absolute;top:-3px;bottom:-3px;width:2px;background:#0B7A70;opacity:.45;left:50%}
+.tmscale{display:flex;justify-content:space-between;font-size:10.5px;font-weight:700;letter-spacing:.3px;color:var(--muted);text-transform:uppercase;margin-bottom:16px}
+.tmsteps{background:var(--card);border:1px solid #BFE2DD;border-radius:11px;padding:14px 16px;margin-bottom:16px}
+.tmacts{display:flex;gap:10px;flex-wrap:wrap}
+.tmacts button{flex:1;min-width:132px;border-radius:11px;padding:13px 14px;font-family:inherit;font-size:14.5px;font-weight:700;cursor:pointer;border:1.5px solid var(--line);transition:.14s}
+.tmacts .passed{background:var(--gr);border-color:var(--gr);color:#fff}
+.tmacts .passed:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.tmacts .acted{background:var(--paper);color:var(--muted)}
+.tmacts .acted:hover{border-color:#C98F22;color:#8a6418}
+.tmacts .cancel{background:transparent;color:var(--muted);border-color:transparent;flex:0;min-width:0;padding:13px 8px;font-weight:600;font-size:13px;text-decoration:underline}
+.gpick{display:flex;gap:8px;flex-wrap:wrap;padding:0 20px 18px}
+.gpick button{flex:1;min-width:120px;border:1.5px solid var(--line);background:var(--paper);border-radius:11px;padding:12px 10px;cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:600;color:var(--ink);transition:.14s;display:flex;align-items:center;gap:7px;justify-content:center;line-height:1.25}
+.gpick button:hover{transform:translateY(-2px);border-color:#0F9B8E}
+.gpicklbl{padding:0 20px 10px;font-size:13.5px;color:var(--muted)}
+@media(max-width:700px){
+  .lctop{padding:14px 15px}
+  .urgebtn{width:100%;justify-content:center}
+  .lcbody,.gpick,.gpicklbl{padding-left:15px;padding-right:15px}
+  .tmwrap{padding:16px 15px}
+  .tmmin{font-size:48px}
+  .tmacts button{min-width:0;flex:1 1 100%}
+  .tmacts .cancel{flex:1 1 100%}
+  .lcb{min-width:0;flex:1 1 100%}
+}
 /* ═══════════ TIME TRACKER ═══════════ */
 .tstats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .stat.tcard{padding:18px 20px}
@@ -519,6 +604,8 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:52px;fon
 <div class="view on" id="view-disc-today">
   <div class="layout">
     <div class="main">
+      <div class="plancard" id="planCard"></div>
+      <div class="loopcard" id="loopCard"></div>
       <div class="winbar" id="winBar"></div>
       <div id="discBanner"></div>
       <div id="goalCards"></div>
@@ -1109,7 +1196,7 @@ function pruneDay(k){
   const D=dset(),d=D[k];
   if(!d)return;
   const any=Object.keys(d.g).some(id=>{const g=d.g[id];return g.s||g.u>0||g.t||g.tr||g.b;});
-  if(!any&&!d.note)delete D[k];
+  if(!any&&!d.note&&!d.plan)delete D[k];
 }
 function dshift(k,n){const p=k.split('-').map(Number);const d=new Date(p[0],p[1]-1,p[2]);d.setDate(d.getDate()+n);return fmtKey(d);}
 function dDiff(a,b){return Math.round((new Date(b+'T00:00:00')-new Date(a+'T00:00:00'))/864e5);}
@@ -1191,6 +1278,141 @@ function saveDiscNote(){
   pruneDay(k);save();renderDiscAll();
 }
 
+/* ── the loop + urge timer ── */
+const URGE_PEAK=20; // minutes: the window an urge takes to crest and fade
+let loopOpen=false,gpickOpen=false,tmTick=null;
+function utimer(){return state.urgeTimer||null;}
+function startUrge(gid){
+  state.urgeTimer={gid:gid,start:Date.now()};
+  gpickOpen=false;loopOpen=false;
+  save();renderLoop();
+}
+function urgeMins(){
+  const t=utimer();if(!t)return 0;
+  return (Date.now()-t.start)/60000;
+}
+function endUrge(passed){
+  const t=utimer();if(!t)return;
+  const gid=t.gid;
+  state.urgeTimer=null;
+  if(tmTick){clearInterval(tmTick);tmTick=null;}
+  if(passed)bumpUrge(gid,1);          // counts as a rep
+  else{                               // acted on it — log the slip, keep the detail panel open
+    const k=fmtKey(current);
+    const g=ensureGoal(k,gid);
+    g.s='slip';
+    if(!g.t){const n=new Date();g.t=String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0');}
+    save();renderDiscAll();
+  }
+}
+function cancelUrge(){
+  state.urgeTimer=null;
+  if(tmTick){clearInterval(tmTick);tmTick=null;}
+  save();renderLoop();
+}
+function urgeSay(m){
+  if(m<2)return 'It\u2019s climbing. Don\u2019t argue with it \u2014 just name it and stay put.';
+  if(m<10)return 'This is the peak. It feels permanent right now. It isn\u2019t.';
+  if(m<URGE_PEAK)return 'It\u2019s starting to fade. You\u2019re past the hardest part.';
+  return 'The wave has passed. That\u2019s the whole skill, and you just did it.';
+}
+function renderLoop(){
+  const el=$('loopCard');
+  const t=utimer();
+  if(t){
+    const m=urgeMins();
+    const mm=Math.floor(m),ss=Math.floor((m-mm)*60);
+    const pct=Math.min(100,m/URGE_PEAK*100);
+    const g=goalMeta(t.gid);
+    el.className='loopcard live';
+    el.innerHTML='<div class="tmwrap">'
+      +'<div class="tmhead">&#127754; Riding it out</div>'
+      +'<div class="tmgoal">'+g.emo+' '+esc(g.name)+' \u00B7 started '+new Date(t.start).toLocaleTimeString(undefined,{hour:'2-digit',minute:'2-digit'})+'</div>'
+      +'<div class="tmclock"><span class="tmmin">'+mm+'</span><span class="tmsec">m '+String(ss).padStart(2,'0')+'s</span></div>'
+      +'<div class="tmsay">'+urgeSay(m)+'</div>'
+      +'<div class="tmtrack"><i style="width:'+pct+'%"></i><div class="mk"></div></div>'
+      +'<div class="tmscale"><span>now</span><span>10 min</span><span>'+URGE_PEAK+' min</span></div>'
+      +'<div class="tmsteps"><div class="steps3">'
+        +'<div class="st3"><span class="stn">1</span><span><b>Name it.</b> \u201CThis is just an urge.\u201D Not a decision, not a need.</span></div>'
+        +'<div class="st3"><span class="stn">2</span><span><b>Find it in your body.</b> Chest, stomach, hands, jaw \u2014 where is it sitting?</span></div>'
+        +'<div class="st3"><span class="stn">3</span><span><b>Wait.</b> Don\u2019t fight it, don\u2019t feed it. Let it crest and drop.</span></div>'
+      +'</div></div>'
+      +'<div class="tmacts">'
+        +'<button class="passed" id="urgePassed">&#10003; It passed</button>'
+        +'<button class="acted" id="urgeActed">I acted on it</button>'
+        +'<button class="cancel" id="urgeCancel">false alarm</button>'
+      +'</div></div>';
+    $('urgePassed').onclick=()=>endUrge(true);
+    $('urgeActed').onclick=()=>endUrge(false);
+    $('urgeCancel').onclick=cancelUrge;
+    if(!tmTick)tmTick=setInterval(()=>{if(utimer()&&$('loopCard'))renderLoop();else if(tmTick){clearInterval(tmTick);tmTick=null;}},1000);
+    return;
+  }
+  if(tmTick){clearInterval(tmTick);tmTick=null;}
+  el.className='loopcard';
+  let h='<div class="lctop"><span class="lcl">&#127754; Catch the gap</span>'
+    +'<button class="lcwhy" id="loopWhy">'+(loopOpen?'hide':'why this works')+'</button>'
+    +'<button class="urgebtn" id="urgeStart">&#9201;&#65039; An urge just hit</button></div>';
+  if(gpickOpen){
+    h+='<div class="gpicklbl">Which one is pulling?</div><div class="gpick">'
+      +GOALS.filter(g=>g.kind==='abstain').map(g=>'<button data-gp="'+g.id+'">'+g.emo+' '+esc(g.name)+'</button>').join('')
+      +'</div>';
+  }
+  if(loopOpen){
+    h+='<div class="lcbody">'
+      +'<p>All four of these run on the same loop:</p>'
+      +'<div class="loopline">'
+        +'<span class="lpill t1">trigger</span><span class="larrow">&rarr;</span>'
+        +'<span class="lpill t2">urge</span><span class="larrow">&rarr;</span>'
+        +'<span class="lpill t3">automatic action</span><span class="larrow">&rarr;</span>'
+        +'<span class="lpill">brief relief</span><span class="larrow">&rarr;</span>'
+        +'<span class="lpill t4">regret</span>'
+      +'</div>'
+      +'<p>The fix is the same too: <b>catch the gap between urge and action, and make it wider.</b></p>'
+      +'<div class="lckey">An urge peaks and fades, usually within <b>10 to 20 minutes</b>, whether you act on it or not. '
+        +'When it hits, name it (\u201Cthis is just an urge\u201D), notice where you feel it in your body, and wait.</div>'
+      +'<div class="lcbal">'
+        +'<div class="lcb up"><b>Let one pass</b>The next one comes in weaker. That\u2019s the rep.</div>'
+        +'<div class="lcb down"><b>Give in</b>The loop gets stronger. Same wiring, both directions.</div>'
+      +'</div></div>';
+  }
+  el.innerHTML=h;
+  $('loopWhy').onclick=()=>{loopOpen=!loopOpen;renderLoop();};
+  $('urgeStart').onclick=()=>{gpickOpen=!gpickOpen;loopOpen=false;renderLoop();};
+  el.querySelectorAll('button[data-gp]').forEach(b=>b.onclick=()=>startUrge(b.dataset.gp));
+}
+
+/* ── plan ── */
+let planEditing=false;
+function savePlan(){
+  const k=fmtKey(current);
+  const v=$('planInput').value.trim();
+  ensureDay(k).plan=v;
+  planEditing=false;
+  pruneDay(k);save();renderDiscAll();
+}
+function renderPlan(){
+  const k=fmtKey(current);
+  const d=dday(k);
+  const plan=(d&&d.plan)||'';
+  const prev=dday(dshift(k,-1));
+  const prevPlan=(prev&&prev.plan)||'';
+  const el=$('planCard');
+  if(plan&&!planEditing){
+    el.innerHTML='<div class="pl">&#127919; Today\u2019s plan</div>'
+      +'<div class="planset"><div class="ptxt">'+esc(plan)+'</div>'
+      +'<button class="pedit" id="planEdit">Edit</button></div>';
+    $('planEdit').onclick=()=>{planEditing=true;renderPlan();$('planInput').focus();};
+    return;
+  }
+  el.innerHTML='<div class="pl">&#127919; Today\u2019s plan<span class="phint">be specific \u2014 what exactly are you doing, and when?</span></div>'
+    +'<div class="planrow"><input id="planInput" placeholder="e.g. Phone out of the room by 11pm. Gym at 7. No reply before she does." autocomplete="off" value="'+esc(plan)+'"/>'
+    +'<button class="pbtn" id="planSave">Set</button></div>'
+    +(prevPlan&&!plan?'<div class="plan-last">Yesterday: <b>'+esc(prevPlan)+'</b></div>':'');
+  $('planSave').onclick=savePlan;
+  $('planInput').addEventListener('keydown',e=>{if(e.key==='Enter')savePlan();});
+}
+
 /* ── today ── */
 function renderWinBar(){
   const k=fmtKey(current);
@@ -1203,7 +1425,7 @@ function renderWinBar(){
   const longestG=GOALS[chains.indexOf(longest)];
   $('winBar').innerHTML=
     '<div class="wcard resisted"><div class="wl">&#128170; Urges resisted</div><div class="wn">'+u+'</div>'
-      +'<div class="ws">'+(u?'every one of those is a rep':'noticing counts — log them as they pass')+' · '+week+' this week</div></div>'
+      +'<div class="ws">'+(u?'each one came in weaker than the last':'ride one out and log it — that’s the rep')+' · '+week+' this week</div></div>'
     +'<div class="wcard held"><div class="wl">&#9989; Held today</div><div class="wn">'+kept+'<span style="font-size:19px;color:var(--muted)">/'+GOALS.length+'</span></div>'
       +'<div class="ws">'+(answered.length?answered.length+' of '+GOALS.length+' answered':'not logged yet')+'</div></div>'
     +'<div class="wcard chain"><div class="wl">&#128293; Longest chain</div><div class="wn">'+longest+'</div>'
@@ -1301,7 +1523,7 @@ function renderDiscSidebar(){
     :'<div class="jh-empty">None logged yet — tap + on a goal each time an urge passes.</div>';
 }
 function renderDiscAll(){
-  renderWinBar();renderDiscBanner();renderGoalCards();renderDiscSidebar();
+  renderPlan();renderLoop();renderWinBar();renderDiscBanner();renderGoalCards();renderDiscSidebar();
   if(currentView==='disc-review')renderReview();
 }
 
@@ -1411,6 +1633,7 @@ function renderReview(){
       +(sl.length?'<div class="wkd-items">'+sl.map(s=>'<div class="wkd-i"><span>'+goalMeta(s.gid).emo+'</span><span>'
         +esc(goalMeta(s.gid).name)+(s.t?' · '+esc(s.t):'')+(s.tr?' · '+esc(trigMeta(s.tr).label.toLowerCase()):'')
         +(s.b?'<br><span style="color:var(--muted)">“'+esc(s.b)+'”</span>':'')+'</span></div>').join('')+'</div>':'')
+      +(d.plan?'<div class="wkd-plan"><span class="wpl">Plan:</span><span>'+esc(d.plan)+'</span></div>':'')
       +(d.note?'<div class="wkd-note">“'+esc(d.note)+'”</div>':'')
       +'</div>';
   }).join('');
